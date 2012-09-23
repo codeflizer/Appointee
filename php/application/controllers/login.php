@@ -21,7 +21,5 @@ class Login extends CI_Controller {
 	{
 		$this->load->view('login');
 	}
-?>
+}
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
