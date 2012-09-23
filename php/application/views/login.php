@@ -29,7 +29,7 @@
 				</fieldset>
 			</div>
 			<!--<input type="submit" value="Login">-->
-			<p><?=anchor('menu');?></p>			
+			<!--<p><?=anchor('menu');?></p>	-->		
 			<a data-role="button" data-transition="fade" data-theme="a"
 				href="login"> Login </a>
 			<h4 style="text-align: center;">No account?</h4>
