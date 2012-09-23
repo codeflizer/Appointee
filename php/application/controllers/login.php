@@ -18,9 +18,14 @@ class Login extends Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	function Login(){
+	/*function Login(){
 		parent::Controller();
 		$this->load->helper('url');
+	}*/
+
+	public function index()
+	{
+		$this->load->view('login');
 	}
 }
 
