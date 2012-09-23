@@ -28,9 +28,9 @@
 						id="textinput9" placeholder="Password" value="" type="password">
 				</fieldset>
 			</div>
-			<!--<input type="submit" value="login">-->
+			<!--<input type="submit" value="Login">-->
 			<a data-role="button" data-transition="fade" data-theme="a"
-				href="menu.php"> Login </a>
+				href="login"> Login </a>
 			<h4 style="text-align: center;">No account?</h4>
 			<a data-role="button" data-transition="fade" data-theme="b"
 				href="#page12"> Sign up for Appoint.ee </a>
