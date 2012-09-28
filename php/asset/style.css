@@ -1,0 +1,57 @@
+h5 { margin-top:0px ! important;}
+a p { margin-bottom:0px ! important;}
+
+.ui-li-thumb, .ui-li-icon {
+    left: 1px;
+    max-height: 50px; 
+    max-width: 50px;
+    position: absolute;
+    top: 0;
+}
+
+
+.ui-field-contain, fieldset.ui-field-contain {
+	border-width: 0px ! important;
+}
+.loginform #textinput8, .loginform #textinput9, .loginform .ui-checkbox {
+	margin-top: 10px ! important;
+}
+
+.contact_header {
+	margin-top: 30px;
+}
+
+.contact_header h3{
+	margin: 20px 0 0 40px;
+}
+.contact_header ul{
+	margin: 80px 0 0 0 ! important;
+}
+
+/** icons **/
+
+.ui-icon-appointee-home {
+	background-image: url("images/iconic/white/home_12x12.png");
+	background-position:3px;
+}
+
+.ui-icon-appointee-history {
+	background-image: url("images/iconic/white/list_12x11.png");
+	background-position:3px;
+}
+
+.ui-icon-appointee-contacts {
+	background-image: url("images/iconic/white/user_9x12.png");
+	background-position:4px 3px;
+}
+
+.ui-icon-appointee-plus {
+	background-image: url("images/iconic/white/plus_alt_12x12.png");
+	background-position:3px;
+}
+
+.ui-icon-appointee-edit {
+	background-image: url("images/iconic/white/pen_alt_stroke_12x12.png");
+	background-position:3px;
+}
+

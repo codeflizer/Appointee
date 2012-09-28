@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://localhost/appoint/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +44,7 @@ $config['index_page'] = 'index.php';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'AUTO';
+$config['uri_protocol']	= 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'password';
 
 /*
 |--------------------------------------------------------------------------
@@ -253,6 +253,8 @@ $config['sess_table_name']		= 'ci_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
+$config['sess_use_database']    = TRUE;
+$config['sess_table_name']        = 'ci_sessions';
 
 /*
 |--------------------------------------------------------------------------
@@ -341,7 +343,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*

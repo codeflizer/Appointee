@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,14 +18,50 @@ class Login extends Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	/*function Login(){
-		parent::Controller();
-		$this->load->helper('url');
-	}*/
+   //constructor that starts the session
+   public function __construct()
+   {
+      parent::__construct();
+      session_start();
+   }
 
-	public function index()
-	{
-		$this->load->view('login');
-	}
+   //index to be called when app starts
+	 public function index()
+	 {
+	   	$this->load->view('login');
+	 }
+
+
+   //perform login --> validates user data and starts session
+	 public function perform_login(){
+  
+      $this->load->helper('url');
+      
+      //if session exists, just forward
+      if ( isset($_SESSION['username']) ) {
+         redirect('main');
+      }
+
+      //else, validate user data
+      $this->load->model('Login_model');
+      $userid = $this->Login_model->check_Login_Data($this->input->post('mail'), $this->input->post('password'));
+      
+      //if user data is valid, initialize session and forward to main page
+      if ($userid != 0) {
+
+            $_SESSION['userid'] = $userid;
+            redirect('main');
+            
+      } else {
+          redirect(base_url());
+      }
+
+      }       
+
+  
+
+
 }
+
+?>
 
