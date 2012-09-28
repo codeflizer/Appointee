@@ -48,9 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = $_ENV['OPENSHIFT_DB_HOST'] 
+  //  $_ENV['OPENSHIFT_DB_PORT']      - DB Port
+
+$db['default']['username'] = $_ENV['OPENSHIFT_DB_USERNAME'];
+$db['default']['password'] = $_ENV['OPENSHIFT_DB_PASSWORD'];
 $db['default']['database'] = 'appointeedev';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
