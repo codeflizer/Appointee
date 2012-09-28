@@ -53,7 +53,7 @@ $db['default']['hostname'] = 'mysql://127.10.255.1:3306/';
 
 $db['default']['username'] = 'admin';
 $db['default']['password'] = 'ePAuN9ly_nhe';
-$db['default']['database'] = 'appointeedev';
+$db['default']['database'] = 'appointeeDev';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
