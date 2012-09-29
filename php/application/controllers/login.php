@@ -19,15 +19,21 @@ class Login extends CI_Controller {
 	 */
 
    //constructor that starts the session
-   public function __construct()
+   public function login()
    {
       parent::__construct();
+      $this->load->helper('url');
+      $this->load->library('session');
       session_start();
+      if (isset($_SESSION['userid']) ) {
+         redirect('main');
+      }
+      
    }
 
    //index to be called when app starts
 	 public function index()
-	 {
+	 { 
 	   	$this->load->view('login');
 	 }
 
@@ -35,13 +41,6 @@ class Login extends CI_Controller {
    //perform login --> validates user data and starts session
 	 public function perform_login(){
   
-      $this->load->helper('url');
-      
-      //if session exists, just forward
-      if ( isset($_SESSION['username']) ) {
-         redirect('main');
-      }
-
       //else, validate user data
       $this->load->model('Login_model');
       $userid = $this->Login_model->check_Login_Data($this->input->post('mail'), $this->input->post('password'));

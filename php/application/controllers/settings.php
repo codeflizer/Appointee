@@ -9,7 +9,7 @@ class Settings extends CI_Controller {
       //if user is not logged in, redirect to login page
       $this->load->helper('url');
       session_start();
-      if ( !isset($_SESSION['username']) ) {
+      if ( !isset($_SESSION['userid']) ) {
          redirect(base_url());
       }
    }
@@ -28,7 +28,7 @@ class Settings extends CI_Controller {
   public function logout(){
       //logout
       session_destroy();
-      $this->load->helper('userid');
+      //$this->load->helper('userid');
       redirect(base_url()); 
   }
   

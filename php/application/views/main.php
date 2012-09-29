@@ -16,7 +16,7 @@
 
 <div data-role="page" id="home">
 	<div data-theme="a" data-role="header">
-		<a data-role="button" data-transition="fade" href="../../settings/"
+		<a data-role="button" data-transition="fade" href="<?=base_url() ?>settings/"
 			data-icon="gear" data-iconpos="notext" class="ui-btn-right"
 			data-theme="c" data-ajax="false"> </a>
 		<div style="text-align: center; margin-top: 5px;">

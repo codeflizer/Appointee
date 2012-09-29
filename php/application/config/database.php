@@ -48,11 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '127.10.255.1:3306'; 
-  //  $_ENV['OPENSHIFT_DB_PORT']      - DB Port
-
-$db['default']['username'] = 'admin';
-$db['default']['password'] = 'ePAuN9ly_nhe';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = 'test';
 $db['default']['database'] = 'appointeedev';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

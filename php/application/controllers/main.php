@@ -6,7 +6,6 @@ class Main extends CI_Controller {
    function __construct()
    {
       parent::__construct();
-      
       //if user is not logged in, redirect to login page
       $this->load->helper('url');
       session_start();
