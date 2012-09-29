@@ -18,7 +18,7 @@
 	<div data-role="page" data-theme="a" id="page12">
 		<div data-role="content" style="padding: 15px">
 			<div style="text-align: center;">
-				<img src="<?=base_url() ?>/asset/images/Logo.png">
+				<img src="<?=base_url() ?>asset/images/Logo.png">
 			</div>
 			<div data-role="fieldcontain">
 				<fieldset data-role="controlgroup">       
