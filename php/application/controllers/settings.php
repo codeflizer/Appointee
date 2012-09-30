@@ -1,52 +1,39 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Settings extends CI_Controller {
-
-   function __construct()
+ 
+ 
+ public function __construct()
    {
-      parent::__construct();
-      
-      //if user is not logged in, redirect to login page
-      $this->load->helper('url');
-      session_start();
-      if ( !isset($_SESSION['userid']) ) {
-         redirect(base_url());
+   parent::__construct();
+ $userid = $this->session->userdata('userid');
+      if($userid<1){
+      redirect('login');
       }
+ }
+
+ public function index(){
+  
+   $this->load->view('settings/settings_view');
    }
-	
-	public function index()
-	{
-    //load MainModel and get data for main menu
-    $this->load->model('Settings_model');
-    
-    //load view with data
-		$this->load->view('settings_general');
-		
-	}
-  
-  
-  public function logout(){
-      //logout
-      session_destroy();
-      //$this->load->helper('userid');
-      redirect(base_url()); 
-  }
-  
-  public function password_menu(){
-      $this->load->view('settings_password');
-  }
-  
-    public function personal_menu(){
-      $this->load->view('settings_personal');
-  }
-  
-    public function email_menu(){
-      $this->load->view('settings_email');
-  }
-  
-    public function delete_menu(){
-      $this->load->view('settings_delete');
-  }
-  
+   
+   public function personal(){
+   $this->load->view('settings/personal_view');
+   }
+   
+   
+   public function password(){
+   $this->load->view('settings/password_view');
+   }
+   
+   
+   public function email(){
+   $this->load->view('settings/email_view');
+   }
+   
+   
+   public function delete(){
+   $this->load->view('delete_view');
+   }
+
 }
-?>
