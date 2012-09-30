@@ -19,10 +19,9 @@ class Login extends CI_Controller {
 	 */
 
    //constructor that starts the session
-   public function login()
+   public function __construct()
    {
       parent::__construct();
-      $this->load->helper('url');
       $this->load->library('session');
       session_start();
       if (isset($_SESSION['userid']) ) {
@@ -47,13 +46,10 @@ class Login extends CI_Controller {
       
       //if user data is valid, initialize session and forward to main page
       if ($userid != 0) {
-
-            $_SESSION['userid'] = $userid;
-            redirect('main');
-            
-      } else {
-          redirect(base_url());
-      }
+            $_SESSION['userid'] = $userid;    
+      } 
+        redirect('main');
+      
 
       }       
 

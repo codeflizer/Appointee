@@ -8,8 +8,7 @@
 	
 </head>
 <body>
-<form method="post" accept-charset="utf-8" action="login/perform_login/"  id="login" />
- 
+    <?php echo form_open('login/perform_login') ?>
 	<div data-role="page" data-theme="a" id="page12">
 		<div data-role="content" style="padding: 15px">
 			<div style="text-align: center;">
@@ -17,25 +16,44 @@
 			</div>
 			<div data-role="fieldcontain">
 				<fieldset data-role="controlgroup">       
-					<label for="textinput8"> </label> <input name="mail"
-						id="mail" placeholder="E-Mail-Address" value="" type="text">
+					<label for="mail"> </label> 
+					
+					<?php 
+					$data = array(
+                          'name'        => 'mail',
+                          'id'          => 'mail',
+                          'maxlength'   => '20',
+                          'placeholder' => 'E-Mail-Address',
+                    );
+					
+					echo form_input($data) ?>
+					
 				</fieldset>
 			</div>
 			<div data-role="fieldcontain">
 				<fieldset data-role="controlgroup">
-					<label for="textinput9"> </label> <input name="password"
-						id="password" placeholder="Password" value="" type="password">
+					<label for="password"> </label> 
+					
+					<?php 
+					$data = array(
+                          'name'        => 'password',
+                          'id'          => 'password',
+                          'maxlength'   => '50',
+                          'placeholder' => 'Password',
+                    );
+					
+					echo form_password($data) ?>
+					
 				</fieldset>
 			</div>
-			<!--<input type="submit" value="Login">-->
-      <input type="submit" value="Login" />
+			
+            <?php echo form_submit('Login','Login'); ?>
+            
 			<h4 style="text-align: center;">No account?</h4>
 			<a data-role="button" data-transition="fade" data-theme="b"
 				href="#page12"> Sign up for Appoint.ee </a>
 		</div>
 	</div>
-  
-</form>
-
+    </form>
 </body>
 </html>

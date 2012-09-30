@@ -6,11 +6,7 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
+
 </head>
 <body>
 
@@ -27,62 +23,41 @@
             Back
         </a>
     </div>
+   
 	<div data-role="content" style="padding: 15px">
+	
+	  <form action="http://localhost/appoint/new_appointment/newapp_timeslot" method="post" accept-charset="utf-8">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 				1. Timeslot
 			</li>
 			<li data-theme="c">
 				<h3>Start</h3>
-				<label for="mydate"></label>
-				<input name="mydate" id="mydate" type="date" data-role="datebox"
-				   data-options='{"mode": "calbox"}' placeholder="Start Date">
+				<label for="startdate"></label>
+				<input name="startdate" id="startdate" type="date" data-role="datebox"  data-options='{"mode": "calbox"}' placeholder="Start Date"/>
+				
+				<label for="allday">All-day</label>   
+				<input type="checkbox" name="allday" id="allday" />
+				 
 				   
-				<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-				<label for="checkbox-1">All-day</label>   
-				   
-				<label for="mydate"></label>
-				<input name="mydate" id="mydate" type="date" data-role="datebox"
-				   data-options='{"mode": "timebox"}' placeholder="Start Time">
+				<label for="starttime"></label>
+				<input name="starttime" id="starttime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="Start Time"/>
 			</li>
 			<li data-theme="c">
 				<h3>End</h3>
-				<label for="mydate"></label>
-				<input name="mydate" id="mydate" type="date" data-role="datebox"
-				   data-options='{"mode": "calbox"}' placeholder="End Date" disabled="disabled"> 
+				<label for="enddate"></label>
+				<input name="enddate" id="enddate" type="date" data-role="datebox" data-options='{"mode": "calbox"}' placeholder="End Date" disabled="disabled"/> 
 				   
-				<label for="mydate"></label>
-				<input name="mydate" id="mydate" type="date" data-role="datebox"
-				   data-options='{"mode": "timebox"}' placeholder="End Time" disabled="disabled">
+				<label for="endtime"></label>
+				<input name="endtime" id="endtime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="End Time" disabled="disabled"/>
 			</li>
 				
 		</ul><br />
-        <a data-role="button" data-transition="fade" data-theme="c" href="../save_timeslot_and_clear/" data-icon="plus"
-        data-iconpos="left">
-            Add &amp; next Slot
-        </a>
-        <a data-role="button" data-transition="fade" href="../add_and_finish/" data-icon="check">
-            Add &amp; finish
-        </a>
+        <?php echo form_submit('next','Next Slot'); ?>
+        <?php echo form_submit('finish','Finish'); ?>
+    </form>         
 	</div>
+	
 </div>
-<!-- Discard popup -->
-<div data-role="page" id="discard" >
-    <div data-theme="a" data-role="header">
-		<h3>
-           
-        </h3>
-    </div>
-	<div data-role="content" style="padding: 15px">
-		<h3>Do you really want to discard the new appointment?</h3>
-        <a data-role="button" data-transition="fade" data-theme="c" href="Menu.html"  data-ajax="false">
-            Yes
-        </a>
-        <a data-role="button" data-transition="fade" data-theme="c" href="#new_app_2">
-            No
-        </a>
-	</div>
-</div>
-
 </body>
 </html>

@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 </head>
 <body>
-
+ <?php echo form_open('new_appointment/create') ?>
 <div data-role="page" id="new_app_1">
     <div data-theme="a" data-role="header">
         <a data-role="button" data-transition="fade" href="#discard" class="ui-btn-right"
@@ -33,39 +33,71 @@
 			<li data-role="list-divider" role="heading">
 				General Information
 			</li>
+			
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput1">
+					<label for="title">
 					</label>
-				<input name="" id="textinput1" placeholder="Title" value="" type="text">
+					
+				<?php 
+					$data = array(
+                          'name'        => 'title',
+                          'id'          => 'title',
+                          'maxlength'   => '30',
+                          'placeholder' => 'Title',
+                    );
+					
+					echo form_input($data); 
+				?>
+				
 				</fieldset>
 			</li>
 			<li data-theme="c">
-				<label for="textarea1">
+				<label for="description">
 				</label>
-				<textarea name="" id="textarea1" placeholder="Description"></textarea>
+				
+				<?php 
+					$data = array(
+                          'name'        => 'description',
+                          'id'          => 'description',
+                          'placeholder' => 'Description',
+                    );
+					
+					echo form_textarea($data);
+				?>
+				
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-				<label for="mydate"></label>
+				<label for="duration"></label>
 
-				<input name="mydate" id="mydate" type="date" data-role="datebox"
-					data-options='{"mode": "durationbox"}' placeholder="Length">
+				<input name="duration" id="duration" type="date" data-role="datebox"
+					data-options='{"mode": "durationbox"}' placeholder="Duration">
 				</fieldset>
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-				<label for="textarea2">
+				<label for="participants">
 				</label>
-				<textarea name="" id="textarea2" placeholder="Participants"></textarea>
+				
+				<?php 
+					$data = array(
+                          'name'        => 'participants',
+                          'id'          => 'participants',
+                          'placeholder' => 'Participants',
+                    );
+					
+					echo form_textarea($data);
+				?>
+			
 				</fieldset>
 			</li>
 				
 		</ul><br />
-		<a data-role="button" data-transition="fade" data-theme="c" href="newapp_timeslot/">
-			Next
-		</a>
+		<?php echo form_submit('slot','Next'); ?>
+		
 	</div>
+	
 </div>
 <!-- Discard popup -->
 <div data-role="page" id="discard" >
@@ -84,6 +116,6 @@
         </a>
 	</div>
 </div>
-
+</form>
 </body>
 </html>
