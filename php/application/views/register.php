@@ -77,7 +77,7 @@
     </div>
     </form>
     <a data-role="button" data-transition="fade" href="#complete"
-			data-rel="dialog">Sign up for Appoint.ee</a>
+			>Sign up for Appoint.ee</a>
 </div>
 <!-- Complete popup -->
 <div data-role="page" id="complete" >
@@ -89,7 +89,7 @@
 	<div data-role="content" style="padding: 15px">
 		<h3>Thank You For Signing Up! </h3>
 		You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
-        <a data-role="button" data-transition="fade" data-theme="c" data-ajax="true" href="../login">
+        <a data-role="button" data-transition="fade" data-theme="c" data-ajax="true" href="<?=base_url().'login'?>">
             Close
         </a>
 	</div>

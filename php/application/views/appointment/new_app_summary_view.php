@@ -59,11 +59,11 @@
 			</li>
 				
 		</ul><br />
-        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>/app/slot2" data-icon="plus"
+        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>app/slot2" data-icon="plus"
         data-iconpos="left">
             Add new Timeslot
         </a>
-        <a data-role="button" data-transition="fade" href="<?=base_url()?>/app/submit" data-icon="check"
+        <a data-role="button" data-transition="fade" href="<?=base_url()?>app/submit" data-icon="check"
         data-iconpos="left" data-ajax="false">
             Send Request
         </a>
