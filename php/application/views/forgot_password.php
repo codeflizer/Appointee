@@ -15,7 +15,7 @@
 
 <div data-role="page" id="contacts_detail">
     <div data-theme="a" data-role="header">
-        <a data-role="button" href="#page13" data-icon="arrow-l" data-iconpos="left"
+        <a data-role="button" href="<?=base_url()?>" data-icon="arrow-l" data-iconpos="left"
         class="ui-btn-left">
             Back
         </a>
@@ -48,7 +48,7 @@
     </div>
 	<div data-role="content" style="padding: 15px">
 		<h3>We have sent you a new password! </h3>
-        <a data-role="button" data-transition="fade" data-theme="c" href="/">
+        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>">
             Close
         </a>
 	</div>

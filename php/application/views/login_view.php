@@ -46,9 +46,22 @@
 					
 				</fieldset>
 			</div>
+			<input id="remember" name="" type="checkbox" data-mini="true" >
+						<label for="remember">
+							Remember me
+						</label><br />
 			
             <?php echo form_submit('Login','Login'); ?>
             </form>
+             <div>
+            <p style="text-align: center; ">
+                <a data-mce-href="Password.html" href="<?=base_url().'login/forgot_password'?>" style="">
+                    <b>
+                        Forgot your password?
+                    </b>
+                </a>
+            </p><br />
+			</div>
             
 			<h4 style="text-align: center;">No account?</h4>
 			<a data-role="button" data-transition="fade" data-theme="b"
