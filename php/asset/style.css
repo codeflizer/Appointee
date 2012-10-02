@@ -10,8 +10,9 @@ a p { margin-bottom:0px ! important;}
 }
 
 .header_text {
-	text-align: center; 
-	margin-top: 5px;
+	text-align: center;
+	margin-top: 7px;
+	margin-bottom: 3px;
 }
 
 .ui-field-contain, fieldset.ui-field-contain {
@@ -59,3 +60,8 @@ a p { margin-bottom:0px ! important;}
 	background-position:3px;
 }
 
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+	min-height: 21px;
+	padding-left: 64px;
+	padding-top: 17px;
+}
