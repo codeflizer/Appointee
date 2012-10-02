@@ -89,7 +89,7 @@
 	<div data-role="content" style="padding: 15px">
 		<h3>Thank You For Signing Up! </h3>
 		You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
-        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url().'login'?>">
+        <a data-role="button" data-transition="fade" data-theme="c" data-ajax="false" href="<?=base_url().'login'?>">
             Close
         </a>
 	</div>
