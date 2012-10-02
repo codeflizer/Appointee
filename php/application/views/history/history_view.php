@@ -11,7 +11,10 @@
 
 <div data-role="page" id="history">
 	<div data-theme="a" data-role="header">
-		<h3>History</h3>
+		<div class="header_text">
+			<img src="<?=base_url() ?>asset/images/History.png">
+		</div>
+
 	</div>
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false"

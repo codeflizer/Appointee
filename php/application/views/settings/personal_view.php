@@ -10,7 +10,9 @@
 
 <div data-role="page" id="personal">
 	<div data-theme="a" data-role="header">
-		<h3>Settings</h3>
+		<div class="header_text">
+			<img src="<?=base_url() ?>asset/images/Settings.png">
+		</div>
 		<a data-role="button" href="../" data-transition="fade"
 			href="../" data-icon="arrow-l" data-iconpos="left"
 			class="ui-btn-left" data-ajax="false"> Back </a>
