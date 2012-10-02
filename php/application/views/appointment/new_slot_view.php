@@ -16,14 +16,15 @@
 
 <div data-role="page" id="new_app_2">
     <div data-theme="a" data-role="header">
-        <a data-role="button" data-transition="fade" href="#page10" class="ui-btn-right">
+        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
+			data-ajax="false">
             Discard
         </a>
 		<h3>
             New Appointment
         </h3>
-        <a data-role="button" data-transition="fade" href="../newapp_general" data-icon="arrow-l"
-        data-iconpos="left" class="ui-btn-left">
+ <a data-role="button" data-transition="fade" href="<?=base_url().'app'?>" data-icon="arrow-l"
+        data-iconpos="left" class="ui-btn-left" data-ajax="false">
             Back
         </a>
     </div>
@@ -53,6 +54,25 @@
 				   
 				<label for="endtime"></label>
 				<input name="endtime" id="endtime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="End Time" disabled="disabled"/>
+			</li>
+			
+			<li data-theme="c">
+				<fieldset data-role="controlgroup">
+				<label for="participants">
+				</label>
+				
+				<?php 
+					$data = array(
+                          'name'        => 'location',
+                          'id'          => 'location',
+                          'placeholder' => 'Location',
+                           'maxlength'   => '30',
+                    );
+					
+					echo form_input($data);
+				?>
+			
+				</fieldset>
 			</li>
 				
 		</ul><br />

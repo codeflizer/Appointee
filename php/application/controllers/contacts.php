@@ -37,9 +37,19 @@ class Contacts extends CI_Controller {
       $this->load->view('contacts/detail_view',$data);  
   }
   
-  public function edit_contact(){
+  public function contact_edit(){
       
       $this->load->view('contacts/edit_view');  
+  }
+  
+  public function upload_photo(){
+      
+      $this->load->view('contacts/edit_view');  
+  }
+  
+  public function contact_update(){
+      
+      $this->index(); 
   }
   
 

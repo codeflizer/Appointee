@@ -14,7 +14,7 @@
         <h3>
             Details
         </h3>
-        <a data-role="button" data-transition="fade" href="../main_tab/" data-icon="arrow-l"
+        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left">
             Back
         </a>

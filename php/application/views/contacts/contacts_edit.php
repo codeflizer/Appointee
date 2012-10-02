@@ -15,7 +15,7 @@
 
 <div data-role="page" id="contacts_detail">
     <div data-theme="a" data-role="header">
-        <a data-role="button" href="<?=base_url().'contacts'?>" data-icon="arrow-l" data-iconpos="left"
+        <a data-role="button" href="#page13" data-icon="arrow-l" data-iconpos="left"
         class="ui-btn-left">
             Back
         </a>
@@ -23,71 +23,38 @@
             Contacts
         </h3>
     </div>
-    
     <div data-role="content">
-     <?php echo form_open('contacts/contact_update') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Edit Contact / Create Contact</li>
 			<li data-icon="arrow-u">
 				<div style="display: inline-block; float:left; height: 50px;">
 				<img style="width: 50px; height: 50px" src="http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg">
 				</div>
-				<a data-transition="fade" href="<?=base_url().'contacts/upload_photo'?>"  
+				<a data-transition="fade" href="/appoint/NewApp/"  
 					data-ajax="false" style="height: 22px; padding-top: 16px;"f>
 			Upload Photo </a>
 			</li>
+			<li data-theme="c">
+				<fieldset data-role="controlgroup">
+					<label for="textinput12"> First Name </label> <input name=""
+						id="textinput12" placeholder="" value="" type="text">
+				</fieldset>
+			</li>
+			<li data-theme="c">
+				<fieldset data-role="controlgroup">
+					<label for="textinput12"> Last Name </label> <input name=""
+						id="textinput12" placeholder="" value="" type="text">
+				</fieldset>
+			</li>
+			<li data-theme="c">
+				<fieldset data-role="controlgroup">
+					<label for="textinput12">E-Mail</label> <input name=""
+						id="textinput12" placeholder="" value="" type="text">
+				</fieldset>
+			</li>
 			
-			<li data-theme="c">
-				<fieldset data-role="controlgroup">
-					<label for="first_name"> </label>
-					<?php 
-					$data = array(
-                          'name'        => 'first_name',
-                          'id'          => 'first_name',
-                          'maxlength'   => '30',
-                          'placeholder' => 'First Name',
-                    );
-					
-					echo form_input($data);  
-					?>
-				</fieldset>
-			</li>
-			<li data-theme="c">
-				<fieldset data-role="controlgroup">
-					<label for="last_name"> </label> 
-					<?php 
-					$data = array(
-                          'name'        => 'last_name',
-                          'id'          => 'last_name',
-                          'maxlength'   => '30',
-                          'placeholder' => 'Last Name',
-                    );
-					
-					echo form_input($data);  
-					?>
-			
-				</fieldset>
-			</li>
-			<li data-theme="c">
-				<fieldset data-role="controlgroup">
-					<label for="textinput12"> </label> 
-					<?php 
-					$data = array(
-                          'name'        => 'mail',
-                          'id'          => 'mail',
-                          'maxlength'   => '30',
-                          'placeholder' => 'E-Mail',
-                    );
-					
-					echo form_input($data);  
-					?>
-				
-				</fieldset>
-			</li>
-				<?php echo form_submit('save','Save'); ?>	
-		
 		</ul><br />
-			</form>
+			<input type="submit" value="Save">
     </div>
 </div>
 

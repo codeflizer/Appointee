@@ -16,14 +16,15 @@
 
 <div data-role="page" id="new_app_3">
     <div data-theme="a" data-role="header">
-        <a data-role="button" data-transition="fade" href="#page10" class="ui-btn-right">
+         <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
+			data-ajax="false">
             Discard
         </a>
 		<h3>
             New Appointment
         </h3>
-        <a data-role="button" data-transition="fade" href="#new_app_2" data-icon="arrow-l"
-        data-iconpos="left" class="ui-btn-left">
+         <a data-role="button" data-transition="fade" href="<?=base_url().'app/slot'?>" data-icon="arrow-l"
+        data-iconpos="left" class="ui-btn-left" data-ajax="false">
             Back
         </a>
     </div>
@@ -33,27 +34,27 @@
 				Summary
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="#new_app_1">
+				
 				<h3>Tennis Match</h3>
 				<p>Lorem Ipsum lorem ipsum<br /> with <i>Bla bla</i></p>
-				</a>
+				
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="#new_app_2">
+				<a href="<?=base_url('app/slot')?>">
 				Monday, September 9, 2012, <br />5pm-6pm
 				</a>
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="#new_app_2">
-				Monday, September 9, 2012, <br />5pm-6pm
+				<a href="<?=base_url('app/slot')?>">
+				Monday, September 9, 2012, <br />7pm-8pm
 				</a>
 			</li>
-			<li data-theme="c" data-icon="gear">
-				<a href="#new_app_2">
-				Monday, September 9, 2012, <br />5pm-6pm
+			<li data-theme="c" data-icon="appointee-edit">
+				<a href="<?=base_url('app/slot')?>">
+				Monday, September 9, 2012, <br />8pm-9pm
 				</a>
 			</li>
 				

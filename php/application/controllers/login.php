@@ -31,5 +31,10 @@ class Login extends CI_Controller {
             $this->session->set_userdata('userid',$userid);      
       } 
           redirect('home');
-      }       
+      }   
+      
+       public function register()
+	 { 
+	   	$this->load->view('register');
+	 }    
 }

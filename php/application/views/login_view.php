@@ -52,7 +52,7 @@
             
 			<h4 style="text-align: center;">No account?</h4>
 			<a data-role="button" data-transition="fade" data-theme="b"
-				href=""> Sign up for Appoint.ee </a>
+				href="<?=base_url().'login/register'?>"> Sign up for Appoint.ee </a>
 		</div>
 	</div>
     

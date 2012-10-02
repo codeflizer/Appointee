@@ -15,31 +15,22 @@
 
 <div data-role="page" id="contacts_detail">
     <div data-theme="a" data-role="header">
-        <a data-role="button" href="<?=base_url().'contacts'?>" data-icon="arrow-l" data-iconpos="left"
+        <a data-role="button" href="<?=base_url()?>" data-icon="arrow-l" data-iconpos="left"
         class="ui-btn-left">
             Back
         </a>
         <h3>
-            Contacts
+            Appoint.ee
         </h3>
     </div>
-    
+    <?php echo form_open('login/create_account') ?>
     <div data-role="content">
-     <?php echo form_open('contacts/contact_update') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
-			<li data-role="list-divider" role="heading">Edit Contact / Create Contact</li>
-			<li data-icon="arrow-u">
-				<div style="display: inline-block; float:left; height: 50px;">
-				<img style="width: 50px; height: 50px" src="http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg">
-				</div>
-				<a data-transition="fade" href="<?=base_url().'contacts/upload_photo'?>"  
-					data-ajax="false" style="height: 22px; padding-top: 16px;"f>
-			Upload Photo </a>
-			</li>
-			
+			<li data-role="list-divider" role="heading">Sign up</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="first_name"> </label>
+					<label for="first_name"> </label> 
+			
 					<?php 
 					$data = array(
                           'name'        => 'first_name',
@@ -54,8 +45,7 @@
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="last_name"> </label> 
-					<?php 
+					<label for="last_name"> </label> <?php 
 					$data = array(
                           'name'        => 'last_name',
                           'id'          => 'last_name',
@@ -65,13 +55,11 @@
 					
 					echo form_input($data);  
 					?>
-			
 				</fieldset>
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput12"> </label> 
-					<?php 
+					<label for="mail"> </label> <?php 
 					$data = array(
                           'name'        => 'mail',
                           'id'          => 'mail',
@@ -81,14 +69,34 @@
 					
 					echo form_input($data);  
 					?>
-				
 				</fieldset>
 			</li>
-				<?php echo form_submit('save','Save'); ?>	
-		
+			
 		</ul><br />
-			</form>
+						<fieldset data-role="controlgroup">
+					<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+<label for="checkbox-1">I agree with the <a href="#">Terms of Use</a></label>
+				</fieldset><br />
+				
     </div>
+    </form>
+    <a data-role="button" data-transition="fade" href="#complete"
+			data-rel="dialog">Sign up for Appoint.ee</a>
+</div>
+<!-- Complete popup -->
+<div data-role="page" id="complete" >
+    <div data-theme="a" data-role="header">
+		<h3>
+           Appoint.ee
+        </h3>
+    </div>
+	<div data-role="content" style="padding: 15px">
+		<h3>Thank You For Signing Up! </h3>
+		You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
+        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url().'login'?>">
+            Close
+        </a>
+	</div>
 </div>
 
 </body>
