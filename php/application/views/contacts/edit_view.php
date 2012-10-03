@@ -19,16 +19,15 @@
         class="ui-btn-left">
             Back
         </a>
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Contacts.png">
-		</div>
-
+        <h3>
+            Contacts
+        </h3>
     </div>
     
     <div data-role="content">
      <?php echo form_open('contacts/contact_update') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
-			<li data-role="list-divider" role="heading">Edit Contact / Create Contact</li>
+			<li data-role="list-divider" role="heading">Edit Contact</li>
 			<li data-icon="arrow-u">
 				<div style="display: inline-block; float:left; height: 50px;">
 				<img style="width: 50px; height: 50px" src="http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg">

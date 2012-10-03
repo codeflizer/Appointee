@@ -14,7 +14,7 @@
         <h3>
             Details
         </h3>
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="arrow-l"
+        <a data-role="button" data-transition="fade" href="<?=base_url().'history'?>" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left">
             Back
         </a>
@@ -42,10 +42,6 @@
 			</li>
 				
 		</ul><br />
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="delete"
-        data-iconpos="left">
-            Cancel Request
-        </a>
 	</div>
 </div>
 

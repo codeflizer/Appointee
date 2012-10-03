@@ -10,9 +10,7 @@
 
 <div data-role="page" id="settings">
 	<div data-theme="a" data-role="header">
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Settings.png">
-		</div>
+		<h3>Settings</h3>
 		<a data-role="button" data-transition="fade" href="<?=base_url() ?>home"
 			data-icon="arrow-l" data-iconpos="left" class="ui-btn-left" data-ajax="false">
 			Back </a>
@@ -34,6 +32,10 @@
 			</a></li>
 			<li data-theme="c"><a href="<?=base_url() ?>home/logout" data-ajax="false">
 					<h3>Logout</h3>
+					<p></p>
+			</a></li>
+			<li data-theme="c"><a href="<?=base_url() ?>settings/delete" data-ajax="false">
+					<h3>Delete</h3>
 					<p></p>
 			</a></li>
 		</ul>

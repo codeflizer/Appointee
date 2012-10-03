@@ -10,13 +10,12 @@
 
 <div data-role="page" id="password">
 	<div data-theme="a" data-role="header">
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Settings.png">
-		</div>
-		<a data-role="button" href="../" data-transition="fade"
-			href="../" data-icon="arrow-l" data-iconpos="left"
+		<h3>Settings</h3>
+		<a data-role="button" href="<?=base_url().'settings'?>" data-transition="fade"
+			 data-icon="arrow-l" data-iconpos="left"
 			class="ui-btn-left"> Back </a>
 	</div>
+	<?php echo form_open('settings/save_password') ?>
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Password Settings</li>
@@ -41,6 +40,7 @@
 			<li data-theme="c"><input type="submit" value="Save" /></li>
 		</ul>
 	</div>
+	</form>
 </div>
 
 </body>

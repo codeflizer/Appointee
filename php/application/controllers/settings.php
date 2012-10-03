@@ -21,9 +21,17 @@ class Settings extends CI_Controller {
    $this->load->view('settings/personal_view');
    }
    
+   public function save_personal(){
+   $this->load->view('settings/settings_view');
+   }
+   
    
    public function password(){
    $this->load->view('settings/password_view');
+   }
+   
+   public function save_password(){
+   $this->load->view('settings/settings_view');
    }
    
    
@@ -31,9 +39,13 @@ class Settings extends CI_Controller {
    $this->load->view('settings/email_view');
    }
    
+   public function save_email(){
+   $this->load->view('settings/settings_view');
+   }
+   
    
    public function delete(){
-   $this->load->view('delete_view');
+   $this->load->view('settings/delete_view');
    }
 
 }

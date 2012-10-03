@@ -71,12 +71,12 @@
 		</ul><br />
 						<fieldset data-role="controlgroup">
 					<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-<label for="checkbox-1">I agree with the <a href="#">Terms of Use</a></label>
+<label for="checkbox-1">I agree with the <a href="<?=base_url().'login'?>">Terms of Use</a></label>
 				</fieldset><br />
 				
     </div>
     </form>
-    <a data-role="button" data-transition="fade" href="#complete"
+    <a data-role="button" data-transition="fade" href="<?=base_url().'login'?>"
 			>Sign up for Appoint.ee</a>
 </div>
 <!-- Complete popup -->
@@ -89,7 +89,7 @@
 	<div data-role="content" style="padding: 15px">
 		<h3>Thank You For Signing Up! </h3>
 		You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
-        <a data-role="button" data-transition="fade" data-theme="c" data-ajax="true" href="<?=base_url().'login'?>">
+        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url().'login'?>">
             Close
         </a>
 	</div>

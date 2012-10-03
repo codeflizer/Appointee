@@ -13,9 +13,7 @@
 	<div data-theme="a" data-role="header">
 		<a data-role="button" data-transition="fade" href="<?=base_url()?>contacts/contact_add"
 			data-icon="plus" data-iconpos="left" class="ui-btn-right"> Add </a>
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Contacts.png">
-		</div>
+		<h3>Contacts</h3>
 	</div>
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="c" data-inset="false"

@@ -66,6 +66,7 @@ class App extends CI_Controller {
 	
 	 public function submit(){
 	
+		
 		redirect('home'); 
    }
    

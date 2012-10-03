@@ -11,10 +11,7 @@
 
 <div data-role="page" id="history">
 	<div data-theme="a" data-role="header">
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/History.png">
-		</div>
-
+		<h3>History</h3>
 	</div>
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false"
@@ -24,7 +21,7 @@
 			
 			
 			<?php foreach ($appointments as $appointment) {?>
-	        <li data-theme="c"><a href="<?=base_url() ?>home/appointment/<?=$appointment['aid']?>" data-transition="slide">
+	        <li data-theme="c"><a href="<?=base_url() ?>history/appointment/<?=$appointment['aid']?>" data-transition="slide">
 	           
 
 					<h5><?php echo $appointment['title']; ?></h5>

@@ -18,9 +18,9 @@
         class="ui-btn-left">
             Back
         </a>
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Contacts.png">
-		</div>
+        <h3>
+            Contacts
+        </h3>
     </div>
     <div data-role="content">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
@@ -41,7 +41,7 @@
 					<?=$mail?>
 				</li>
 			</ul><br />
-			<a data-role="button" data-transition="fade" href="/appoint/newAppointment/"  data-ajax="false">
+			<a data-role="button" data-transition="fade" href="<?=base_url().'app'?>"  data-ajax="false">
 			New Appointment </a>
 		</div>
     </div>

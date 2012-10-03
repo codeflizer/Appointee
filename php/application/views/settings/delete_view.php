@@ -7,19 +7,21 @@
 	<?php includeCss() ?>
 </head>
 <body>
-
-<div data-role="page" id="password">
-	<div data-theme="a" data-role="header">
-		<div class="header_text">
-			<img src="<?=base_url() ?>asset/images/Settings.png">
+<div data-role="page" data-theme="a" id="page12">
+		<div data-role="content" style="padding: 15px">
+			<div style="text-align: center;">
+			<a href="<?=base_url()?>">
+				<img src="<?php echo base_url() ?>asset/images/Logo.png" >
+			</a>
+			
+		<h2>Your Account was successfully deleted.</h2>
+		<a data-role="button" data-transition="fade" data-theme="b"
+				href="<?=base_url()?>"> Back to Start Page </a>
+	    </div>
 		</div>
-		<a data-role="button" href="#settings" data-transition="fade"
-			href="#settings" data-icon="arrow-l" data-iconpos="left"
-			class="ui-btn-left"> Back </a>
+		
 	</div>
-	<div data-role="content" style="padding: 15px">
-		<h2>Your Account was deleted.</h2>
-	</div>
+	
 </div>
 
 </body>
