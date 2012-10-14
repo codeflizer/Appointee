@@ -15,8 +15,9 @@
 
 </head>
 <body>
- <?php echo form_open('app/slot') ?>
+ 
 <div data-role="page" id="new_app_1">
+<?php echo form_open('app/slot') ?>
     <div data-theme="a" data-role="header">
         <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
 			data-ajax="false">
@@ -38,7 +39,7 @@
 			
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="title">
+					<label for="title"> <?php echo form_error('title'); ?>
 					</label>
 					
 				<?php 
@@ -47,6 +48,7 @@
                           'id'          => 'title',
                           'maxlength'   => '30',
                           'placeholder' => 'Title',
+                          'value'       => set_value('title')
                     );
 					
 					echo form_input($data); 
@@ -55,14 +57,20 @@
 				</fieldset>
 			</li>
 			<li data-theme="c">
-				<label for="description">
+				<label for="description"> <?php echo form_error('description'); ?>
 				</label>
 				
 				<?php 
+				
+				if (!isset($description)){
+				    $description='';
+				}
+				
 					$data = array(
                           'name'        => 'description',
                           'id'          => 'description',
                           'placeholder' => 'Description',
+                           'value'       => $description
                     );
 					
 					echo form_textarea($data);
@@ -71,22 +79,32 @@
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-				<label for="duration"></label>
+				<label for="duration"><?php echo form_error('duration'); ?></label>
+				
+				<?php 
+				if (!isset($duration)){
+				    $duration='';
+				} ?>
 
 				<input name="duration" id="duration" type="date" data-role="datebox"
-					data-options='{"mode": "durationbox"}' placeholder="Duration">
+					data-options='{"mode": "durationbox"}' placeholder="Duration" value="><?=$duration;?>" >
 				</fieldset>
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-				<label for="participants">
+				<label for="participants"> <?php echo form_error('participants'); ?>
 				</label>
 				
 				<?php 
+				if (!isset($participants)){
+				    $participants='';
+				}
+				
 					$data = array(
                           'name'        => 'participants',
                           'id'          => 'participants',
                           'placeholder' => 'Participants',
+                           'value'       => $participants
                     );
 					
 					echo form_textarea($data);
@@ -99,8 +117,8 @@
 		<?php echo form_submit('slot','Next'); ?>
 		
 	</div>
-	
+</form>	
 </div>
-</form>
+
 </body>
 </html>

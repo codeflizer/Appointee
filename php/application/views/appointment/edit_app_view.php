@@ -11,12 +11,14 @@
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script-->
-	
+
+
 
 </head>
 <body>
- <?php echo form_open('app/save') ?>
+
 <div data-role="page" id="new_app_1">
+ <?php echo form_open('app/save') ?>
     <div data-theme="a" data-role="header">
         <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
 			data-ajax="false">
@@ -38,7 +40,7 @@
 			
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="title">
+					<label for="title"><?php echo form_error('title'); ?>
 					</label>
 					
 				<?php 
@@ -55,7 +57,7 @@
 				</fieldset>
 			</li>
 			<li data-theme="c">
-				<label for="description">
+				<label for="description"><?php echo form_error('description'); ?>
 				</label>
 				
 				<?php 
@@ -79,7 +81,7 @@
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-				<label for="participants">
+				<label for="participants"> <?php echo form_error('participants'); ?>
 				</label>
 				
 				<?php 
@@ -99,8 +101,8 @@
 		<?php echo form_submit('save','save'); ?>
 		
 	</div>
-	
+	</form>
 </div>
-</form>
+
 </body>
 </html>

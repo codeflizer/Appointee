@@ -31,7 +31,32 @@ class App extends CI_Controller {
    
    public function save(){
  
-   $this->load->view('appointment/new_app_summary_view');
+       $data = $this->input->post();
+		$app = array (
+			'title' => $data['title'],
+			'description' => $data['description'],
+			'duration' => $data['duration'],
+			'participants' => $data['participants']
+		);
+
+		//validate data
+		$this->form_validation->set_rules('title', 'Title', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');
+		$this->form_validation->set_rules('participants', 'Participants', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+		
+		    $data = $this->input->post();
+			$this->load->view('appointment/edit_app_view',$data);
+		}
+		else
+		{
+		$this->session->set_userdata($app);
+		 $data =  $this->session->all_userdata();
+		$this->load->view('appointment/new_app_summary_view',$data);  
+		}
+   
    
    }
    
@@ -44,10 +69,22 @@ class App extends CI_Controller {
 			'participants' => $data['participants']
 		);
 
-		//verify data
+		//validate data
+		$this->form_validation->set_rules('title', 'Title', 'trim|required');
+		$this->form_validation->set_rules('description', 'Description', 'trim|required');
+		$this->form_validation->set_rules('participants', 'Participants', 'trim|required');
 
+		if ($this->form_validation->run() == FALSE)
+		{
+		
+		    $data = $this->input->post();
+			$this->load->view('appointment/new_app_view',$data);
+		}
+		else
+		{
 		$this->session->set_userdata($app);
 		$this->load->view('appointment/new_slot_view');  
+		}
    }
    
    public function slot2(){
