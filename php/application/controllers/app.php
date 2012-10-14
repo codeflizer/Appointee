@@ -22,6 +22,19 @@ class App extends CI_Controller {
    
    }
    
+   public function edit(){
+   $data =  $this->session->all_userdata();
+ 
+   $this->load->view('appointment/edit_app_view',$data);
+   
+   }
+   
+   public function save(){
+ 
+   $this->load->view('appointment/new_app_summary_view');
+   
+   }
+   
    public function slot(){
         $data = $this->input->post();
 		$app = array (
@@ -44,7 +57,8 @@ class App extends CI_Controller {
    public function new_slot() {
 
 		$data = $this->input->post();
-        $app = array (
+	
+        $slot = array (
 			'startdate' => $data['startdate'],
 			'starttime' => $data['starttime']/*,
 			'enddate' => $data['enddate'],
@@ -52,13 +66,22 @@ class App extends CI_Controller {
 		);
 		
 		if(isset($data['allday'])){
-			$app['allday']=TRUE;
+			$slot['allday']=TRUE;
 		}
+		
+		if(($slots=$this->session->userdata('slots'))==FALSE){
+		$slots= array();
+		}
+		array_push($slots, $slot);
 
-		$this->session->set_userdata($app);
+		$this->session->unset_userdata('slots');
+		$this->session->set_userdata('slots', $slots);
+
 		
 		if (isset($_POST['finish'])/*=='Next Slot'*/) {
-			$this->load->view('appointment/new_app_summary_view');
+		  $data =  $this->session->all_userdata();
+		
+			$this->load->view('appointment/new_app_summary_view',$data);
 		} else {
 			$this->load->view('appointment/new_slot_view');
 		}

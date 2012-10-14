@@ -34,24 +34,25 @@
 				Summary
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
+				<a href="<?=base_url('app/edit')?>">
 				
-				<h3>Tennis Match</h3>
-				<p>Lorem Ipsum lorem ipsum<br /> with <i>Bla bla</i></p>
-				
+				<h3><?=$title?></h3>
+				<p><?=$description?><br /> with <i><?=$participants?></i></p>
+				</a>
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots
 			</li>
+			
+			<?php foreach ($slots as $slot) {?>
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="<?=base_url('app/slot')?>">
-				Monday, September 9, 2012, <br />5pm-6pm
-				</a>
+			    <a href="<?=base_url()?>app/slot"> 
+			        <?php echo $slot['startdate'].' '.$slot['starttime']?>
+			     </a>
 			</li>
-			<li data-theme="c" data-icon="appointee-edit">
-				<a href="<?=base_url('app/slot')?>">
-				Monday, September 9, 2012, <br />7pm-8pm
-				</a>
-			</li>
+	        <?php } ?>
+			
+		
 			<li data-theme="c" data-icon="appointee-edit">
 				<a href="<?=base_url('app/slot')?>">
 				Monday, September 9, 2012, <br />8pm-9pm
