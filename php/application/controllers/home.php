@@ -89,7 +89,7 @@ class Home extends CI_Controller {
     // $data=$this->input->post('selected14');
 
      $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
-      $this->load->view('/home_view');
+      $this->load->view('/home_view',$data);
   }
   
   public function cancel($aid){
