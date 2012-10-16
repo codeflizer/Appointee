@@ -7,6 +7,7 @@ class App extends CI_Controller {
    {
       parent::__construct();
       $this->load->model('App_model');
+      $this->load->model('Contact_model');
     
  $userid = $this->session->userdata('userid');
       if($userid<1){
@@ -16,9 +17,20 @@ class App extends CI_Controller {
       
    }
    
-   public function index(){
+   public function index($par){
+   
+   if (isset($par)){
+   
+        $user = $this->Contact_model->get_contact($par);
+        $data['par']=$user->first_name.' '.$user->last_name.',';
+         $this->load->view('appointment/new_app_view',$data);
+    } else {
+    
+     $this->load->view('appointment/new_app_view');
+    }
+   
  
-   $this->load->view('appointment/new_app_view');
+  
    
    }
    
@@ -142,8 +154,8 @@ class App extends CI_Controller {
 	}
 	
 	 public function submit(){
-	
-		
+	   $data =  $this->session->all_userdata();
+	    $this->App_model->create_appointment($data);
 		redirect('home'); 
    }
    

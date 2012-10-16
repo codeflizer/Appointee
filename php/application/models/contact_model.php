@@ -16,7 +16,7 @@ class Contact_model extends CI_Model {
     
     
    public function get_contact($id){
-    $query = $this->db->query('SELECT mail, first_name, last_name 
+    $query = $this->db->query('SELECT uid, mail, first_name, last_name 
                                                 FROM users u 
                                                 WHERE uid='.$id
                                         );

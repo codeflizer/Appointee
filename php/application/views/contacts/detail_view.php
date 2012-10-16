@@ -41,7 +41,7 @@
 					<?=$mail?>
 				</li>
 			</ul><br />
-			<a data-role="button" data-transition="fade" href="<?=base_url().'app'?>"  data-ajax="false">
+			<a data-role="button" data-transition="fade" href="<?=base_url().'app/index/'.$uid?>"  data-ajax="false">
 			New Appointment </a>
 		</div>
     </div>

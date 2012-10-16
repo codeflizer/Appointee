@@ -30,7 +30,8 @@ class Contacts extends CI_Controller {
   }
   
   public function contact_detail($id){
- 
+  
+  
     $data = $this->Contact_model->get_contact($id);
 
     //load view for contacts_general  

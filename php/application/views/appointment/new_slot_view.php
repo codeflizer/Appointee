@@ -82,7 +82,7 @@
         <?php
           $ci =& get_instance();
           $slots_available = $ci->session->userdata('slots');
-          if(isset( $slots_available))  {?> 
+          if($slots_available)  {?> 
           
           
           <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >

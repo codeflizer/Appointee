@@ -24,6 +24,8 @@ class Home_model extends CI_Model {
                                                 
       $appointmentRequests = $appointmentRequests->result_array();
       $data['appointmentRequests'] = $appointmentRequests;
+      
+      
        
        //retrieve Open Requests
       $openRequests = $this->db->query(         'SELECT a.aid, title, description, author 
@@ -87,9 +89,7 @@ class Home_model extends CI_Model {
        return $row;  
     }
     
-
-
-
+    
 
 
 

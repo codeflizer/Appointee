@@ -97,7 +97,13 @@
 				
 				<?php 
 				if (!isset($participants)){
+				   
+				   if(isset($par)){
+				     $participants=$par;
+				    }
+				    else {
 				    $participants='';
+				    }
 				}
 				
 					$data = array(

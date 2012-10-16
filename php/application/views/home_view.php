@@ -30,7 +30,7 @@
 			<br />
 			
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
-			<li data-role="list-divider" role="heading">Appointment Requests</li>
+			<li data-role="list-divider" role="heading">Inbox</li>
 
 
 	        <?php foreach ($appointmentRequests as $request) {?>
@@ -39,30 +39,28 @@
 					<h5><?php echo $request['title']; ?></h5>
 					<p>
 						<?php echo $request['description']; ?> <br />
-						<i>with <?php echo $request['author']; ?></i>
+						from <i><?php echo getName($request['author']) ?> 
+						</i>
+						with <i>
+						 <?php
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($request['aid'], $userid);
+						
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?> 
+						    </i> 
 					</p>
 			    </a>
 			 </li>
-	         <?php } ?>
-
-			<li data-role="list-divider" role="heading">Upcoming Appointments</li>   
-	  
-	          <?php foreach ($upcomingAppointments as $request) {?>
-	          <li data-theme="c">
-	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
-					   <h5><?php echo $request['title']; ?> </h5>
-					   <p>
-						 <?php echo $request['description']; ?> <br />
-						   <i>with <?php echo $request['author']; ?></i>
-					   </p>
-			      </a>
-			 </li>
-	          <?php } ?>
 	  
 	  
 	  
-	  
-			<li data-role="list-divider" role="heading">Open Requests</li>
+			<li data-role="list-divider" role="heading">Waiting for Response</li>
 
 
 	  <?php foreach ($openRequests as $request) {?>
@@ -70,10 +68,53 @@
 					<h5><?php echo $request['title']; ?> </h5>
 					<p>
 						<?php echo $request['description']; ?> <br />
-						<i>with <?php echo $request['author']; ?></i>
+						<i>with 
+						    <?php
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($request['aid'], $userid);
+						
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?>  
+						      
+					    </i>
 					</p>
 			</a></li>
 	  <?php } ?>
+	  
+	   <?php } ?>
+
+			<li data-role="list-divider" role="heading">Upcoming Events</li>   
+	  
+	          <?php foreach ($upcomingAppointments as $request) {?>
+	          <li data-theme="c">
+	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
+					   <h5><?php echo $request['title']; ?> </h5>
+					   <p>
+						 <?php echo $request['description']; ?> <br />
+						   <i>with 
+						    <?php
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($request['aid'], $userid);
+						
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?>  
+						      
+					    </i>
+					   </p>
+			      </a>
+			 </li>
+	          <?php } ?>
+	  
 	
 	
 		</ul>
