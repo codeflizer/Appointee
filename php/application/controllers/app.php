@@ -7,7 +7,6 @@ class App extends CI_Controller {
    {
       parent::__construct();
       $this->load->model('App_model');
-      $this->load->model('Home_model');
       $this->load->model('Contact_model');
     
  $userid = $this->session->userdata('userid');
@@ -20,8 +19,8 @@ class App extends CI_Controller {
    
    public function index(){
    
-    $data =  $this->session->all_userdata();
-     $this->load->view('appointment/new_app_view',$data);
+   
+     $this->load->view('appointment/new_app_view');
     }
    
    public function contact($par){ 
@@ -163,17 +162,9 @@ class App extends CI_Controller {
 	}
 	
 	 public function submit(){
-	    $appointment =  $this->session->all_userdata();
-
-	 $this->App_model->create_appointment($appointment);
-	   
-     $data = $this->Home_model->get_data_for_main_screen($this->session->userdata('userid')); 
-     $data['title']=$appointment['title'];
-     $data['partic']=$appointment['participants'];
-     	  
-   
-
-    $this->load->view('home_view_popup', $data);
+	   $data =  $this->session->all_userdata();
+	    $this->App_model->create_appointment($data);
+		redirect('home'); 
    }
    
    public function summary(){
@@ -191,9 +182,12 @@ class App extends CI_Controller {
 	   $slots = $this->session->userdata('slots');
 	   
 	   $slot= $slots[$id];
+	   error_log($slot);
 	   $slot['id']=$id;
 	    
 	    //load view
+	    error_log($slot['starttime']);
+	    error_log($slot['endtime']);
 		$this->load->view('appointment/edit_slot_view',$slot);
 		
    }
