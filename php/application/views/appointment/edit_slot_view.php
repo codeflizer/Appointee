@@ -23,14 +23,10 @@
 		<h3>
             New Appointment
         </h3>
- <a data-role="button" data-transition="fade" href="<?=base_url().'app'?>" data-icon="arrow-l"
-        data-iconpos="left" class="ui-btn-left" data-ajax="false">
-            Back
-        </a>
     </div>
    
 	<div data-role="content" style="padding: 15px">
-    <?php echo form_open('app/new_slot') ?>
+    <?php echo form_open('app/save_edit') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 				1. Timeslot
@@ -38,14 +34,14 @@
 			<li data-theme="c">
 				<h3>Start</h3>
 				<label for="startdate"><?php echo form_error('startdate'); ?></label>
-				<input name="startdate" id="startdate" type="date" data-role="datebox"  data-options='{"mode": "calbox"}' placeholder="Start Date"/>
+				<input name="startdate" id="startdate" type="date" data-role="datebox"  data-options='{"mode": "calbox"}' placeholder="Start Date" value="<?php if(isset($startdate))echo $startdate ?>"/>
 				
 				<label for="allday">All-day</label>   
 				<input type="checkbox" name="allday" id="allday" <?php if(isset($allday)) echo 'checked'?>/>
 				 
 				   
 				<label for="starttime"><?php echo form_error('starttime'); ?></label>
-				<input name="starttime" id="starttime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="Start Time"/>
+				<input name="starttime" id="starttime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="Start Time" value="<?php if(isset($starttime))echo $starttime ?>"/>
 			</li>
 			<li data-theme="c">
 				<h3>End</h3>
@@ -54,6 +50,7 @@
 				   
 				<label for="endtime"></label>
 				<input name="endtime" id="endtime" type="date" data-role="datebox" data-options='{"mode": "timebox"}' placeholder="End Time" disabled="disabled"/>
+			     <input type="hidden" name="id" value="<?=$id?>">
 			</li>
 			
 			<li data-theme="c">
@@ -76,19 +73,12 @@
 			</li>
 				
 		</ul><br />
-        <?php echo form_submit('next','Add & Next Slot'); ?>
-        <?php echo form_submit('finish','Add & Finish'); ?>
+        <?php echo form_submit('save','Save'); ?>
          
-        <?php
-          $ci =& get_instance();
-          $slots_available = $ci->session->userdata('slots');
-          if(isset( $slots_available))  {?> 
-          
-          
+    
           <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >
-			Discard Slot & Finish</a> 
-			
-		<?php }?>
+			Discard</a> 
+	
     </form>         
 	</div>
 	

@@ -17,6 +17,10 @@ class Home extends CI_Controller {
 	public function index()
 	{
      $data = $this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
+     $this->session->unset_userdata('slots');
+     $this->session->unset_userdata('title');
+     $this->session->unset_userdata('description');
+     $this->session->unset_userdata('participants');
     $this->load->view('home_view', $data);
 		
 	}

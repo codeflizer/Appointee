@@ -106,6 +106,18 @@ class App extends CI_Controller {
 			$slot['allday']=TRUE;
 		}
 		
+		//validate data
+		$this->form_validation->set_rules('startdate', 'Day', 'trim|required');
+		$this->form_validation->set_rules('starttime', 'Time', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+		
+		    $data = $this->input->post();
+			$this->load->view('appointment/new_slot_view',$data);
+		}
+		else
+		{
 		if(($slots=$this->session->userdata('slots'))==FALSE){
 		$slots= array();
 		}
@@ -121,7 +133,12 @@ class App extends CI_Controller {
 			$this->load->view('appointment/new_app_summary_view',$data);
 		} else {
 			$this->load->view('appointment/new_slot_view');
+		} 
 		}
+		
+		
+		
+		
 	}
 	
 	 public function submit(){
@@ -130,4 +147,64 @@ class App extends CI_Controller {
 		redirect('home'); 
    }
    
-} 
+   public function summary(){
+
+	    $data =  $this->session->all_userdata();	
+		$this->load->view('appointment/new_app_summary_view',$data);
+		
+   }
+   
+   public function editslot($id){
+
+	    //get slot
+	    
+	   $slots = $this->session->userdata('slots');
+	   
+	   $slot= $slots[$id];
+	   $slot['id']=$id;
+	    
+	    //load view
+		$this->load->view('appointment/edit_slot_view',$slot);
+		
+   }
+   
+    public function save_edit(){
+    
+    $data = $this->input->post();
+	
+        $slot = array (
+			'startdate' => $data['startdate'],
+			'starttime' => $data['starttime']/*,
+			'enddate' => $data['enddate'],
+			'endtime' => $data['endtime']*/
+		);
+		
+		if(isset($data['allday'])){
+			$slot['allday']=TRUE;
+		}
+		
+		//validate data
+		$this->form_validation->set_rules('startdate', 'Day', 'trim|required');
+		$this->form_validation->set_rules('starttime', 'Time', 'trim|required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+		
+		    $data = $this->input->post();
+			$this->load->view('appointment/edit_slot_view',$data);
+		}
+		else
+		{
+		   $slots[$data['id']]=$slot;
+
+		    $this->session->unset_userdata('slots');
+		    $this->session->set_userdata('slots', $slots);
+		    $data =  $this->session->all_userdata();
+		    $this->load->view('appointment/new_app_summary_view',$data);
+		
+	
+		
+		}
+   }
+   
+}

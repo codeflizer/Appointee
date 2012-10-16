@@ -6,11 +6,11 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+	<!--link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script-->
 
 
 </head>
@@ -37,6 +37,19 @@
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
 				<a href="<?=base_url('app/edit')?>">
+				<?php 
+				if(!isset($title)){
+				    $title='';
+				}
+				if(!isset($description)){
+				    $description='';
+				}
+				if(!isset($participants)){
+				    $participants='';
+				}
+				
+				?>
+				
 				
 				<h3><?=$title?></h3>
 				<p><?=$description?><br /> with <i><?=$participants?></i></p>
@@ -46,9 +59,12 @@
 				Timeslots
 			</li>
 			
-			<?php foreach ($slots as $slot) {?>
+			<?php
+			 $counter =0;
+			
+			 foreach ($slots as $slot) { $counter++; ?>
 			<li data-theme="c" data-icon="appointee-edit">
-			    <a href="<?=base_url()?>app/slot"> 
+			    <a href="<?=base_url().'app/editslot/'.$counter?>"> 
 			        <?php echo $slot['startdate'].' '.$slot['starttime']?>
 			     </a>
 			</li>
@@ -56,7 +72,7 @@
 			
 		
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="<?=base_url('app/slot')?>">
+				<a href="<?=base_url('app/editslot/')?>">
 				Monday, September 9, 2012, <br />8pm-9pm
 				</a>
 			</li>
@@ -69,23 +85,6 @@
         <a data-role="button" data-transition="fade" href="<?=base_url()?>app/submit" data-icon="check"
         data-iconpos="left" data-ajax="false">
             Send Request
-        </a>
-	</div>
-</div>
-<!-- Discard popup -->
-<div data-role="page" id="discard" >
-    <div data-theme="a" data-role="header">
-		<h3>
-           
-        </h3>
-    </div>
-	<div data-role="content" style="padding: 15px">
-		<h3>Do you really want to discard the new appointment?</h3>
-        <a data-role="button" data-transition="fade" data-theme="c" href="Menu.html"  data-ajax="false">
-            Yes
-        </a>
-        <a data-role="button" data-transition="fade" data-theme="c" href="#new_app_2">
-            No
         </a>
 	</div>
 </div>
