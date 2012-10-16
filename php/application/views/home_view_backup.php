@@ -35,7 +35,7 @@
 
 	        <?php foreach ($appointmentRequests as $request) {?>
 	        <li data-theme="c">
-	            <a href="<?=base_url() ?>home/reply/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
+	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?></h5>
 					<p>
 						<?php echo $request['description']; ?> <br />
