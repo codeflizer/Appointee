@@ -80,7 +80,7 @@ class Home extends CI_Controller {
     );
     
     
-    
+    $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
     $this->load->view('appointment/appointment_reply', $data);
   }
   
