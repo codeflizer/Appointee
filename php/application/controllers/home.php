@@ -13,14 +13,19 @@ class Home extends CI_Controller {
       }
 
    }
-	
-	public function index()
-	{
-     $data = $this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
-     $this->session->unset_userdata('slots');
+   
+   public function delete_session_data(){
+   $this->session->unset_userdata('slots');
      $this->session->unset_userdata('title');
      $this->session->unset_userdata('description');
      $this->session->unset_userdata('participants');
+   }
+	
+	public function index()
+	{
+	$this->delete_session_data();
+     $data = $this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
+     
     $this->load->view('home_view', $data);
 		
 	}
@@ -48,7 +53,6 @@ class Home extends CI_Controller {
  
   //function that loads detail view of an appointment
   public function appointment($id){
-  error_log($id);
     
     //load detail information about appointment from database
     $data = $this->Home_model->get_appointment_data($id);
@@ -56,6 +60,15 @@ class Home extends CI_Controller {
     
     $this->load->view('appointment/app_view', $data);
     
+  }
+  
+  public function cancel($aid){
+  $this->load->model('App_model');
+
+    $this->App_model->cancel($aid);
+    error_log('hh');
+    $this->index();
+      
   }
   
 

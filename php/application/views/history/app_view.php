@@ -26,7 +26,21 @@
 			</li>
 			<li data-theme="c" data-icon="gear">
 				<h3><?=$title?></h3>
-				<p><?=$description?><br /> with <i><?=$author?></i></p>
+				<p><?=$description?><br /> with <i>
+				
+				<?php
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($request['aid'], $userid);
+						
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?>  
+				</i>
+				</p>
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots

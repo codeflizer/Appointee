@@ -17,7 +17,7 @@
 <body>
  
 <div data-role="page" id="new_app_1">
-<?php echo form_open('app/slot') ?>
+
     <div data-theme="a" data-role="header">
         <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
 			data-ajax="false">
@@ -32,12 +32,14 @@
         </a>
     </div>
 	<div data-role="content" style="padding: 15px">
+	<?php echo form_open('app/slot') ?>	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 				General Information
 			</li>
 			
 			<li data-theme="c">
+			 
 				<fieldset data-role="controlgroup">
 					<label for="title"> <?php echo form_error('title'); ?>
 					</label>
@@ -91,32 +93,74 @@
 				</fieldset>
 			</li>
 			<li data-theme="c">
-				<fieldset data-role="controlgroup">
-				<label for="participants"> <?php echo form_error('participants'); ?>
-				</label>
 				
-				<?php 
-				if (!isset($participants)){
-				   
-				   if(isset($par)){
-				     $participants=$par;
-				    }
-				    else {
-				    $participants='';
-				    }
-				}
+           			
+				<div data-role="fieldcontain">
 				
-					$data = array(
-                          'name'        => 'participants',
-                          'id'          => 'participants',
-                          'placeholder' => 'Participants',
-                           'value'       => $participants
-                    );
+					<label for="select-choice-13" class="select"></label>
+					<select name="participants[]" id="participants[]" data-native-menu="false" 
+					data-theme="c"  multiple="multiple" data-native-menu="false">
+					<?php 
 					
-					echo form_textarea($data);
-				?>
+						//multiple participants already set?
+						if (!isset($participants)){
+						   //if not is an initial participant set by referring from contact
+						   if(isset($par)){
+							 $participants[]=$par;
+							} else {
+							    $participants=array();
+							}
+							 
+						}
+						
+		           
+					?>
+					
+					
+						<option>Choose participants</option>
+						<?php 
+						
+						$ci =& get_instance();
+						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name
+						                              FROM users u ');
+                         $users = $users->result_array();
+							
+							error_log($participants[2]);
+						error_log($participants[0]);
+						error_log($participants[1]);
+						foreach ($users as $user) { ?>
+						
+						
+						<option value=" <?php 
+						
+						$name =$user['first_name'].' '.$user['last_name'];
+						
+						echo $name;  ?>"
+						
+						
+						<?php 
+							
+							foreach($participants as $part){
+							
+							    if($name==trim($part)){
+							        echo 'selected="selected"';
+							    }
+							}
+
+						?>
+						
+						>
+						
+						<?php echo $name; ?>
+						
+						</option>
+						
+						<?php } ?>
+					</select>
+				
+				</div>						
 			
-				</fieldset>
+				
 			</li>
 				
 		</ul><br />

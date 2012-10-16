@@ -26,7 +26,20 @@
 			</li>
 			<li data-theme="c" data-icon="gear">
 				<h3><?=$title?></h3>
-				<p><?=$description?><br /> with <i><?=$author?></i></p>
+				<p><?=$description?><br /> with
+				<?php
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($aid, $userid);
+						
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?>  
+				
+				</i></p>
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots
@@ -42,7 +55,7 @@
 			</li>
 				
 		</ul><br />
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="delete"
+        <a data-role="button" data-transition="fade" href="<?=base_url().'home/cancel/'.$aid?>" data-icon="delete"
         data-iconpos="left">
             Cancel Request
         </a>

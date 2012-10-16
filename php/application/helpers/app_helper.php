@@ -8,10 +8,10 @@ if ( ! function_exists('includeCss'))
 	    $ci =& get_instance();
         $ci->load->helper('url');
 		
-	echo '<link rel="stylesheet"  type="text/css"  href="'.base_url().'asset/jquery/jquery.mobile-1.1.1.css" />
+	echo '<link rel="stylesheet"  type="text/css"  href="'.base_url().'asset/jquery/jquery.mobile-1.2.0.css" />
 	<link rel="stylesheet"  type="text/css" href="'.base_url().'asset/style.css" />
 	<script src="'.base_url().'asset/jquery/jquery-1.7.1.min.js"></script>
-	<script src="'.base_url().'asset/jquery/jquery.mobile-1.1.1.js"></script>
+	<script src="'.base_url().'asset/jquery/jquery.mobile-1.2.0.js"></script>
 	<style>
 		h5 { margin-top:0px ! important;}
 		a p { margin-bottom:0px ! important;}

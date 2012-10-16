@@ -8,6 +8,7 @@ class App_model extends CI_Model {
         $title=$data['title'];
         $description=$data['description'];
         $userid = $data['userid'];
+        $slots = $data['slots'];
         
         //insert appointment
         $data = array(
@@ -28,13 +29,12 @@ class App_model extends CI_Model {
         $participants=$this->session->userdata('participants');
         
         // split participants
-        $participants  = explode(",", $participants);
 
          $count = count($participants);
         for ($i = 0; $i < $count; $i++) {
            
             //split into first and last name
-            $name  = explode(" ", $participants[$i]);
+            $name  = explode(" ", trim($participants[$i]));
         
             //retrieve uid
             $uid=$this->retrieve_uid($name[0],$name[1]);
@@ -50,8 +50,27 @@ class App_model extends CI_Model {
             $this->db->insert('participants', $data); 
         
         }
-        //create slots
-        $slots=$data['slots'];
+        
+        
+        
+        //write timeslots into database
+        //for each slot 
+        foreach ($slots as $slot)
+        {        
+        
+          //build array with data
+          $single_slot = array (
+              'aid' => $aid,
+              'start_date' => $slot['startdate'],
+              'start_time' => $slot['starttime'],
+            /*'end_date' => $slot['enddate'],
+              'end_time' => $slot['endtime'],*/
+              'duration' => 2 //standard value - still needs to be changed
+          );
+          
+          //insert array into database
+          $this->db->insert('timeslots', $single_slot);
+        }
     }
     
     function retrieve_uid($first_name, $last_name){
@@ -65,6 +84,34 @@ class App_model extends CI_Model {
          $row = $query->row(); 
          return $row->uid;
      
+    }
+    
+    function cancel($aid){
+    
+    //author or participant?
+    
+     $query = $this->db->query('SELECT author 
+                                FROM appointments a
+                                WHERE a.aid='.$aid);
+         $author = $query->row()->author; 
+         
+        $userid =$this->session->userdata('userid');
+       
+         //if author - cancel appointment
+         if($author==$userid) {
+       
+            $data = array(
+               'status' => 2
+            );
+
+            $this->db->where('aid', $aid);
+            $this->db->update('appointments', $data); 
+             
+         } else {
+         // if participant cancel participation
+    
+         
+         }
     }
 }
 ?>

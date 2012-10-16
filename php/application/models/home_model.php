@@ -19,7 +19,8 @@ class Home_model extends CI_Model {
       $appointmentRequests = $this->db->query(  'SELECT a.aid, title, description, author, p.read 
                                                 FROM appointments a, participants p 
                                                 WHERE a.aid=p.aid AND a.author<>'.$userid.' 
-                                                AND p.uid='.$userid.' 
+                                                AND p.uid='.$userid.'
+                                                and p.status<>2 
                                                 AND a.status=1');
                                                 
       $appointmentRequests = $appointmentRequests->result_array();
@@ -30,7 +31,7 @@ class Home_model extends CI_Model {
        //retrieve Open Requests
       $openRequests = $this->db->query(         'SELECT a.aid, title, description, author 
                                                 FROM appointments a 
-                                                WHERE a.author='.$userid. ' 
+                                                WHERE a.author='.$userid. '
                                                 AND a.status=1');
       $openRequests = $openRequests->result_array();
       $data['openRequests'] = $openRequests;
@@ -45,7 +46,8 @@ class Home_model extends CI_Model {
                                                 FROM appointments a 
                                                 INNER JOIN participants p 
                                                 ON p.aid=a.aid  
-                                                WHERE  p.uid = '.$userid.'  
+                                                WHERE  p.uid = '.$userid.' 
+                                                AND p.status<>2
                                                 AND a.status =2');
 
 
@@ -80,7 +82,7 @@ class Home_model extends CI_Model {
     }
     
     public function get_appointment_data($id){
-    $query = $this->db->query('SELECT title, description, author 
+    $query = $this->db->query('SELECT aid, title, description, author 
                                                 FROM appointments a 
                                                 WHERE a.aid='.$id
                                         );

@@ -17,21 +17,16 @@ class App extends CI_Controller {
       
    }
    
-   public function index($par){
+   public function index(){
    
-   if (isset($par)){
    
-        $user = $this->Contact_model->get_contact($par);
-        $data['par']=$user->first_name.' '.$user->last_name.',';
-         $this->load->view('appointment/new_app_view',$data);
-    } else {
-    
      $this->load->view('appointment/new_app_view');
     }
    
- 
-  
-   
+   public function contact($par){ 
+        $user = $this->Contact_model->get_contact($par);
+        $data['par']=$user->first_name.' '.$user->last_name;
+         $this->load->view('appointment/new_app_view',$data);
    }
    
    public function edit(){
@@ -72,7 +67,7 @@ class App extends CI_Controller {
    
    }
    
-   public function slot(){
+   public function slot(){ 
         $data = $this->input->post();
 		$app = array (
 			'title' => $data['title'],
@@ -80,13 +75,20 @@ class App extends CI_Controller {
 			'duration' => $data['duration'],
 			'participants' => $data['participants']
 		);
+		
+		//error_log($data['title']);
+		//error_log($data['description']);
+		//error_log($data['participants'][1]);
+		//error_log($data['participants'][0]);
+		//error_log($data['participants'][2]);
 
 		//validate data
 		$this->form_validation->set_rules('title', 'Title', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
-		$this->form_validation->set_rules('participants', 'Participants', 'trim|required');
+	
+	    
 
-		if ($this->form_validation->run() == FALSE)
+		if ($this->form_validation->run() == FALSE )
 		{
 		
 		    $data = $this->input->post();
