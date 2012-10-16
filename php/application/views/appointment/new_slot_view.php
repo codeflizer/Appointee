@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 
 </head>
+
 <body>
 
 <div data-role="page" id="new_app_2">
