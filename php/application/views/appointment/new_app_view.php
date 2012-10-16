@@ -6,12 +6,12 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
-	<link rel="stylesheet" type="text/css" href="<?=base_url()?>asset/datebox/jqm-datebox.min.css" /> 
-	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
-	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
+	<link rel="stylesheet" type="text/css" href="/appoint/asset/datebox/jqm-datebox.min.css" /> 
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 	
 
 </head>
@@ -46,16 +46,12 @@
 					</label>
 					
 				<?php 
-				
-				if (!isset($title)){
-				    $title='';
-				}
 					$data = array(
                           'name'        => 'title',
                           'id'          => 'title',
                           'maxlength'   => '30',
                           'placeholder' => 'Title',
-                          'value'       => $title
+                          'value'       => set_value('title')
                     );
 					
 					echo form_input($data); 
