@@ -37,21 +37,28 @@ class App extends CI_Controller {
    }
    
    public function save(){
- 
-       $data = $this->input->post();
+   
+         $data = $this->input->post();
 		$app = array (
 			'title' => $data['title'],
 			'description' => $data['description'],
 			'duration' => $data['duration'],
 			'participants' => $data['participants']
 		);
+		
+		//error_log($data['title']);
+		//error_log($data['description']);
+		//error_log($data['participants'][1]);
+		//error_log($data['participants'][0]);
+		//error_log($data['participants'][2]);
 
 		//validate data
 		$this->form_validation->set_rules('title', 'Title', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
-		$this->form_validation->set_rules('participants', 'Participants', 'trim|required');
+	
+	    
 
-		if ($this->form_validation->run() == FALSE)
+		if ($this->form_validation->run() == FALSE )
 		{
 		
 		    $data = $this->input->post();
@@ -62,9 +69,7 @@ class App extends CI_Controller {
 		$this->session->set_userdata($app);
 		 $data =  $this->session->all_userdata();
 		$this->load->view('appointment/new_app_summary_view',$data);  
-		}
-   
-   
+		}  
    }
    
    public function slot(){ 
@@ -111,9 +116,10 @@ class App extends CI_Controller {
 	
         $slot = array (
 			'startdate' => $data['startdate'],
-			'starttime' => $data['starttime']/*,
+			'starttime' => $data['starttime'],
 			'enddate' => $data['enddate'],
-			'endtime' => $data['endtime']*/
+			'endtime' => $data['endtime'],
+			'location' => $data['location']
 		);
 		
 		if(isset($data['allday'])){
@@ -121,8 +127,8 @@ class App extends CI_Controller {
 		}
 		
 		//validate data
-		$this->form_validation->set_rules('startdate', 'Day', 'trim|required');
-		$this->form_validation->set_rules('starttime', 'Time', 'trim|required');
+		$this->form_validation->set_rules('startdate', 'Start Day', 'trim|required');
+		$this->form_validation->set_rules('starttime', 'Start Time', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -172,12 +178,16 @@ class App extends CI_Controller {
 
 	    //get slot
 	    
+	    
 	   $slots = $this->session->userdata('slots');
 	   
 	   $slot= $slots[$id];
+	   error_log($slot);
 	   $slot['id']=$id;
 	    
 	    //load view
+	    error_log($slot['starttime']);
+	    error_log($slot['endtime']);
 		$this->load->view('appointment/edit_slot_view',$slot);
 		
    }
@@ -188,9 +198,9 @@ class App extends CI_Controller {
 	
         $slot = array (
 			'startdate' => $data['startdate'],
-			'starttime' => $data['starttime']/*,
+			'starttime' => $data['starttime'],
 			'enddate' => $data['enddate'],
-			'endtime' => $data['endtime']*/
+			'endtime' => $data['endtime']
 		);
 		
 		if(isset($data['allday'])){

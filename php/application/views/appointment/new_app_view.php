@@ -6,11 +6,12 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
-	
-	<!--script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
-    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script-->
+	<link rel="stylesheet" type="text/css" href="/appoint/asset/datebox/jqm-datebox.min.css" /> 
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 	
 
 </head>
@@ -80,17 +81,17 @@
 				
 			</li>
 			<li data-theme="c">
-				<fieldset data-role="controlgroup">
+				
 				<label for="duration"><?php echo form_error('duration'); ?></label>
 				
 				<?php 
 				if (!isset($duration)){
 				    $duration='';
 				} ?>
-
-				<input name="duration" id="duration" type="date" data-role="datebox"
-					data-options='{"mode": "durationbox"}' placeholder="Duration" value="><?=$duration;?>" >
-				</fieldset>
+				 
+			    <input name="duration" id="duration" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
+			 
+				
 			</li>
 			<li data-theme="c">
 				
@@ -125,9 +126,7 @@
 						                              FROM users u ');
                          $users = $users->result_array();
 							
-							error_log($participants[2]);
-						error_log($participants[0]);
-						error_log($participants[1]);
+					
 						foreach ($users as $user) { ?>
 						
 						

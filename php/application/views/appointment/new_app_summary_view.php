@@ -52,7 +52,12 @@
 				
 				
 				<h3><?=$title?></h3>
-				<p><?=$description?><br /> with <i><?=$participants?></i></p>
+				<p><?=$description?><br /> with <i>
+				<?php foreach ($participants as $part){
+				    echo $part.',';
+				
+				}?>
+				</i></p>
 				</a>
 			</li>
 			<li data-role="list-divider" role="heading">
@@ -60,7 +65,7 @@
 			</li>
 			
 			<?php
-			 $counter =0;
+			 $counter =-1;
 			
 			 foreach ($slots as $slot) { $counter++; ?>
 			<li data-theme="c" data-icon="appointee-edit">
@@ -70,12 +75,6 @@
 			</li>
 	        <?php } ?>
 			
-		
-			<li data-theme="c" data-icon="appointee-edit">
-				<a href="<?=base_url('app/editslot/')?>">
-				Monday, September 9, 2012, <br />8pm-9pm
-				</a>
-			</li>
 				
 		</ul><br />
         <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>app/slot2" data-icon="plus"

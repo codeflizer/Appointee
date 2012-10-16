@@ -6,11 +6,12 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
-	
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/1.1.0/jqm-datebox-1.1.0.mode.durationbox.js"></script>
-    <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/appoint/asset/datebox/jqm-datebox.min.css" /> 
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+	<script type="text/javascript" src="/appoint/asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 
 
 
@@ -72,29 +73,79 @@
 				
 			</li>
 			<li data-theme="c">
-				<fieldset data-role="controlgroup">
+				
 				<label for="duration"></label>
 
-				<input name="duration" id="duration" type="date" data-role="datebox"
-					data-options='{"mode": "durationbox"}' placeholder="Duration">
-				</fieldset>
+				 <input name="duration" id="duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
+			
 			</li>
 			<li data-theme="c">
-				<fieldset data-role="controlgroup">
-				<label for="participants"> <?php echo form_error('participants'); ?>
-				</label>
 				
-				<?php 
-					$data = array(
-                          'name'        => 'participants',
-                          'id'          => 'participants',
-                          'value' => $participants,
-                    );
+           			
+				<div data-role="fieldcontain">
+				
+					<label for="select-choice-13" class="select"></label>
+					<select name="participants[]" id="participants[]" data-native-menu="false" 
+					data-theme="c"  multiple="multiple" data-native-menu="false">
+					<?php 
 					
-					echo form_textarea($data);
-				?>
+						//multiple participants already set?
+						if (!isset($participants)){
+						   //if not is an initial participant set by referring from contact
+						   if(isset($par)){
+							 $participants[]=$par;
+							} else {
+							    $participants=array();
+							}
+							 
+						}
+						
+		           
+					?>
+					
+					
+						<option>Choose participants</option>
+						<?php 
+						
+						$ci =& get_instance();
+						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name
+						                              FROM users u ');
+                         $users = $users->result_array();
+							
+					
+						foreach ($users as $user) { ?>
+						
+						
+						<option value=" <?php 
+						
+						$name =$user['first_name'].' '.$user['last_name'];
+						
+						echo $name;  ?>"
+						
+						
+						<?php 
+							
+							foreach($participants as $part){
+							
+							    if($name==trim($part)){
+							        echo 'selected="selected"';
+							    }
+							}
+
+						?>
+						
+						>
+						
+						<?php echo $name; ?>
+						
+						</option>
+						
+						<?php } ?>
+					</select>
+				
+				</div>						
 			
-				</fieldset>
+				
 			</li>
 				
 		</ul><br />

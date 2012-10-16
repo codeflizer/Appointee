@@ -109,8 +109,16 @@ class App_model extends CI_Model {
              
          } else {
          // if participant cancel participation
-    
-         
+             $data = array(
+               'status' => 2
+            );
+             $where = array(
+                 'aid' => $aid,
+                 'uid'   => $userid
+            );
+            
+            $this->db->where($where);
+            $this->db->update('participants', $data);      
          }
     }
 }

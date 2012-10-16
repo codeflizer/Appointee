@@ -20,7 +20,7 @@ class Home_model extends CI_Model {
                                                 FROM appointments a, participants p 
                                                 WHERE a.aid=p.aid AND a.author<>'.$userid.' 
                                                 AND p.uid='.$userid.'
-                                                and p.status<>2 
+                                                AND p.status<>2 
                                                 AND a.status=1');
                                                 
       $appointmentRequests = $appointmentRequests->result_array();
@@ -40,7 +40,7 @@ class Home_model extends CI_Model {
       $upcomingAppointments = $this->db->query('SELECT a.aid, title, description, author 
                                                 FROM appointments a 
                                                 WHERE a.author='.$userid.' 
-                                                AND a.status=2 
+                                                AND a.status=0
                                                 UNION 
                                                 SELECT a.aid, title, description, author 
                                                 FROM appointments a 
@@ -48,7 +48,7 @@ class Home_model extends CI_Model {
                                                 ON p.aid=a.aid  
                                                 WHERE  p.uid = '.$userid.' 
                                                 AND p.status<>2
-                                                AND a.status =2');
+                                                AND a.status =0');
 
 
       $upcomingAppointments = $upcomingAppointments->result_array();
