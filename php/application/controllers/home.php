@@ -79,16 +79,16 @@ class Home extends CI_Controller {
           'timeslots' =>  $timeslots
     );
     
-    
-    $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
+
     $this->load->view('appointment/appointment_reply', $data);
   }
   
   public function send_reply()
   {
-  error_log('angefangen');
-     $data=$this->input->post('selected14');
-  error_log('ende');
+ 
+    // $data=$this->input->post('selected14');
+
+     $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
       $this->load->view('/home_view');
   }
   
