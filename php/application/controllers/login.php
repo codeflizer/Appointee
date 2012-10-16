@@ -14,29 +14,11 @@ class Login extends CI_Controller {
       redirect('home');
       }    
    }
-  
-  public function create_account()
-  {
-      $this->load->model('Login_model');
-      $login_data = array (
-          'mail' => $this->input->post('mail'),
-          'first_name' => $this->input->post('first_name'),
-          'last_name' =>  $this->input->post('last_name'),
-          'password' =>  $this->input->post('password')
-      );
-      
-      $this->Login_model->create_new_account($login_data);
-      redirect(base_url());
-  
-  
-  }
    
 	 public function index()
 	 { 
 	   	$this->load->view('login_view');
 	 }
-   
-
 	 
 	public function verify_credentials(){
 

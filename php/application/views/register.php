@@ -67,21 +67,6 @@
 					?>
 				</fieldset>
 			</li>
-      
-      <li data-theme="c">
-				<fieldset data-role="controlgroup">
-					<label for="password"> </label> <?php 
-					$data = array(
-                          'name'        => 'password',
-                          'id'          => 'password',
-                          'maxlength'   => '30',
-                          'placeholder' => 'password'
-                    );
-					
-					echo form_password($data);  
-					?>
-				</fieldset>
-			</li>
 			
 		</ul><br />
 						<fieldset data-role="controlgroup">
@@ -91,7 +76,6 @@
 				
     </div>
     </form>
-    <?php echo form_submit('Sign up for Appoint.ee','Sign up for Appoint.ee'); ?>
     <a data-role="button" data-transition="fade" href="<?=base_url().'login'?>"
 			>Sign up for Appoint.ee</a>
 </div>

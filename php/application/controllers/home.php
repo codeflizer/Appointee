@@ -63,33 +63,9 @@ class Home extends CI_Controller {
     );
     
     
-                                        
+    
     $this->load->view('appointment/app_view', $data);
     
-  }
-  
-  //function that loads reply view for an appointment
-  public function reply($id)
-  {
-      //load detail information about appointment from database
-    $appinfo = $this->Home_model->get_appointment_data($id);
-    $timeslots = $this->Home_model->get_timeslots_for_appointment($id);
-    $data = array (
-          'appinfo' =>  $appinfo,
-          'timeslots' =>  $timeslots
-    );
-    
-    
-    
-    $this->load->view('appointment/appointment_reply', $data);
-  }
-  
-  public function send_reply()
-  {
-  error_log('angefangen');
-     $data=$this->input->post('selected14');
-  error_log('ende');
-      $this->load->view('/home_view');
   }
   
   public function cancel($aid){
