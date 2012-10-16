@@ -25,14 +25,15 @@
 				Summary
 			</li>
 			<li data-theme="c" data-icon="gear">
-				<h3><?=$title?></h3>
-				<p><?=$description?><br /> with
+				<h3><?=$appinfo->title ?></h3>
+				<p><?=$appinfo->description ?><br /> with
 				<?php
+        date_default_timezone_set('UTC');
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
-						        $participants=getParticipants($aid, $userid);
+						        $participants=getParticipants($appinfo->aid, $userid);
 						
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
@@ -44,18 +45,22 @@
 			<li data-role="list-divider" role="heading">
 				Timeslots
 			</li>
+      
+      <?php
+      foreach($timeslots as $timeslot){
+      $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']);
+      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']); 
+      
+      ?>
+      
 			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
-			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
-			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
+      <?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> until <?php echo date_format($endtime, 'g:i a');  ?> 
+			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
+      </li>
+      <?php } ?>
 				
 		</ul><br />
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home/cancel/'.$aid?>" data-icon="delete"
+        <a data-role="button" data-transition="fade" href="<?=base_url().'home/cancel/'.$appinfo->aid?>" data-icon="delete"
         data-iconpos="left">
             Cancel Request
         </a>

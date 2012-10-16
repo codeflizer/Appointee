@@ -91,6 +91,20 @@ class Home_model extends CI_Model {
        return $row;  
     }
     
+    public function get_timeslots_for_appointment($id){
+    
+    //retrieve all timeslots that belong to the appointment
+    $query = $this->db->query('SELECT * 
+                                FROM timeslots ts 
+                                WHERE ts.aid='.$id
+                                        );
+                                        
+    //return all those timeslots
+    $timeslots = $query->result_array();
+    return $timeslots;
+    
+    }
+    
     
 
 

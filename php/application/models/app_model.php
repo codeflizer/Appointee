@@ -52,19 +52,20 @@ class App_model extends CI_Model {
         }
         
         
-        
         //write timeslots into database
         //for each slot 
         foreach ($slots as $slot)
-        {        
-        
-          //build array with data
+        {
+
+          //build array with data          
+          
+          $starttime = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);
+          $endtime = DateTime::createFromFormat('m/d/Y h:i A', $slot['enddate'].' '.$slot['endtime']);
+          
           $single_slot = array (
               'aid' => $aid,
-              'start_date' => $slot['startdate'],
-              'start_time' => $slot['starttime'],
-            /*'end_date' => $slot['enddate'],
-              'end_time' => $slot['endtime'],*/
+			        'start_time' => $starttime->format('Y-m-d H:i:s'),
+			        'end_time' => $endtime->format('Y-m-d H:i:s'),
               'duration' => 2 //standard value - still needs to be changed
           );
           

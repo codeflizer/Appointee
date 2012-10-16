@@ -55,7 +55,13 @@ class Home extends CI_Controller {
   public function appointment($id){
     
     //load detail information about appointment from database
-    $data = $this->Home_model->get_appointment_data($id);
+    $appinfo = $this->Home_model->get_appointment_data($id);
+    $timeslots = $this->Home_model->get_timeslots_for_appointment($id);
+    $data = array (
+          'appinfo' =>  $appinfo,
+          'timeslots' =>  $timeslots
+    );
+    
     
     
     $this->load->view('appointment/app_view', $data);
