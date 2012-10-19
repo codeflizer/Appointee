@@ -11,14 +11,14 @@ a p { margin-bottom:0px ! important;}
 
 .header_text {
 	text-align: center;
-	margin-top: 12px;
-	margin-bottom: 5px;
+	margin-top: 8px;
+	margin-bottom: 1px;
 }
 
 .header_text_2 {
 	text-align: center;
-	margin-top: 12px;
-	margin-bottom: 5px;
+	margin-top: 8px;
+	margin-bottom: 6px;
 }
 
 .ui-field-contain, fieldset.ui-field-contain {
