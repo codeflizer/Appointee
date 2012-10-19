@@ -18,7 +18,7 @@
         class="ui-btn-left">
             Back
         </a>
-		<div class="header_text">
+		<div class="header_text_2">
 			<img src="<?=base_url() ?>asset/images/Contacts.png">
 		</div>
     </div>

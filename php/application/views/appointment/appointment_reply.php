@@ -11,7 +11,7 @@
 
 <div data-role="page" id="detail">
     <div data-theme="a" data-role="header">
-		<div class="header_text">
+		<div class="header_text_2">
 			<img src="<?=base_url() ?>asset/images/details.png">
 		</div>
         <a data-role="button" data-transition="fade" href="Menu.html" data-icon="arrow-l"

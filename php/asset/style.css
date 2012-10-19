@@ -15,6 +15,12 @@ a p { margin-bottom:0px ! important;}
 	margin-bottom: 5px;
 }
 
+.header_text_2 {
+	text-align: center;
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
+
 .ui-field-contain, fieldset.ui-field-contain {
 	border-width: 0px ! important;
 }
