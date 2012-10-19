@@ -22,9 +22,9 @@
 			data-ajax="false">
             Discard
         </a>
-		<h3>
-            New Appointment
-        </h3>
+		<div class="header_text">
+			<img src="<?=base_url() ?>asset/images/Appointment.png">
+		</div>
  <a data-role="button" data-transition="fade" href="<?=base_url().'app'?>" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left" data-ajax="false">
             Back

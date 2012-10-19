@@ -11,9 +11,9 @@
 
 <div data-role="page" id="detail">
     <div data-theme="a" data-role="header">
-        <h3>
-            Details
-        </h3>
+		<div class="header_text">
+			<img src="<?=base_url() ?>asset/images/details.png">
+		</div>
         <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left">
             Back

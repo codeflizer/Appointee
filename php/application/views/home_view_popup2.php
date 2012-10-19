@@ -22,10 +22,8 @@
 			data-icon="gear" data-iconpos="notext" class="ui-btn-right"
 			data-theme="c" data-ajax="false"> </a>
 			
-		<div style="text-align: center; margin-top: 5px;">
-		
+		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Logo_small.png">
-			
 		</div>
 	</div>
 	<div data-role="content" style="padding: 15px">

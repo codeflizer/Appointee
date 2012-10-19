@@ -21,9 +21,9 @@
 			data-ajax="false">
             Discard
         </a>
-		<h3>
-            New Appointment
-        </h3>
+		<div class="header_text">
+			<img src="<?=base_url() ?>asset/images/Appointment.png">
+		</div>
     </div>
    
 	<div data-role="content" style="padding: 15px">
