@@ -35,11 +35,11 @@
 			</a></li>
 			<li data-theme="c"><a href="<?=base_url() ?>home/logout" data-ajax="false">
 					<h3>Logout</h3>
-					<p></p>
+					<p>Log out your account.</p>
 			</a></li>
 			<li data-theme="c"><a href="<?=base_url() ?>settings/delete" data-ajax="false">
 					<h3>Delete</h3>
-					<p></p>
+					<p>Delete your account from our servers.</p>
 			</a></li>
 		</ul>
 	</div>

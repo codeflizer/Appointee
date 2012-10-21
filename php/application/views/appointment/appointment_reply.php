@@ -14,7 +14,7 @@
 		<div class="header_text_2">
 			<img src="<?=base_url() ?>asset/images/details.png">
 		</div>
-        <a data-role="button" data-transition="fade" href="Menu.html" data-icon="arrow-l"
+        <a data-role="button" data-transition="fade" href="<?=base_url() ?>home" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left">
             Back
         </a>
