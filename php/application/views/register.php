@@ -75,14 +75,27 @@
                           'name'        => 'password',
                           'id'          => 'password',
                           'maxlength'   => '30',
-                          'placeholder' => 'password'
+                          'placeholder' => 'Password'
                     );
 					
 					echo form_password($data);  
 					?>
 				</fieldset>
 			</li>
-			
+		<li data-theme="c">
+				<fieldset data-role="controlgroup">
+					<label for="password"> </label> <?php 
+					$data = array(
+                          'name'        => 'password',
+                          'id'          => 'password',
+                          'maxlength'   => '30',
+                          'placeholder' => 'Confirm Password'
+                    );
+					
+					echo form_password($data);  
+					?>
+				</fieldset>
+			</li>	
 		</ul><br />
 						<fieldset data-role="controlgroup">
 					<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
@@ -91,24 +104,25 @@
 				
     </div>
     </form>
-    <?php echo form_submit('Sign up for Appoint.ee','Sign up for Appoint.ee'); ?>
-    <a data-role="button" data-transition="fade" href="<?=base_url().'login'?>"
-			>Sign up for Appoint.ee</a>
-</div>
-<!-- Complete popup -->
-<div data-role="page" id="complete" >
-    <div data-theme="a" data-role="header">
-		<h3>
-           Appoint.ee
-        </h3>
-    </div>
-	<div data-role="content" style="padding: 15px">
-		<h3>Thank You For Signing Up! </h3>
-		You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
-        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url().'login'?>">
-            Close
-        </a>
-	</div>
+    <!--<?php echo form_submit('Sign up for Appoint.ee','Sign up for Appoint.ee'); ?>-->
+    <a data-role="button" data-transition="fade" href="#popupBasic" 
+			 data-position-to="window" data-rel="popup">Sign up for Appoint.ee</a>
+	
+		<!-- Pop-up Begin -->
+		<div data-role="popup" id="popupBasic" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Thank You For Signing Up!
+			</div>
+			<p>
+				You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
+			</p>
+			<p>
+				<a href="<?=base_url().'login'?>" data-role="button">Close</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->	
 </div>
 
 </body>
