@@ -19,6 +19,7 @@ class Home extends CI_Controller {
      $this->session->unset_userdata('title');
      $this->session->unset_userdata('description');
      $this->session->unset_userdata('participants');
+      $this->session->unset_userdata('duration');
    }
 	
 	public function index()

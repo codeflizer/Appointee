@@ -64,6 +64,7 @@ class Home_model extends CI_Model {
     //retrieves all Data needed for History and returns them
     public function get_data_for_history($userid){
      
+     
       //retrieve Appointments
       $appointments = $this->db->query('SELECT a.aid, title, description, author 
                                                 FROM appointments a 
@@ -82,7 +83,8 @@ class Home_model extends CI_Model {
     }
     
     public function get_appointment_data($id){
-    $query = $this->db->query('SELECT aid, title, description, author 
+    
+    $query = $this->db->query('SELECT a.aid, a.title, a.description, a.author 
                                                 FROM appointments a 
                                                 WHERE a.aid='.$id
                                         );
@@ -102,6 +104,23 @@ class Home_model extends CI_Model {
     //return all those timeslots
     $timeslots = $query->result_array();
     return $timeslots;
+    
+    }
+    
+     public function get_first_timeslot($id){
+    
+    //retrieve all timeslots that belong to the appointment
+    $query = $this->db->query('SELECT * 
+                                FROM timeslots ts 
+                                WHERE ts.aid='.$id
+                                        );
+                                        
+   $row= $query->row(0);
+  
+    $data['start']= $row->start_time;
+     $data['end']= $row->end_time;
+     $data['ack']= $row->number_of_ack;
+    return $data;
     
     }
     

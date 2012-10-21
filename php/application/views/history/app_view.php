@@ -25,15 +25,16 @@
 				Summary
 			</li>
 			<li data-theme="c" data-icon="gear">
-				<h3><?=$title?></h3>
-				<p><?=$description?><br /> with <i>
+				<h3><?=$appinfo->title?></h3>
+				<p><?=$appinfo->description?><br /> with <i>
 				
 				<?php
-						
+						 date_default_timezone_set('UTC');
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
-						        $participants=getParticipants($request['aid'], $userid);
+						         error_log($aid);
+						        $participants=getParticipants($aid, $userid);
 						
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
@@ -45,15 +46,18 @@
 			<li data-role="list-divider" role="heading">
 				Timeslots
 			</li>
+			<?php
+     
+      $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['start']);
+      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['end']); 
+      
+      ?>
+      
 			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
-			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
-			<li data-theme="c" data-icon="gear">
-				Monday, September 9, 2012, <br />5pm-6pm
-			</li>
+      <?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> until <?php echo date_format($endtime, 'g:i a');  ?> 
+			<p align=right> <?php echo $timeslot['ack'] ?> Acknowledgements </p>
+      </li>
+      
 				
 		</ul><br />
 	</div>

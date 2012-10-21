@@ -21,14 +21,14 @@
 <div data-role="page" id="new_app_1">
  <?php echo form_open('app/save') ?>
     <div data-theme="a" data-role="header">
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
-			data-ajax="false">
+         <a data-role="button" data-transition="fade" href="#popupBasic" class="ui-btn-right"
+			 data-position-to="window" data-rel="popup">
             Discard
         </a>
 		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Appointment.png">
 		</div>
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="arrow-l"
+        <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left" data-ajax="false">
             Back
         </a>
@@ -76,7 +76,7 @@
 				
 				<label for="duration"></label>
 
-				 <input name="duration" id="duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
+				 <input name="duration" id="duration" value="<?=$duration?>" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
 			
 			</li>
 			<li data-theme="c">
@@ -151,11 +151,30 @@
 		</ul><br />
 		<?php echo form_submit('save','Save'); ?>
 		
+		 <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >
+			Discard</a> 
+		
 
 
 		
 	</div>
 	</form>
+	<!-- Pop-up Begin -->
+		<div data-role="popup" id="popupBasic" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Discard Appointment
+			</div>
+			<p>
+				<b>Do you really want to discard the new appointment?</b>
+			</p>
+			<p>
+				<a href="<?=base_url().'home'?>" data-role="button">Yes</a>
+				<a href="#" data-role="button" data-rel="back">No</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 
 </div>
 

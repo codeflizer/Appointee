@@ -20,10 +20,12 @@
 <div data-role="page" id="new_app_1">
 
     <div data-theme="a" data-role="header">
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" class="ui-btn-right"
-			data-ajax="false">
+    
+    <a data-role="button" data-transition="fade" href="#popupBasic" class="ui-btn-right"
+			 data-position-to="window" data-rel="popup">
             Discard
         </a>
+
 		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Appointment.png">
 		</div>
@@ -93,7 +95,7 @@
 				    $duration='';
 				} ?>
 				 
-			    <input name="duration" id="duration" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
+			    <input name="duration" id="duration" value="<?=$duration?>" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
 			 
 				
 			</li>
@@ -171,6 +173,22 @@
 		
 	</div>
 </form>	
+<!-- Pop-up Begin -->
+		<div data-role="popup" id="popupBasic" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Discard Appointment
+			</div>
+			<p>
+				<b>Do you really want to discard the new appointment?</b>
+			</p>
+			<p>
+				<a href="<?=base_url().'home'?>" data-role="button">Yes</a>
+				<a href="#" data-role="button" data-rel="back">No</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 </div>
 
 </body>

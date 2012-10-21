@@ -15,11 +15,13 @@
         class="ui-btn-left">
             Back
         </a>
-        <h3>
-            Appoint.ee
-        </h3>
+        <div style="text-align: center; margin-top: 5px;">
+			<img src="<?=base_url() ?>asset/images/Logo_small.png">
+		</div>
     </div>
+   
     <div data-role="content">
+     
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Forgot your password?</li>
 			<li data-theme="c">
@@ -33,9 +35,13 @@
 		</ul><br />
 				<a data-role="button" data-transition="fade" href="#complete"
 			data-rel="dialog">Send me a new password!</a>
+
     </div>
+   
+ 
 </div>
-<!-- Complete popup -->
+
+  <!-- Complete popup -->
 <div data-role="page" id="complete" >
     <div data-theme="a" data-role="header">
 		<h3>
@@ -48,7 +54,9 @@
             Close
         </a>
 	</div>
-</div>
+
+
+
 
 </body>
 </html>

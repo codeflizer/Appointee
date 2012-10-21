@@ -30,11 +30,19 @@ class History extends CI_Controller {
  
   //function that loads detail view of an appointment
   public function appointment($id){
-  error_log($id);
+  
+     $timeslot = $this->Home_model->get_first_timeslot($id);
     
     //load detail information about appointment from database
     $data = $this->Home_model->get_appointment_data($id);
+
+     $data = array (
+          'appinfo' =>  $data,
+          'timeslot' =>  $timeslot,
+          'aid'=> $id
+    );
     
+     
     
     $this->load->view('history/app_view', $data);
     
