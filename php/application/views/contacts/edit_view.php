@@ -32,7 +32,7 @@
 				<div style="display: inline-block; float:left; height: 50px;">
 				<img style="width: 50px; height: 50px" src="http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg">
 				</div>
-				<a data-transition="fade" href="<?=base_url().'contacts/upload_photo'?>"  
+				<a data-transition="fade" href="#"  
 					data-ajax="false" style="height: 22px; padding-top: 16px;"f>
 			Upload Photo </a>
 			</li>

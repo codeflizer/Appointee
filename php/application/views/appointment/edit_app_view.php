@@ -149,7 +149,7 @@
 			</li>
 				
 		</ul><br />
-		<?php echo form_submit('save','save'); ?>
+		<?php echo form_submit('save','Save'); ?>
 		
 
 
