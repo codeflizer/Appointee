@@ -15,7 +15,7 @@
         class="ui-btn-left">
             Back
         </a>
-		<div style="text-align: center; margin-top: 5px;">
+		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Logo_small.png">
 		</div>
     </div>
@@ -105,11 +105,7 @@
     </div>
     </form>
     <!--<?php echo form_submit('Sign up for Appoint.ee','Sign up for Appoint.ee'); ?>-->
-<<<<<<< HEAD
     <a data-role="button" data-transition="fade" href="#popupBasic" 
-=======
-    <a data-role="button" data-transition="fade" href="#popupBasic" class="ui-btn-right"
->>>>>>> 2999139134c57af99a8f789035e9ca9b984a1b62
 			 data-position-to="window" data-rel="popup">Sign up for Appoint.ee</a>
 	
 		<!-- Pop-up Begin -->
