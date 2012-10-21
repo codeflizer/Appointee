@@ -60,7 +60,7 @@
                         Forgot your password?
                     </b>
                 </a>
-            </p><br />
+            </p>
 			</div>
 			<h4 style="text-align: center;">No account?</h4>
 			<a data-role="button" data-transition="fade" data-theme="b"
