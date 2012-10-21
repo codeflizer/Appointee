@@ -41,6 +41,13 @@ a p { margin-bottom:0px ! important;}
 	margin: 80px 0 0 0 ! important;
 }
 
+/** popup **/
+.appointee_popup .dialog_header{
+	text-align:center;
+	padding-top:9px;
+	padding-bottom: 10px;
+}
+
 /** icons **/
 
 .ui-icon-appointee-home {
