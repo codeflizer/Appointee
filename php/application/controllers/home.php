@@ -88,7 +88,9 @@ class Home extends CI_Controller {
   {
  
     // $data=$this->input->post('selected14');
-
+    
+    $post=$this->input->post();
+    $this->Home_model->set_scheduled($post['aid']);
      $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
       $this->load->view('/home_view',$data);
   }

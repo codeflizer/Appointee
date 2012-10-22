@@ -55,7 +55,7 @@
 			    </a>
 			 </li>
 	  
-	  
+	  <?php } ?>
 	  
 			<li data-role="list-divider" role="heading">Waiting for Response</li>
 
@@ -83,7 +83,7 @@
 			</a></li>
 	  <?php } ?>
 	  
-	   <?php } ?>
+	   
 
 			<li data-role="list-divider" role="heading">Upcoming Events</li>   
 	  

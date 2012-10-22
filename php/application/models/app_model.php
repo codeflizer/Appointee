@@ -4,6 +4,7 @@
 class App_model extends CI_Model { 
 
 	public function create_appointment($data){
+	
     
         $title=$data['title'];
         $description=$data['description'];
@@ -54,6 +55,7 @@ class App_model extends CI_Model {
         
         //write timeslots into database
         //for each slot 
+       
         foreach ($slots as $slot)
         {
 
@@ -61,7 +63,7 @@ class App_model extends CI_Model {
           
           $starttime = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);
           $endtime = DateTime::createFromFormat('m/d/Y h:i A', $slot['enddate'].' '.$slot['endtime']);
-          
+          date_default_timezone_set('UTC');
           $single_slot = array (
               'aid' => $aid,
 			        'start_time' => $starttime->format('Y-m-d H:i:s'),

@@ -124,6 +124,18 @@ class Home_model extends CI_Model {
     
     }
     
+    public function set_scheduled($aid){
+    
+     $data = array(
+               'status' => 0
+            );
+
+            $this->db->where('aid', $aid);
+            $this->db->update('appointments', $data); 
+    
+    
+    }
+    
     
 
 

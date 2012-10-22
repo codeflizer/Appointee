@@ -32,6 +32,7 @@
 			<li data-role="list-divider" role="heading">
 				Timeslots
 			</li>
+			<input type="hidden" name="aid" value="<?=$appinfo->aid?>">
       
       <?php 
       foreach($timeslots as $timeslot) { 
