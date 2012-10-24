@@ -57,12 +57,10 @@ class App_model extends CI_Model {
         foreach ($slots as $slot)
         {
         
-        error_log($slot['enddate']);
+        
           //if endtime hasn't been entered, set enddate to same value as startdate
           if ($slot['enddate'] == ''){
-                error_log('dsgdfg');
               $slot['enddate'] = $slot['startdate'];
-               $slot['endtime'] = $slot['starttime'];
           } 
 
           //build array with data          
