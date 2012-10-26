@@ -44,7 +44,7 @@
 			</li>
 			<li data-theme="c">
 				<div class="as_participants">
-					<input type="text" id="demo-input-local-custom-formatters" name="participants[]" data-role="none" class="asg"/>
+					<input type="text" id="demo-input-local-custom-formatters" name="participants" data-role="none" class="asg"/>
 						<script type="text/javascript">
 						$(document).ready(function() {
 							// entries
