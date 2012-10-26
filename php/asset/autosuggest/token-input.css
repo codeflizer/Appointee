@@ -5,8 +5,8 @@
 border-radius: 10px;
 }
 
-.as_participants .token-input-token{
-	text-shadow: 0px ! important;
+.as_participants p{
+	text-shadow: 0px 0px 0px ! important;
 }
 
 
