@@ -44,83 +44,36 @@
 			</li>
 			<li data-theme="c">
 				<div class="as_participants">
-					<select name="participants" multiple>
-					<input type="text" data-ajax="false" id="demo-input-local-custom-formatters" name="participants[]" data-role="none" class="asg"/>
+					<input type="text" id="demo-input-local-custom-formatters" name="blah" data-role="none" class="asg"/>
 						<script type="text/javascript">
 						$(document).ready(function() {
 							// entries
-							$("#demo-input-local-custom-formatters").tokenInput([
-							
-							<?php 
-						
-						$ci =& get_instance();
-						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail FROM users u');
-                         $users = $users->result_array();
-							
-					
-						foreach ($users as $user) { ?>
-						
-						{
-								"first_name": "<?=$user['first_name']?>",
-								"last_name": "<?=$user['last_name']?>",
-								"email": "<?=$user['mail']?>",
+							$("#demo-input-local-custom-formatters").tokenInput([{
+								"first_name": "Arthur",
+								"last_name": "Godfrey",
+								"email": "arthur_godfrey@nccu.edu",
 								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
 							},
-						<?php } ?>
-						
-						  ],
-							
-	                         {
-							  propertyToSearch: "first_name"
+							{
+								"first_name": "Adam",
+								"last_name": "Johnson",
+								"email": "wravo@yahoo.com",
+								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
+							}
+						  ], {
+							  propertyToSearch: "first_name",
 							  resultsFormatter: function(item){ return "<li>" + "<img src='" + item.url + "' title='" + item.first_name + " " + item.last_name + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='full_name'>" + item.first_name + " " + item.last_name + "</div><div class='email'>" + item.email + "</div></div></li>" },
-							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li> <option value='"  + item.first_name + " " + item.last_name + "' style='display:none;' selected='selected'></option>" },
+							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li>" },
 							  // pre-populated entries
 							  prePopulate: [
-								
-								
-								<?php 
-					
-						//multiple participants already set?
-						if (!isset($participants)){
-						   //if not is an initial participant set by referring from contact
-						   if(isset($par)){
-							 $participants[]=$par;
-							} else {
-							    $participants=array();
-							}
-							 
-						} ?>
-						
-						 <?php
-						
-						$ci =& get_instance();
-						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail
-						                              FROM users u ');
-                         $users = $users->result_array();
-							
-					
-						foreach ($users as $user) { 
-
-						$name =$user['first_name'].' '.$user['last_name'];
-						
-							foreach($participants as $part){
-							
-							    if($name==trim($part)){ ?>
-							    
-							    {
-							   "first_name": "<?=$user['first_name']?>",
-								"last_name": "<?=$user['last_name']?>",
-								"email": "<?=$user['mail']?>",
-								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
-									},
-							        
-							    <?php } 
-							}	}?>		
+								{"first_name": "Andre",
+									"last_name": "Henderson",
+									"email": "andre.henderson@globo.com",
+									"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"}
 								]
 						  } );
 						});
 						</script>
-						</select>
 				</div>
 			</li>	
 			
@@ -186,7 +139,7 @@
 			 
 				
 			</li>
-			<!--li data-theme="c">
+			<li data-theme="c">
 				
            			
 				<div data-role="fieldcontain">
@@ -253,7 +206,7 @@
 				</div>						
 			
 				
-			</li-->
+			</li>
 				
 		</ul><br />
 		<?php echo form_submit('slot','Next'); ?>
