@@ -1,3 +1,11 @@
+.as_participants input {
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px; 
+/* aktuelle Webkitbrowser brauchen keinen Prefix mehr */
+border-radius: 10px;
+}
+
+
 /* Example tokeninput style #1: Token vertical list*/
 ul.token-input-list {
     overflow: hidden; 
@@ -34,7 +42,7 @@ li.token-input-token {
     height: 1%;
     margin: 3px;
     padding: 3px 5px;
-    background-color: #d0efa0;
+    background-color: #33A554;
     color: #000;
     font-weight: bold;
     cursor: default;
