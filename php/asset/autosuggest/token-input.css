@@ -5,6 +5,11 @@
 border-radius: 10px;
 }
 
+.as_participants {
+text-shadow: 0px ! important;
+}
+
+
 
 /* Example tokeninput style #1: Token vertical list*/
 ul.token-input-list {
