@@ -70,7 +70,7 @@
 						  ],
 							
 	                         {
-							  propertyToSearch: "first_name"
+							  propertyToSearch: "first_name",
 							  resultsFormatter: function(item){ return "<li>" + "<img src='" + item.url + "' title='" + item.first_name + " " + item.last_name + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='full_name'>" + item.first_name + " " + item.last_name + "</div><div class='email'>" + item.email + "</div></div></li>" },
 							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li>" },
 							  // pre-populated entries
