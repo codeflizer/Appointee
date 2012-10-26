@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
     <script type="text/javascript" src="<?=base_url()?>asset/autosuggest/jquery.tokeninput.js"></script>
+     
    
    	
 
@@ -38,7 +39,7 @@
         </a>
     </div>
 	<div data-role="content" style="padding: 15px">
-	<form action="/appoint/app/slot" name="app" method="post" accept-charset="utf-8">	
+	<form action="<?=base_url()?>app/slot" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 			Participants
@@ -47,8 +48,8 @@
 				<div class="as_participants">
 					<input type="text" id="demo-input-local-custom-formatters" data-role="none" class="asg"/>
 						<script type="text/javascript">
-						$(document).bind('pagecreate',function() {
-							$.getScript("<?=base_url()?>asset/autosuggest/jquery.tokeninput.js");
+						$(document).ready(function() {
+							
 						
 							// entries
 							$("#demo-input-local-custom-formatters").tokenInput([
@@ -265,13 +266,23 @@
      
        
         var x=document.forms["app"]["title"].value;
-        if (x==null || x=="") {
-            alert("title must be filled out");
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
             return false;
         }
         var x=document.forms["app"]["description"].value;
-        if (x==null || x=="") {
-            alert("title must be filled out");
+        if (x==null || x.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var x=document.forms["app"]["participants[]"];
+        if (!x) {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var x=document.forms["app"]["duration"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
             return false;
         }
        
@@ -279,7 +290,7 @@
         
     }
 </script>
-		<input type="submit" value="Submit this form" onclick="formvalidation('app');return false;" />
+		<input type="submit" value="Next" onclick="formvalidation('app');return false;" />
 		</form>	
 		
 	</div>
@@ -300,7 +311,25 @@
 			</p>
 		</div>
 		<!-- Pop-up End -->
+		
+		<!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>Please fill out Title, Description, Participants and Duration</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 </div>
+
+
  
 </body>
 </html>
