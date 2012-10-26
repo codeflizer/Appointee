@@ -27,6 +27,7 @@ ul.token-input-list {
     background-color: #fff;
     list-style-type: none;
     clear: left;
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, .2);
 }
 
 ul.token-input-list li {
