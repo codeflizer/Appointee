@@ -44,7 +44,6 @@
 			</li>
 			<li data-theme="c">
 				<div class="as_participants">
-					<select name="participants" multiple>
 					<input type="text" data-ajax="false" id="demo-input-local-custom-formatters" name="participants[]" data-role="none" class="asg"/>
 						<script type="text/javascript">
 						$(document).ready(function() {
@@ -73,7 +72,7 @@
 	                         {
 							  propertyToSearch: "first_name"
 							  resultsFormatter: function(item){ return "<li>" + "<img src='" + item.url + "' title='" + item.first_name + " " + item.last_name + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='full_name'>" + item.first_name + " " + item.last_name + "</div><div class='email'>" + item.email + "</div></div></li>" },
-							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li> <option value='"  + item.first_name + " " + item.last_name + "' style='display:none;' selected='selected'></option>" },
+							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li>" },
 							  // pre-populated entries
 							  prePopulate: [
 								
@@ -120,7 +119,6 @@
 						  } );
 						});
 						</script>
-						</select>
 				</div>
 			</li>	
 			
