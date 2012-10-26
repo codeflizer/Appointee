@@ -75,8 +75,7 @@
 							  tokenFormatter: function(item) { return "<li><p>" + item.first_name + " <b>" + item.last_name + "</b></p></li> <input value='"  + item.first_name + " " + item.last_name + "' type='hidden' name='participants[]' />" },
 							  // pre-populated entries
 							  prePopulate: [
-								
-								
+
 								<?php 
 					
 						//multiple participants already set?
