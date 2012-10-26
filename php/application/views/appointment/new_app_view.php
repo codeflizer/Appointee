@@ -7,14 +7,15 @@
 	
 	<?php includeCss() ?>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>asset/datebox/jqm-datebox.min.css" /> 
+	 <link rel="stylesheet" href="<?=base_url()?>asset/autosuggest/token-input.css" type="text/css" />
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
-    <script type="text/javascript" src="https://appointeedev-team42.rhcloud.com/asset/autosuggest/jquery.tokeninput.js"></script>
+    <script type="text/javascript" src="<?=base_url()?>asset/autosuggest/jquery.tokeninput.js"></script>
    
-    <link rel="stylesheet" href="https://appointeedev-team42.rhcloud.com/asset/autosuggest/token-input.css" type="text/css" />	
+   	
 
 </head>
 <body>
@@ -37,16 +38,18 @@
         </a>
     </div>
 	<div data-role="content" style="padding: 15px">
-	<?php echo form_open('app/slot') ?>	
+	<form action="/appoint/app/slot" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 			Participants
 			</li>
 			<li data-theme="c">
 				<div class="as_participants">
-					<input type="text" id="demo-input-local-custom-formatters" name="participant" data-role="none" class="asg"/>
+					<input type="text" id="demo-input-local-custom-formatters" data-role="none" class="asg"/>
 						<script type="text/javascript">
-						$(document).ready(function() {
+						$(document).bind('pagecreate',function() {
+							$.getScript("<?=base_url()?>asset/autosuggest/jquery.tokeninput.js");
+						
 							// entries
 							$("#demo-input-local-custom-formatters").tokenInput([
 							
@@ -93,7 +96,7 @@
 						
 						$ci =& get_instance();
 						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail
-						                              FROM users u ');
+						                              FROM users u');
                          $users = $users->result_array();
 							
 					
@@ -102,8 +105,10 @@
 						$name =$user['first_name'].' '.$user['last_name'];
 						
 							foreach($participants as $part){
+		
 							
-							    if($name==trim($part)){ ?>
+							    if($name==trim($part)){
+							    error_log('found '.$name) ?>
 							    
 							    {
 							   "first_name": "<?=$user['first_name']?>",
@@ -183,7 +188,7 @@
 			 
 				
 			</li>
-			<!--li data-theme="c">
+			<?php /*--li data-theme="c">
 				
            			
 				<div data-role="fieldcontain">
@@ -250,13 +255,35 @@
 				</div>						
 			
 				
-			</li-->
+			</li--*/?>
 				
 		</ul><br />
-		<?php echo form_submit('slot','Next'); ?>
+		
+<script type="text/javascript">
+		
+	function formvalidation(form) {
+     
+       
+        var x=document.forms["app"]["title"].value;
+        if (x==null || x=="") {
+            alert("title must be filled out");
+            return false;
+        }
+        var x=document.forms["app"]["description"].value;
+        if (x==null || x=="") {
+            alert("title must be filled out");
+            return false;
+        }
+       
+        form.submit();
+        
+    }
+</script>
+		<input type="submit" value="Submit this form" onclick="formvalidation('app');return false;" />
+		</form>	
 		
 	</div>
-</form>	
+
 <!-- Pop-up Begin -->
 		<div data-role="popup" id="popupBasic" 
 			data-dismissable="false" class="appointee_popup"
