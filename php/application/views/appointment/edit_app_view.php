@@ -67,7 +67,7 @@
 								"first_name": "<?=$user['first_name']?>",
 								"last_name": "<?=$user['last_name']?>",
 								"email": "<?=$user['mail']?>",
-								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
+								"url": "http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg"
 							},
 						<?php } ?>
 						
@@ -115,7 +115,7 @@
 							   "first_name": "<?=$user['first_name']?>",
 								"last_name": "<?=$user['last_name']?>",
 								"email": "<?=$user['mail']?>",
-								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
+								"url": "http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg"
 									},
 							        
 							    <?php } 
