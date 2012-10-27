@@ -14,6 +14,12 @@ if ( ! function_exists('includeCss'))
 	<script src="'.base_url().'asset/jquery/jquery-1.7.1.min.js"></script>
 	<script src="'.base_url().'asset/jquery/jquery.mobile-1.2.0.js"></script>
 	
+	<script type="text/javascript">
+		$(document).bind("mobileinit", function() {
+			$.mobile.ajaxLinksEnabled = false;
+		});
+	</script>
+	
 	';
 	
 	
