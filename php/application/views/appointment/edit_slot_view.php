@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
+	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
 </head>
 <body>
 
@@ -69,7 +70,28 @@
 					
 					echo form_input($data);
 				?>
-			
+				
+				<!-- autocomplete begin -->
+				<ul id="suggestions" data-role="listview" data-inset="true"></ul>
+				<script>
+					$("#new_app_2").bind("pageshow", function(e) {
+
+						var availableTags = ['SMU', 'Sportscomplex Redhill', 'Ristorante Olio', 'Starbucks Venice Hall', 'SMU Library', 'Raffles Place', 'The Lighthouse'];
+
+						$("#location").autocomplete({
+							target: $('#suggestions'),
+							source: availableTags,
+							callback: function(e) {
+								var $a = $(e.currentTarget);
+								$('#location').val($a.text());
+								$("#location").autocomplete('clear');
+							},
+							link: 'target.html?term=',
+							minLength: 1
+						});
+					});
+				</script>
+				<!-- autocomplete end -->
 				</fieldset>
 			</li>
 				

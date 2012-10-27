@@ -80,7 +80,7 @@
 				<script>
 					$("#new_app_2").bind("pageshow", function(e) {
 
-						var availableTags = ['24', 'about me', 'Adobe', 'AIR', 'AJAX', 'Android', 'Apple', 'Aptana', 'autoComplete', 'Bflex-BFusion', 'Blackberry Playbook', 'Blog Housekeeping', 'c25k', 'CFConversations', 'CFinNC', 'cfObjective', 'CFUnited', 'Clients', 'ColdFusion', 'ColdFusion Builder', 'Cooking and Recipes', 'CSS', 'D2WC', 'dribbbleCFC', 'Eclipse', 'Ember.js', 'Emile', 'ExtendScript', 'Family', 'Fireworks', 'Flash', 'Flex', 'foursquareCFC', 'From a former designer', 'Giveaways', 'Goba', 'Hardware', 'Illustrator', 'instagramCFC', 'iPhone', 'JavaScript', 'job openings', 'jobs', 'jQuery', 'jQuery Mobile', 'jQuery Mobile Boilerplate', 'kloutCFC', 'Lost', 'MAX', 'mobile', 'Movies and Reviews', 'ncfug', 'openExchangeRateCFC', 'Palm Pre', 'pastebinCFC', 'PhoneGap', 'Photoshop', 'picasaCFC', 'podcast', 'presentations', 'projects', 'reading', 'regular expressions', 'RIAUnleashed', 'Shrinkadoo', 'shrinkURL', 'SQL', 'swipeButton', 'technology', 'textCounter', 'the internet', 'ThemeRoller', 'tumblrCFC', 'Undelivrnator', 'video', 'Wallpapers', 'web development', 'Whiskerino', 'XCode and Interface Builder', 'XUIJS'];
+						var availableTags = ['SMU', 'Sportscomplex Redhill', 'Ristorante Olio', 'Starbucks Venice Hall', 'SMU Library', 'Raffles Place', 'The Lighthouse'];
 
 						$("#location").autocomplete({
 							target: $('#suggestions'),
