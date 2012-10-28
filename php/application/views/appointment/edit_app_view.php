@@ -185,7 +185,7 @@
 				    $duration='';
 				} ?>
 				 
-			    <input name="duration" id="duration" value="<?=$duration?>" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
+			    <input name="duration" id="duration" value="<?=$duration?>" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true, "useFocus": true}' />
 			 
 				
 			</li>

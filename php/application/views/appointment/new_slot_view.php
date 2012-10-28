@@ -42,21 +42,21 @@
 				<h3>Start</h3>
 				<label for="startdate"></label>
 				<input name="startdate" id="startdate" type="text"  placeholder="Start Date" data-role="datebox" 
-				data-options='{"mode":"datebox", "useNewStyle":true}'/>
+				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}'/>
 				   
 				<label for="starttime"></label>
 				<input name="starttime" id="starttime" type="text" data-role="datebox" 
-				data-options='{"mode": "timebox", "overrideTimeFormat": 24}' placeholder="Start Time"/>
+				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="Start Time"/>
 			</li>
 			<li data-theme="c">
 				<h3>End</h3>
 				<label for="enddate"></label>
 				<input name="enddate" id="enddate" type="text" data-role="datebox" 
-				data-options='{"mode":"datebox", "useNewStyle":true}' placeholder="End Date"/>
+				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}' placeholder="End Date"/>
 				   
 				<label for="endtime"></label>
 				<input name="endtime" id="endtime" type="text" data-role="datebox" 
-				data-options='{"mode": "timebox", "overrideTimeFormat": 24}' placeholder="End Time"/>
+				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="End Time"/>
 			</li>
 			
 			<li data-theme="c">

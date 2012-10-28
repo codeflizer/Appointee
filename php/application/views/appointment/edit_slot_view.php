@@ -38,21 +38,21 @@
 				<h3>Start</h3>
 				<label for="startdate"></label>
 				<input name="startdate" id="startdate" type="text" data-role="datebox" 
-				data-options='{"mode":"datebox", "useNewStyle":true}' placeholder="Start Date" value="<?php if(isset($startdate))echo $startdate; ?>"/>
+				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}' placeholder="Start Date" value="<?php if(isset($startdate))echo $startdate; ?>"/>
 				   
 				<label for="starttime"></label>
 				<input name="starttime" id="starttime" type="text" data-role="datebox" 
-				data-options='{"mode": "timebox", "overrideTimeFormat": 24}' placeholder="Start Time"value="<?php if(isset($starttime))echo $starttime; ?>"/>
+				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="Start Time"value="<?php if(isset($starttime))echo $starttime; ?>"/>
 			</li>
 			<li data-theme="c">
 				<h3>End</h3>
 				<label for="enddate"></label>
 				<input name="enddate" id="enddate" type="text" data-role="datebox" 
-				data-options='{"mode":"datebox", "useNewStyle":true}' placeholder="End Date"value="<?php if(isset($enddate))echo $enddate; ?>"/>
+				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}' placeholder="End Date"value="<?php if(isset($enddate))echo $enddate; ?>"/>
 				   
 				<label for="endtime"></label>
 				<input name="endtime" id="endtime" type="text" data-role="datebox" 
-				data-options='{"mode": "timebox", "overrideTimeFormat": 24}' placeholder="End Time"value="<?php if(isset($endtime))echo $endtime; ?>"/>
+				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="End Time"value="<?php if(isset($endtime))echo $endtime; ?>"/>
 			</li>
 			
 			<li data-theme="c">
