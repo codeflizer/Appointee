@@ -21,17 +21,17 @@
 		<a data-role="button" data-transition="fade" href="<?=base_url() ?>settings/"
 			data-icon="gear" data-iconpos="notext" class="ui-btn-right"
 			data-theme="c" data-ajax="false"> </a>
-			
+		<a data-role="button" data-transition="fade" href="<?=base_url()?>app"  data-ajax="false" data-icon="appintee-plus" data-icon="arrow-l"
+        data-iconpos="left" class="ui-btn-left">
+            New
+        </a>	
 		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Logo_small.png">
 		</div>
 	</div>
 	<div data-role="content" style="padding: 15px">
 	
-		<a data-role="button" data-transition="fade" href="<?=base_url()?>app"  data-ajax="false" data-icon="appintee-plus">
-			New Appointment </a>
-			
-			<br />
+		
 			
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Inbox</li>
