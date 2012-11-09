@@ -129,14 +129,20 @@
 			<div data-theme="e" data-role="header" class="dialog_header">
 				Appointment Request Sent
 			</div>
-			<p>Your appointment request <b><?=$title?></b> was successfully sent to <b>
+			<p style="text-align:center;">Your appointment request </p>
+			<p style="text-align:center;font-size: 18px;"><b><?=$title?></b></p> 
+			<p style="text-align:center;font-size: 18px;">was successfully sent to 
+			<p style="text-align:center;font-size: 18px;"><b>
 			<?php foreach($partic as $part){
 			    echo $part.','; 
 			}?>
 			</b>
 			</p>
-			<p><a href="<?=base_url() ?>home" data-role="button">Close</a></p>
+			<p  style="margin-top: 15px"><a href="<?=base_url() ?>home" data-role="button">Close</a></p>
 		    </div>
+		    
+		    
+		   
 		
 		
 		
