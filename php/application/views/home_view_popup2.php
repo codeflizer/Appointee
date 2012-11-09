@@ -138,7 +138,7 @@
 			
 			<?php 
 			
-			foreach($participants as $part){
+			foreach($partic as $part){
 			    echo $part;
 			}
 			
