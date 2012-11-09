@@ -68,9 +68,16 @@
 			 $counter =-1;
 			
 			 foreach ($slots as $slot) { $counter++; ?>
+			 
+	
+			 
+			 
+			 
+			 
 			<li data-theme="c" data-icon="appointee-edit">
 			    <a href="<?=base_url().'app/editslot/'.$counter?>"> 
-			        <?php echo $slot['startdate'].' '.$slot['starttime']?>
+			       <h3><small><?php echo $slot['startdate']?> </small></h3>
+			       <br />  <p><strong> <?php echo $slot['starttime'].' - '.$slot['endtime']?> </strong></p>
 			     </a>
 			</li>
 	        <?php } ?>
