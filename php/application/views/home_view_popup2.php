@@ -130,10 +130,11 @@
 				Appointment Confirmed
 			</div>
 			<div style="min-width:300px; display:block;"></div>
-			<p><b><big><?=$title?></big></b></p>
-			<p><b>Wochentag<br/><small><?=$startdate?></small></b></p>
+			<p style="text-align:center;font-size: 18px;"><b><?=$title?></b></p> 
+			<p><b>Monday<br/><small><?=$startdate?></small></b></p>
 			<p><b><?=$starttime?></b></p>
-			<p>with<br/> <b>
+			<p>with<br/> <b></p>
+			<p style="text-align:center;font-size: 18px;"><b>
 			
 			<?php 
 			
@@ -143,7 +144,7 @@
 			
 			?> </b></p>
 			<p>at<br/> <b><?=$location?></b></p>
-			<p><a href="<?=base_url() ?>home" data-role="button">Close</a></p>
+			<p><a href="<?=base_url() ?>home" data-role="button"  style="margin-top: 15px">Close</a></p>
 		</div>
 		
 		
