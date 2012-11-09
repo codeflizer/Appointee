@@ -91,17 +91,8 @@ class Home extends CI_Controller {
     
     $post=$this->input->post();
     $this->Home_model->set_scheduled($post['aid']);
-      $appointment =  $this->session->all_userdata();
-
-	 $this->App_model->create_appointment($appointment);
-	   
-     $data = $this->Home_model->get_data_for_main_screen($this->session->userdata('userid')); 
-     $data['title']=$appointment['title'];
-     $data['partic']=$appointment['participants'];
-     	  
-   
-
-    $this->load->view('home_view_popup', $data);
+     $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
+      $this->load->view('/home_view',$data);
   }
   
   public function cancel($aid){
