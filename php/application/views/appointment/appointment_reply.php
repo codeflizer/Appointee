@@ -41,7 +41,7 @@
            
       ?>
 			<li data-theme="c" data-icon="gear">
-				<label for="slider2" class="slot_label"><?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> until <?php echo date_format($endtime, 'g:i a');  ?> 
+				<label for="slider2" class="slot_label"><?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> - <?php echo date_format($endtime, 'g:i a');  ?> 
 			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
 				<div class="slot_toggle">
         
