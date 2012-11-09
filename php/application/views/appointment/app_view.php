@@ -53,9 +53,10 @@
       
       ?>
       
-			<li data-theme="c" data-icon="gear">
-      <?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> until <?php echo date_format($endtime, 'g:i a');  ?> 
-			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
+			<li data-theme="c" data-icon="gear">	
+     <h3><small> <?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?></small></h3>, <br />  <p><strong><?php echo date_format($starttime, 'g:i a'); ?> - <?php echo date_format($endtime, 'g:i a');  ?> </strong></p>
+			<p class="ui-li-aside">in <strong>2</strong> days</p>
+			<p align=right> <?php echo $timeslot['ack'] ?> Acknowledgements </p>
       </li>
       <?php } ?>
 				
