@@ -20,7 +20,7 @@
 		</div>
 		<a data-role="button" data-transition="fade" href="<?=base_url()?>app"  data-ajax="false" data-icon="appintee-plus" data-icon="arrow-l"
         data-iconpos="left" class="ui-btn-left">
-            Back
+            New
         </a>
 	</div>
 	<div data-role="content" style="padding: 15px">
