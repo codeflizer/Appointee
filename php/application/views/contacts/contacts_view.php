@@ -16,6 +16,10 @@
 		<div class="header_text_2">
 			<img src="<?=base_url() ?>asset/images/Contacts.png">
 		</div>
+		<a data-role="button" data-transition="fade" href="<?=base_url()?>app"  data-ajax="false" data-icon="appintee-plus" data-icon="arrow-l"
+        data-iconpos="left" class="ui-btn-left">
+            New
+        </a>
 	</div>
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="c" data-inset="false"

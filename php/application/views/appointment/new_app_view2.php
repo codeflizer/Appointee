@@ -7,15 +7,17 @@
 	
 	<?php includeCss() ?>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>asset/datebox/jqm-datebox.min.css" /> 
-	<link rel="stylesheet" href="<?=base_url()?>asset/autosuggest/token-input.css" type="text/css" />
+	 <link rel="stylesheet" href="<?=base_url()?>asset/autosuggest/token-input.css" type="text/css" />
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.calbox.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox.mode.datebox.min.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
     <script type="text/javascript" src="<?=base_url()?>asset/autosuggest/jquery.tokeninput.js"></script>
-	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
-  
+     
+   
+   	
+
 </head>
 <body>
  
@@ -23,21 +25,15 @@
 
     <div data-theme="a" data-role="header">
     
-    <a data-role="button" data-transition="fade" href="#popupBasic" class="ui-btn-right"
-			 data-position-to="window" data-rel="popup">
-            Discard
-        </a>
+  
 
 		<div class="header_text">
 			<img src="<?=base_url() ?>asset/images/Appointment.png">
 		</div>
-        <a data-role="button" data-transition="fade" href="<?=base_url().'home'?>" data-icon="arrow-l"
-        data-iconpos="left" class="ui-btn-left" data-ajax="false">
-            Back
-        </a>
+        
     </div>
 	<div data-role="content" style="padding: 15px">
-	<form action="<?=base_url()?>app/slot" name="app" method="post" accept-charset="utf-8">	
+	<form action="<?=base_url()?>login/next" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 			Participants
@@ -55,7 +51,7 @@
 							<?php 
 						
 						$ci =& get_instance();
-						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail FROM users u ORDER BY first_name ASC');
+						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail FROM users u');
                          $users = $users->result_array();
 							
 					
@@ -65,7 +61,7 @@
 								"first_name": "<?=$user['first_name']?>",
 								"last_name": "<?=$user['last_name']?>",
 								"email": "<?=$user['mail']?>",
-								"url": "http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg"
+								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
 							},
 						<?php } ?>
 						
@@ -95,7 +91,7 @@
 						
 						$ci =& get_instance();
 						 $users = $ci->db->query(  'SELECT u.first_name, u.last_name, u.mail
-						                              FROM users u ORDER BY first_name ASC');
+						                              FROM users u');
                          $users = $users->result_array();
 							
 					
@@ -113,7 +109,7 @@
 							   "first_name": "<?=$user['first_name']?>",
 								"last_name": "<?=$user['last_name']?>",
 								"email": "<?=$user['mail']?>",
-								"url": "http://your.asda.com/assets/athletes/avatar-blank-695c8f738ed7f135c0a9f4f825da458f.jpg"
+								"url": "https://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"
 									},
 							        
 							    <?php } 
@@ -183,7 +179,7 @@
 				    $duration='';
 				} ?>
 				 
-			    <input name="duration" id="duration" value="<?=$duration?>" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true, "useFocus": true}' />
+			    <input name="duration" id="duration" value="<?=$duration?>" placeholder="Duration" type="text" data-role="datebox" data-options='{"mode":"durationbox", "useNewStyle":true}' />
 			 
 				
 			</li>

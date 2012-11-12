@@ -24,6 +24,7 @@
 		</div>
     </div>
     <div data-role="content">
+      <?php echo form_open('contacts/contact_edit_save') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Edit Contact / Create Contact</li>
 			<li data-icon="arrow-u">
@@ -36,25 +37,28 @@
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput12"> First Name </label> <input name=""
-						id="textinput12" placeholder="" value="" type="text">
+				 <input name="uid"
+						id="uid" type="hidden" value="<?=$uid?>">
+					<label for="textinput12"> First Name </label> <input name="first_name"
+						id="first_name" placeholder="" value="<?=$first_name?>" type="text">
 				</fieldset>
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput12"> Last Name </label> <input name=""
-						id="textinput12" placeholder="" value="" type="text">
+					<label for="textinput12"> Last Name </label> <input name="last_name"
+						id="last_name" placeholder="" value="<?=$last_name?>" type="text">
 				</fieldset>
 			</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput12">E-Mail</label> <input name=""
-						id="textinput12" placeholder="" value="" type="text">
+					<label for="textinput12">E-Mail</label> <input name="mail"
+						id="mail" placeholder="" value="<?=$mail?>" type="text">
 				</fieldset>
 			</li>
 			
 		</ul><br />
-			<input type="submit" value="Save">
+			<?php echo form_submit('save','Save'); ?>
+			</form>	
     </div>
 </div>
 

@@ -29,6 +29,14 @@ class Contacts extends CI_Controller {
       $this->load->view('contacts/add_view');
   }
   
+    public function add_contact(){
+    
+      $post=$this->input->post();
+      $this->Contact_model->add_contact($post);
+       $data = $this->Contact_model->get_contacts($this->session->userdata('userid'));
+      $this->load->view('contacts/contacts_view',$data);
+  }
+  
   public function contact_detail($id){
   
   
@@ -38,9 +46,11 @@ class Contacts extends CI_Controller {
       $this->load->view('contacts/detail_view',$data);  
   }
   
-  public function contact_edit(){
+  public function contact_edit($id){
+  
+    $data = $this->Contact_model->get_contact($id);
       
-      $this->load->view('contacts/edit_view');  
+      $this->load->view('contacts/edit_view',$data);  
   }
   
   public function upload_photo(){
@@ -50,8 +60,14 @@ class Contacts extends CI_Controller {
   
   public function contact_update(){
       
-      $this->index(); 
+      $post=$this->input->post();
+     
+      $this->Contact_model->update_contact($post);
+
+      $data = $this->Contact_model->get_contacts($this->session->userdata('userid'));
+      $this->load->view('contacts/contacts_view',$data);
   }
+  
   
 
 }

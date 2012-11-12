@@ -4,9 +4,9 @@
 	<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 	<title>Appoint.ee</title>
-	
-	<link rel="stylesheet" href="http://jquerymobile.com/demos/1.1.1/css/themes/default/jquery.mobile-1.1.1.css" />
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="http://jquerymobile.com/demos/1.1.1/css/themes/default/jquery.mobile-1.1.1.css" />
+	
 	
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://jquerymobile.com/demos/1.1.1/js/jquery.mobile-1.1.1.js"></script>
@@ -25,7 +25,8 @@
     </div>
     
     <div data-role="content">
-     <?php echo form_open('contacts/contact_update') ?>
+    
+    <form action="<?=base_url()?>contacts/contact_update" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Edit Contact</li>
 			<li data-icon="arrow-u">
@@ -39,13 +40,17 @@
 			
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
+				 <input name="uid"
+						id="uid" type="hidden" value="<?=$uid?>">
+				
+				
 					<label for="first_name"> </label>
 					<?php 
 					$data = array(
                           'name'        => 'first_name',
                           'id'          => 'first_name',
                           'maxlength'   => '30',
-                          'placeholder' => 'First Name',
+                          'value' => $first_name,
                     );
 					
 					echo form_input($data);  
@@ -60,7 +65,7 @@
                           'name'        => 'last_name',
                           'id'          => 'last_name',
                           'maxlength'   => '30',
-                          'placeholder' => 'Last Name',
+                          'value' => $last_name,
                     );
 					
 					echo form_input($data);  
@@ -76,7 +81,7 @@
                           'name'        => 'mail',
                           'id'          => 'mail',
                           'maxlength'   => '30',
-                          'placeholder' => 'E-Mail',
+                          'value' => $mail,
                     );
 					
 					echo form_input($data);  
@@ -84,11 +89,56 @@
 				
 				</fieldset>
 			</li>
-				<?php echo form_submit('save','Save'); ?>	
+				<input type="submit" name="save" value="Save" onclick="formvalidation('app');return false;">
 		
 		</ul><br />
+		
+		<script type="text/javascript">
+		
+	function formvalidation(form) {
+     
+       
+        var x=document.forms["app"]["first_name"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var y=document.forms["app"]["last_name"].value;
+        if (y==null || y.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        
+        if (x!=y) {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+       
+        form.submit();
+        
+    }
+</script>
+		
+		
 			</form>
     </div>
+    
+    
+    <!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>Fields cannot be empty!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">Close</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 </div>
 
 </body>

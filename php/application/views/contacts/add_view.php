@@ -25,7 +25,7 @@
     </div>
     
     <div data-role="content">
-     <?php echo form_open('contacts') ?>
+    <form action="<?=base_url()?>contacts/add_contact" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Add Contact</li>
 			
@@ -76,11 +76,55 @@
 				
 				</fieldset>
 			</li>
-				<?php echo form_submit('add','Add'); ?>	
-		
+				<input type="submit" name ="add" value="Add" onclick="formvalidation('app');return false;">
 		</ul><br />
+		
+		<script type="text/javascript">
+		
+	function formvalidation(form) {
+     
+       
+        var x=document.forms["app"]["first_name"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var y=document.forms["app"]["last_name"].value;
+        if (y==null || y.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        
+        var y=document.forms["app"]["mail"].value;
+        if (y==null || y.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        
+       
+        form.submit();
+        
+    }
+</script>
+
 			</form>
     </div>
+    
+    <!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>Fields cannot be empty!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 </div>
 
 </body>

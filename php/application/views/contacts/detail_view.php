@@ -11,7 +11,7 @@
 
 <div data-role="page" id="contacts_detail">
     <div data-theme="a" data-role="header">
-        <a data-role="button" data-theme="a" href="<?=base_url().'contacts/contact_edit'?>" class="ui-btn-right">
+        <a data-role="button" data-theme="a" href="<?=base_url().'contacts/contact_edit/'.$uid?>" class="ui-btn-right">
             Edit
         </a>
         <a data-role="button" href="<?=base_url().'contacts'?>" data-icon="arrow-l" data-iconpos="left"
