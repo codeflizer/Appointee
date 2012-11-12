@@ -25,6 +25,19 @@ class Login_model extends CI_Model {
        
        
     }
+    
+    public function create_account($post){
+    
+     $data = array(
+               'first_name' => $post['first_name'] ,
+               'last_name' => $post['last_name'] ,
+               'mail' => $post['mail'],
+                'password' => $post['password']
+              
+        );
+
+        $this->db->insert('users', $data); 
+    }
 
 }
 ?>

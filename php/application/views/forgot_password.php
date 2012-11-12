@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<div data-role="page" id="contacts_detail">
-    <div data-theme="a" data-role="header">
+<div data-role="page" id="contacts_detail" data-ajax="false">
+    <div data-theme="a" data-role="header" data-ajax="false">
         <a data-role="button" href="<?=base_url()?>" data-icon="arrow-l" data-iconpos="left"
-        class="ui-btn-left">
+        class="ui-btn-left" data-ajax="false">
             Back
         </a>
         <div style="text-align: center; margin-top: 5px;">
@@ -20,40 +20,83 @@
 		</div>
     </div>
    
-    <div data-role="content">
-     
+    <div data-role="content" data-ajax="false">
+      <form action="" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Forgot your password?</li>
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
-					<label for="textinput12">  </label> <input name=""
-						id="textinput12" placeholder="E-Mail" value="" type="text">
+					<label for="textinput12">  </label> <input name="mail"
+						id="mail" placeholder="E-Mail" value="" type="text">
 				</fieldset>
 			</li>
 
 			
 		</ul><br />
-				<a data-role="button" data-transition="fade" href="#complete"
+		</form>
+		
+		
+		<script type="text/javascript">
+		
+	function popup() {
+	
+	 var x=document.forms["app"]["mail"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
+           
+        }else {
+     
+       
+       
+        $( "#complete" ).popup( "open" );
+        }
+     
+        
+    }
+</script>
+		
+		
+				<a data-role="button" data-transition="fade" onclick="popup();"
 			data-rel="dialog">Send me a new password!</a>
 
     </div>
+    
+   <!-- Pop-up Begin -->
+		<div data-role="popup" id="complete" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Appoint.ee
+			</div>
+			<p>
+				<b>We have sent you a new password!</b>
+			</p>
+			<p>
+				<a href="<?=base_url().'/login'?>" data-role="button" >OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
+		
+		 <!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>Email cannot be empty!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
    
  
 </div>
 
-  <!-- Complete popup -->
-<div data-role="page" id="complete" >
-    <div data-theme="a" data-role="header">
-		<h3>
-           Appoint.ee
-        </h3>
-    </div>
-	<div data-role="content" style="padding: 15px">
-		<h3>We have sent you a new password! </h3>
-        <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>">
-            Close
-        </a>
-	</div>
+ 
 
 
 

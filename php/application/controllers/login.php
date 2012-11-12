@@ -42,4 +42,13 @@ class Login extends CI_Controller {
 	 { 
 	   	$this->load->view('forgot_password');
 	 }    
+	 
+	  public function create_account()
+	 { 
+	 
+	   $post=$this->input->post();
+	   $this->Login_model->create_account($post);
+	   
+	   	$this->load->view('account_created');
+	 }
 }

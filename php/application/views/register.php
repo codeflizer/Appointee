@@ -19,8 +19,11 @@
 			<img src="<?=base_url() ?>asset/images/Logo_small.png">
 		</div>
     </div>
-    <?php echo form_open('login/create_account') ?>
+    
+   
     <div data-role="content">
+    
+     <form action="<?=base_url()?>login/create_account" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">Sign up</li>
 			<li data-theme="c">
@@ -86,8 +89,8 @@
 				<fieldset data-role="controlgroup">
 					<label for="password"> </label> <?php 
 					$data = array(
-                          'name'        => 'password',
-                          'id'          => 'password',
+                          'name'        => 'password2',
+                          'id'          => 'password2',
                           'maxlength'   => '30',
                           'placeholder' => 'Confirm Password'
                     );
@@ -97,18 +100,76 @@
 				</fieldset>
 			</li>	
 		</ul><br />
-						<fieldset data-role="controlgroup">
+		
+		
+		<script type="text/javascript">
+		
+		function formsubmit(form){
+		form.submit();
+		}
+		
+	function formvalidation(form) {
+     
+       
+        var x=document.forms["app"]["first_name"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var y=document.forms["app"]["last_name"].value;
+        if (y==null || y.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        
+        var y=document.forms["app"]["mail"].value;
+        if (y==null || y.trim()==""||y.length<6) {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        
+        
+         var y=document.forms["app"]["checkbox-1"].checked;
+        if (!y) {
+        $( "#formValidation3" ).popup( "open" );
+            return false;
+        }
+        
+         var x=document.forms["app"]["password"].value;
+        if (x==null || x.trim()==""||x.length<6) {
+           $( "#formValidation2" ).popup( "open" );
+            return false;
+        }
+        var y=document.forms["app"]["password2"].value;
+        if (y==null || y.trim()==""||y.length<6) {
+        $( "#formValidation2" ).popup( "open" );
+            return false;
+        }
+        
+        if(x!=y){
+         $( "#formValidation2" ).popup( "open" );
+            return false;
+        }else {
+        form.submit();
+        }
+        
+    }
+</script>
+		
+		
+			
+		
+							<fieldset data-role="controlgroup">
 					<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-<label for="checkbox-1">I agree with the <a href="<?=base_url().'login'?>">Terms of Use</a></label>
+<label for="checkbox-1">I agree with the <a href="">Terms of Use</a></label>
 				</fieldset><br />
-				
-    </div>
-    </form>
-    <!--<?php echo form_submit('Sign up for Appoint.ee','Sign up for Appoint.ee'); ?>-->
-    <a data-role="button" data-transition="fade" href="#popupBasic" 
-			 data-position-to="window" data-rel="popup">Sign up for Appoint.ee</a>
+				 <input type="submit" name ="Sign up for Appoint.ee" value="Sign up for Appoint.ee" onclick="formvalidation('app');return false;">
 	
-		<!-- Pop-up Begin -->
+		 </form>		
+    </div>
+   
+   
+  	<!-- Pop-up Begin -->
 		<div data-role="popup" id="popupBasic" 
 			data-dismissable="false" class="appointee_popup"
 			data-overlay-theme="a">
@@ -119,10 +180,59 @@
 				You will receive an email to confirm your e-mail-address. After that you can use Appoint.ee.
 			</p>
 			<p>
-				<a href="<?=base_url().'login'?>" data-role="button">Close</a>
+				<!--a href="<?=base_url().'login'?>" data-role="button">Close</a-->
+				<a  data-role="button">Close</a>
 			</p>
 		</div>
 		<!-- Pop-up End -->	
+		
+		<!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>First Name and Last Name cannot be empty or Email invalid!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
+		
+		<!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation2" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p>
+				<b>Password too short or fields do not match!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
+		
+		<!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation3" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Terms & Conditions
+			</div>
+			<p>
+				<b>Please agree to our Terms and Conditions!</b>
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
+		<!-- Pop-up End -->
 </div>
 
 </body>

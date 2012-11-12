@@ -49,12 +49,12 @@
      
        
         var x=document.forms["app"]["password"].value;
-        if (x==null || x.trim()=="") {
+        if (x==null || x.trim()==""||x.length<6) {
            $( "#formValidation" ).popup( "open" );
             return false;
         }
         var y=document.forms["app"]["password2"].value;
-        if (y==null || y.trim()=="") {
+        if (y==null || y.trim()==""||y.length<6) {
         $( "#formValidation" ).popup( "open" );
             return false;
         }
@@ -96,7 +96,7 @@
 				Form Validation
 			</div>
 			<p>
-				<b>Confirm Password is not equal to New Password.</b>
+				<b>Passwords too short or do not match!</b>
 			</p>
 			<p>
 				<a href="#" data-role="button" data-rel="back">OK</a>
