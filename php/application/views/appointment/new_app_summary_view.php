@@ -76,8 +76,9 @@
 			 
 			<li data-theme="c" data-icon="appointee-edit">
 			    <a href="<?=base_url().'app/editslot/'.$counter?>"> 
-			       <h3><small><?php echo $slot['startdate']?> </small></h3>
-			       <br />  <p><strong> <?php echo $slot['starttime'].' - '.$slot['endtime']?> </strong></p>
+			      <h3><strong><?php echo $slot['startdate']?> </strong></h3>
+			       <p><?php if (isset($slot['location']))echo $slot['location']?> </p>
+			       <br />  <p> <?php echo $slot['starttime'].' - '.$slot['endtime']?></p>
 			     </a>
 			</li>
 	        <?php } ?>

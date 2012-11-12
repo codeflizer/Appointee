@@ -13,6 +13,26 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
+	
+	<script type="text/javascript">
+		
+	function formvalidation(form) {
+       
+        var x=document.forms["app"]["startdate"].value;
+        if (x==null || x.trim()=="") {
+           $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+        var x=document.forms["app"]["starttime"].value;
+        if (x==null || x.trim()=="") {
+        $( "#formValidation" ).popup( "open" );
+            return false;
+        }
+       
+        form.submit();
+        
+    }
+</script>
 
 </head>
 <body>
@@ -33,10 +53,10 @@
     </div>
    
 	<div data-role="content" style="padding: 15px">
-    <?php echo form_open('app/new_slot') ?>
+	<form action="<?=base_url()?>app/new_slot" name="app" method="post" accept-charset="utf-8">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
-				1. Timeslot
+				New Timeslot
 			</li>
 			<li data-theme="c">
 				<h3>Start</h3>
@@ -77,7 +97,7 @@
 				
 				<!-- autocomplete begin -->
 				<ul id="suggestions" data-role="listview" data-inset="true"></ul>
-				<script>
+				<script type="text/javascript">
 					$("#new_app_2").bind("pageshow", function(e) {
 
 						var availableTags = ['SMU', 'Sportscomplex Redhill', 'Ristorante Olio', 'Starbucks Venice Hall', 'SMU Library', 'Raffles Place', 'The Lighthouse'];
@@ -101,13 +121,20 @@
 			</li>
 				
 		</ul><br />
-        <?php echo form_submit('next','Add & Next Slot'); ?>
-        <?php echo form_submit('finish','Add & Finish'); ?>
+		
+		
+		
+		
+		
+		<input type="submit" name="next" value="Add & Next Slot" onclick="formvalidation('app');return false;" data-ajax="false"/>
+		<input type="submit" name="finish" value ="Add & Finish" onclick="formvalidation('app');return false;" data-ajax="false"/>
          
         <?php
           $ci =& get_instance();
+          
           $slots_available = $ci->session->userdata('slots');
-          if($slots_available)  {?> 
+        
+          if($slots_available)  { ?> 
           
           
           <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >
@@ -131,7 +158,24 @@
 				<a href="#" data-role="button" data-rel="back">No</a>
 			</p>
 		</div>
+		<!-- Pop-up End -->	<!-- Pop-up Begin -->
+		<div data-role="popup" id="formValidation" 
+			data-dismissable="false" class="appointee_popup"
+			data-overlay-theme="a">
+			<div data-theme="e" data-role="header" class="dialog_header">
+				Form Validation
+			</div>
+			<p align="center">
+				<b>Please fill in at least Start Date and Time. </b> <br/> 
+				If you do not fill in the End Date and Time, <br/> they will be calculated based on the previously provided duration.
+			</p>
+			<p>
+				<a href="#" data-role="button" data-rel="back">OK</a>
+			</p>
+		</div>
 		<!-- Pop-up End -->
+		
+		
 	
 </div>
 </body>

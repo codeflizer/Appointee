@@ -53,24 +53,11 @@ class App extends CI_Controller {
 		//error_log($data['participants'][0]);
 		//error_log($data['participants'][2]);
 
-		//validate data
-		$this->form_validation->set_rules('title', 'Title', 'trim|required');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required');
-	
-	    
-
-		if ($this->form_validation->run() == FALSE )
-		{
 		
-		    $data = $this->input->post();
-			$this->load->view('appointment/edit_app_view',$data);
-		}
-		else
-		{
 		$this->session->set_userdata($app);
 		 $data =  $this->session->all_userdata();
 		$this->load->view('appointment/new_app_summary_view',$data);  
-		}  
+		 
    }
    
    public function slot(){ 
@@ -82,29 +69,10 @@ class App extends CI_Controller {
 			'participants' => $data['participants']
 		);
 		
-		//error_log($data['title']);
-		//error_log($data['description']);
-		//error_log($data['participants'][1]);
-		//error_log($data['participants'][0]);
-		//error_log($data['participants'][2]);
-
-		//validate data
-		$this->form_validation->set_rules('title', 'Title', 'trim|required');
-		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 	
-	    
-
-		if ($this->form_validation->run() == FALSE )
-		{
-		
-		    $data = $this->input->post();
-			$this->load->view('appointment/new_app_view',$data);
-		}
-		else
-		{
 		$this->session->set_userdata($app);
 		$this->load->view('appointment/new_slot_view');  
-		}
+		
    }
    
    public function slot2(){
@@ -123,9 +91,7 @@ class App extends CI_Controller {
 			'location' => $data['location']
 		);
 		
-		if(isset($data['allday'])){
-			$slot['allday']=TRUE;
-		}
+	
 		
 		//validate data
 		$this->form_validation->set_rules('startdate', 'Start Day', 'trim|required');
@@ -201,30 +167,35 @@ class App extends CI_Controller {
     public function save_edit(){
     
     $data = $this->input->post();
+	$slots=$this->session->userdata('slots');
 	
+	if (isset($_POST['delete'])){
+	    $new_slots=array();
+	    $counter=0;
+	    for($i=0; $i<sizeof($slots); $i=$i+1){
+	        if($i!=$data['id']){
+	          $new_slots[$counter]=$slots[$i];
+	          $counter=$counter+1;  
+	        }
+	    }
+	       
+	         $this->session->unset_userdata('slots');
+		    $this->session->set_userdata('slots', $new_slots);
+	         $data =  $this->session->all_userdata();
+		    $this->load->view('appointment/new_app_summary_view',$data);
+	
+	} else {
+        
+        
         $slot = array (
 			'startdate' => $data['startdate'],
 			'starttime' => $data['starttime'],
 			'enddate' => $data['enddate'],
+			'location' => $data['location'],
 			'endtime' => $data['endtime']
 		);
 		
-		if(isset($data['allday'])){
-			$slot['allday']=TRUE;
-		}
 		
-		//validate data
-		$this->form_validation->set_rules('startdate', 'Day', 'trim|required');
-		$this->form_validation->set_rules('starttime', 'Time', 'trim|required');
-
-		if ($this->form_validation->run() == FALSE)
-		{
-		
-		    $data = $this->input->post();
-			$this->load->view('appointment/edit_slot_view',$data);
-		}
-		else
-		{
 		   $slots[$data['id']]=$slot;
 
 		    $this->session->unset_userdata('slots');
@@ -232,9 +203,9 @@ class App extends CI_Controller {
 		    $data =  $this->session->all_userdata();
 		    $this->load->view('appointment/new_app_summary_view',$data);
 		
-	
+	    }
 		
-		}
+		
    }
    
 }

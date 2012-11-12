@@ -31,11 +31,12 @@
     <?php echo form_open('app/save_edit') ?>
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
-				1. Timeslot
+				New Timeslot
 			</li>
 			
 			<li data-theme="c">
 				<h3>Start</h3>
+				<input name="id" id="id" value="<?=$id?>" type="hidden"/>
 				<label for="startdate"></label>
 				<input name="startdate" id="startdate" type="text" data-role="datebox" 
 				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}' placeholder="Start Date" value="<?php if(isset($startdate))echo $startdate; ?>"/>
@@ -97,10 +98,19 @@
 				
 		</ul><br />
         <?php echo form_submit('save','Save'); ?>
+        <?php 
+        //last slot cannot be deleted
+        $ci =& get_instance();
+       $size= $ci->session->userdata('slots');
+        if(sizeof($size)>1){
+        
+        echo form_submit('delete','Delete Slot'); 
+        }
+        ?>
          
     
           <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >
-			Discard</a> 
+			Discard Changes</a> 
 	
     </form>         
 	</div>
