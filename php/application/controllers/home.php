@@ -144,7 +144,7 @@ class Home extends CI_Controller {
     $this->App_model->cancel($aid);
      
      $this->index();         
-    //}
+    }
   }
   
   public function send_reply_single()
