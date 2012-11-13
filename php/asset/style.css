@@ -79,4 +79,25 @@ a p { margin-bottom:0px ! important;}
 	min-height: 21px;
 	padding-left: 64px;
 	padding-top: 17px;
+}	
+	.appointee-date .ui-li-aside{
+	width: 25% ! important;
 }
+.appointee-date h3.ui-li-heading {
+	margin: 0 0 7px 0 ! important;
+}
+ 
+.appointee-date {
+	padding: 10px 15px 10px 15px  ! important;
+}
+ 
+.appointee-date .ack{
+	padding: 0 ! important;
+	margin: 0 ! important;
+}
+
+.request_sent_div {
+	width: 300px ! important;
+
+}
+
