@@ -52,11 +52,11 @@ if ( ! function_exists('includeCss'))
     function getParticipants($aid, $userid){
     $ci =& get_instance();
                                                 
-    $query ='SELECT u.first_name, u.last_name 
+    $query ='SELECT u.first_name, u.last_name, u.uid 
             FROM  users u, participants p
             WHERE p.aid='.$aid.'
             AND p.uid = u.uid
-            AND p.uid<>'.$userid.'';
+           ';
     $participants = $ci->db->query($query  );
                                                 
                                       
@@ -73,7 +73,8 @@ if ( ! function_exists('includeCss'))
        function get_days_remaining($time){
       $now = new DateTime();
       $div = $time->diff($now);
-      return $div->d;
+      $years=$div->y;
+      return $div->d+$years*365;
       }
       
         function get_hours_remaining($time){
@@ -81,6 +82,20 @@ if ( ! function_exists('includeCss'))
       $div = $time->diff($now);
       return $div->h;
       }
+      
+      function rejected($aid, $uid){
+        $ci =& get_instance();
+    
+       $query = $ci->db->query('SELECT p.status
+                                FROM participants p
+                                WHERE p.aid='.$aid.'
+                                AND p.uid='.$uid );
+                                
+        
+         $row= $query->row(0);                              
+        $status = $row->status;
+        return $status==2;
+    }
       
     
     

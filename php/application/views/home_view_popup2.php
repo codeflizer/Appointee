@@ -52,18 +52,44 @@
 						</i>
 						<i>
 						 <?php
+        date_default_timezone_set('GMT');
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						if(!empty($participants)){
-						        echo 'with ';
-						        }
+						        
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						        // error_log(getName($participant['uid']));
+						            if(!rejected($request['aid'], $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
-						    ?> 
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($request['aid'], $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						      ?>   
 						    </i> 
 					</p>
 			    </a>
@@ -86,18 +112,44 @@
 						<?php echo $request['description']; ?> <br />
 						<i>
 						    <?php
+        date_default_timezone_set('GMT');
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						if(!empty($participants)){
-						        echo 'with ';
-						        }
+						        
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						        // error_log(getName($participant['uid']));
+						            if(!rejected($request['aid'], $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
-						    ?>  
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($request['aid'], $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						      ?>   
 						      
 					    </i>
 					</p>
@@ -122,18 +174,44 @@
 						</i>
 						 <i>
 						    <?php
+        date_default_timezone_set('GMT');
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						if(!empty($participants)){
-						        echo 'with ';
-						        }
+						        
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						        // error_log(getName($participant['uid']));
+						            if(!rejected($request['aid'], $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
-						    ?>  
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($request['aid'], $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						      ?>   
 						      
 					    </i>
 					   </p>

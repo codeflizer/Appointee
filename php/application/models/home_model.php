@@ -16,7 +16,7 @@ class Home_model extends CI_Model {
  
       
       //retrieve Appointment Requests
-      $appointmentRequests = $this->db->query(  'SELECT a.aid, title, description, author, p.read 
+      $appointmentRequests = $this->db->query(  'SELECT DISTINCT a.aid, title, description, author, p.read 
                                                 FROM appointments a, participants p 
                                                 WHERE a.aid=p.aid AND a.author<>'.$userid.' 
                                                 AND p.uid='.$userid.'
@@ -30,7 +30,7 @@ class Home_model extends CI_Model {
       
        
        //retrieve Open Requests
-      $openRequests = $this->db->query(         'SELECT a.aid, title, description, author 
+      $openRequests = $this->db->query(         'SELECT DISTINCT a.aid, title, description, author 
                                                 FROM appointments a, participants p
                                                 WHERE (a.author='.$userid. '
                                                 AND a.status=1)
@@ -54,6 +54,7 @@ class Home_model extends CI_Model {
                                                 OR (a.aid=p.aid
                                                 AND p.uid='.$userid.'
                                                 AND a.status=0
+                                                AND p.status<>2
                                                 AND a.tid=t.tid
                                                 AND (t.end_time > now()))                
                                         ');
@@ -194,7 +195,26 @@ class Home_model extends CI_Model {
         $query ='SELECT * 
                 FROM  participants p, appointments a
                 WHERE p.aid='.$aid.'
-                AND a.aid = '.$aid;
+                AND a.aid = '.$aid.'
+                AND p.status <> 2';
+                
+        $participants = $this->db->query($query);
+                                                    
+                                          
+                                                    
+        $participants = $participants->result_array();
+        return sizeof($participants); 
+    }
+    
+     function number_participants_not_rejected($aid){
+  
+                                                    
+        $query ='SELECT * 
+                FROM  participants p, appointments a
+                WHERE p.aid='.$aid.'
+                AND a.aid = '.$aid.'
+                AND p.status <> 2';
+                
         $participants = $this->db->query($query);
                                                     
                                           
@@ -234,14 +254,16 @@ class Home_model extends CI_Model {
     
     }
     
-    public function set_replied($aid, $uid){
+    public function set_replied($aid, $uid, $status){
     
     
        $query = $this->db->query('UPDATE participants p 
-                                SET status=3    
+                                SET status='.$status.'    
                                 WHERE p.aid='.$aid.'
                                 AND p.uid='.$uid );
     }
+    
+    
 
 
 }

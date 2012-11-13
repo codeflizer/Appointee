@@ -45,20 +45,45 @@
 						<?php if ($appointment['author']!=$userid) {?>from <i><?php echo getName($appointment['author']) ?> 
 						</i><?php }?>
 						 <i>
-						 <?php
-						    
+						  <?php
+        date_default_timezone_set('GMT');
+						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($appointment['aid'], $userid);
-						
-						 if(!empty($participants)){
-						        echo 'with ';
-						        }
+						        
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						        // error_log(getName($participant['uid']));
+						            if(!rejected($appointment['aid'], $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
-						    ?> 
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($appointment['aid'], $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						      ?>   
 						    </i> 
 					</p>
 			    </a>

@@ -46,13 +46,37 @@
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($appinfo->aid, $userid);
 						        
-						 if(!empty($participants)){
-						        echo 'with ';
-						        }
-						
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						         error_log(getName($participant['uid']));
+						            if(!rejected($appinfo->aid, $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($appinfo->aid, $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						        
 						    ?>  
 				
 				</i></p>

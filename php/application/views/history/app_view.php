@@ -40,22 +40,51 @@
 				if($userid==$appinfo->author){
 				    echo 'me';
 				} else {
-				echo getName($appinfo->author)} ?> 
+				echo getName($appinfo->author);} ?> 
 						</b></i><br /> 
+			
+				
+				
+				
 				<?php
-						  date_default_timezone_set('GMT');
+        date_default_timezone_set('GMT');
+						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
-					
-						        $participants=getParticipants($aid, $userid);
-						         if(!empty($participants)){
-						        echo 'with ';
-						        }
-						
+						        $participants=getParticipants($appinfo->aid, $userid);
+						        
+						        $first=true;
+						        $rejected=false;
 						        foreach ($participants as $participant){
+						        // error_log(getName($participant['uid']));
+						            if(!rejected($appinfo->aid, $participant['uid'])){
+						                if($first){
+						                echo 'with ';
+						                $first=false;
+						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						              }
+						              else {
+						              $rejected=true;
+						              }
 						        }
+						        if($rejected){
+						            echo ' rejected by ';
+					                foreach ($participants as $participant){
+					                
+					                    if(rejected($appinfo->aid, $participant['uid'])){
+					                     
+					                      if($participant['uid']==$userid){
+					                        echo 'me, ';
+					                      }else {
+					                        echo $participant['first_name'].' '.$participant['last_name'].', ';
+					                      }
+					                   }
+					                }
+						        }
+						        
+						        
 						    ?>  
 				</i>
 				</p>

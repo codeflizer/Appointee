@@ -113,17 +113,25 @@ class Home extends CI_Controller {
   {
     $post=$this->input->post();
     $aid=$post['aid'];
-    $number_participants=$this->Home_model->number_participants($aid);
+  $number_participants=$this->Home_model->number_participants($aid);
     $number_replies=$this->Home_model->number_replies($aid);
-    $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
-     //update replies
+    //update replies
     $this->Home_model->set_replies($aid, $number_replies+1);
-    //update participance
      $userid = $this->session->userdata('userid');
-     $this->Home_model->set_replied($aid, $userid);
-    
-
-    //update timeslot ack
+     
+   
+   //if rejected
+   if (isset($_POST['reject'])){
+    //update participance
+     $this->Home_model->set_replied($aid, $userid,2); 
+     
+   } else { 
+    //update participance
+     $this->Home_model->set_replied($aid, $userid,3);
+   
+    //update timeslot ack 
+    $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
+   
     foreach($timeslots as $timeslot){
         $tid=$timeslot['tid'];
         if(isset($post[$tid])){
@@ -131,12 +139,15 @@ class Home extends CI_Controller {
         }
     }
     
-   
+   }
     $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
+    $number_participants_not_rejected=$this->Home_model->number_participants_not_rejected($aid);
     $found=false;
+    error_log('$number_replies+1v'.$number_replies+1 );
+    error_log('$number_part '.$number_participants );
     if($number_replies+1==$number_participants){
         foreach ($timeslots as $timeslot){
-            if($timeslot['number_of_ack']==$number_participants){
+            if($timeslot['number_of_ack']==$number_participants_not_rejected){
                 $found=true;
                  $this->Home_model->set_timeslot($aid,$timeslot['tid']);
                  $this->Home_model->set_scheduled($aid);
@@ -145,10 +156,12 @@ class Home extends CI_Controller {
             }
         }
         if(!$found){
+        $this->load->model('App_model');
          $this->App_model->cancel($aid);  
         } 
             
     }
+    
      $this->index();
   }
   
