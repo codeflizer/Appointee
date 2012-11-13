@@ -179,9 +179,52 @@ class Home_model extends CI_Model {
    
    
    }
+   
+    function number_participants($aid){
+  
+                                                    
+        $query ='SELECT * 
+                FROM  participants p, appointments a
+                WHERE p.aid='.$aid.'
+                AND a.aid = '.$aid;
+        $participants = $this->db->query($query);
+                                                    
+                                          
+                                                    
+        $participants = $participants->result_array();
+        return sizeof($participants); 
+    }
+      
+    public function number_replies($aid){
+                                                 
+        $query ='SELECT a.replies
+                FROM  appointments a
+                WHERE a.aid = '.$aid;
+        $replies = $this->db->query($query);  
+         $row= $replies->row(0);                              
+        $number = $row->replies;
+        return $number; 
+      }
     
     
-
+   public function set_replies($aid, $replies){
+    
+    
+        $data = array(
+               'replies' => $replies
+            );
+            $this->db->where('aid', $aid);
+            $this->db->update('appointments', $data); 
+    }
+    
+    public function increase_ack_for($tid){
+    
+    $this->db->where('tid', $tid);
+    $this->db->set('number_of_ack', 'number_of_ack+1', FALSE);
+    $this->db->update('timeslots');
+    
+    
+    }
 
 
 }

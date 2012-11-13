@@ -68,6 +68,8 @@ if ( ! function_exists('includeCss'))
       
       }
       
+     
+      
        function get_days_remaining($time){
       $now = new DateTime();
       $div = $time->diff($now);

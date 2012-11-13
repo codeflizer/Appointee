@@ -83,8 +83,8 @@
         
         <?php 
 					$data = array(
-              'name'        => 'selected'.$timeslot['tid'],
-              'id'          => 'selected'.$timeslot['tid'],
+              'name'        => $timeslot['tid'],
+              'id'          => $timeslot['tid'],
               'value'       => 'accept',
               'checked'     => TRUE,
               'style'       => 'margin:10px',

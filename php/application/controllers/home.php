@@ -111,15 +111,40 @@ class Home extends CI_Controller {
   
   public function send_reply()
   {
- 
-    // $data=$this->input->post('selected14');
-    
     $post=$this->input->post();
-    $this->Home_model->set_scheduled($post['aid']);
+    $aid=$post['aid'];
+    $number_participants=$this->Home_model->number_participants($aid);
+    $number_replies=$this->Home_model->number_replies($aid);
+    $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
+     //update replies
+    $this->Home_model->set_replies($aid, $number_replies+1);
     
+
+    //update timeslot ack
+    foreach($timeslots as $timeslot){
+        $tid=$timeslot['tid'];
+        if($post[$tid]=="accept"){
+            $this->Home_model->increase_ack_for($tid);
+        }
+    }
     
-     $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
-      $this->load->view('/home_view',$data);
+   
+    $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
+    
+    if($number_replies+1==$number_participants){
+        foreach ($timeslots as $timeslot){
+            if($timeslot['number_of_ack']==$number_participants){
+                 $this->Home_model->set_timeslot($aid,$timeslot['tid']);
+                 $this->Home_model->set_scheduled($aid);
+                  $this->index();
+                return;
+            }
+        }
+
+    $this->App_model->cancel($aid);
+     
+     $this->index();         
+    //}
   }
   
   public function send_reply_single()
