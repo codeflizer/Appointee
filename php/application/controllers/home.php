@@ -126,17 +126,24 @@ class Home extends CI_Controller {
      $this->Home_model->set_replied($aid, $userid,2); 
      
    } else { 
-    //update participance
-     $this->Home_model->set_replied($aid, $userid,3);
+    
+    
    
     //update timeslot ack 
     $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
-   
+   $replied=false;
     foreach($timeslots as $timeslot){
         $tid=$timeslot['tid'];
         if(isset($post[$tid])){
+            $replied=true;
             $this->Home_model->increase_ack_for($tid);
         }
+    }
+    //did check one slot
+    if($replied){
+        $this->Home_model->set_replied($aid, $userid,3);
+    } else {
+    $this->Home_model->set_replied($aid, $userid,2);
     }
     
    }

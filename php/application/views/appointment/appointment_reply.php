@@ -123,6 +123,7 @@
         <?php }
         echo form_submit('Submit','Submit'); 
         echo form_submit('reject','Reject'); ?>
+        
         </ul>
 	</div>
   </form>
