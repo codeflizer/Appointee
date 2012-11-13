@@ -15,7 +15,19 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
     <script type="text/javascript" src="<?=base_url()?>asset/autosuggest/jquery.tokeninput.js"></script>
 	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
-     
+     	<style>
+	   
+	    .ui-icon-datebox { 
+	        background-image: none ! important;
+	        
+        }
+       
+        .ui-input-datebox  a{
+        display: none ! important; 
+            width: 0 ! important;
+             height: 0 ! important; 
+        }
+ </style>
    
    	
 

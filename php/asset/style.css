@@ -101,3 +101,24 @@ a p { margin-bottom:0px ! important;}
 
 }
 
+.appointee-collapse .ui-btn-inner{
+    padding: .3em 40px ! important;
+   
+} 
+
+   .ui-icon-datebox { 
+	        background-image: none ! important;
+	        
+        }
+       
+        .ui-input-datebox  a{
+        display: none ! important; 
+            width: 0 ! important;
+             height: 0 ! important; 
+        }
+
+
+
+
+
+

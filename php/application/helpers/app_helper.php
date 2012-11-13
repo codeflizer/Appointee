@@ -14,7 +14,6 @@ if ( ! function_exists('includeCss'))
 	<script src="'.base_url().'asset/jquery/jquery-1.7.1.min.js"></script>
 	<script src="'.base_url().'asset/jquery/jquery.mobile-1.2.0.js"></script>
 	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
-	
 	';
 	
 	
@@ -67,6 +66,18 @@ if ( ! function_exists('includeCss'))
      
         
       
+      }
+      
+       function get_days_remaining($time){
+      $now = new DateTime();
+      $div = $time->diff($now);
+      return $div->d;
+      }
+      
+        function get_hours_remaining($time){
+      $now = new DateTime();
+      $div = $time->diff($now);
+      return $div->h;
       }
       
     

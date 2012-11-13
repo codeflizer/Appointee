@@ -4,7 +4,7 @@
 class App_model extends CI_Model { 
 
 	public function create_appointment($data){
-	date_default_timezone_set('UTC');
+	 date_default_timezone_set('GMT');
     
         $title=$data['title'];
         $description=$data['description'];

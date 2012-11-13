@@ -69,7 +69,7 @@
 			 $counter =-1;
 			
 			 foreach ($slots as $slot) { $counter++; 
-			 date_default_timezone_set('UTC');
+			 date_default_timezone_set('GMT');
 			 
 			 
 			  $first_date = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);

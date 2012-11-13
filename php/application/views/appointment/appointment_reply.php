@@ -36,7 +36,7 @@
 				
 				<br /> 
 				<?php
-        date_default_timezone_set('UTC');
+        date_default_timezone_set('GMT');
 						
 						
 						         $ci =& get_instance();
@@ -58,7 +58,7 @@
 			<input type="hidden" name="aid" value="<?=$appinfo->aid?>">
       
       <?php 
-      	date_default_timezone_set('UTC');
+       date_default_timezone_set('GMT');
       foreach($timeslots as $timeslot) { 
        
       $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']);
@@ -77,7 +77,7 @@
 			      <?php if (isset($timeslot['location']))
 			      echo $timeslot['location']?>
 			      </p>    
-			<p class="ui-li-aside">in <strong>2</strong> days</p>
+			<p class="ui-li-aside">in <strong><?=get_days_remaining($starttime);?></strong> days <strong><?=get_hours_remaining($starttime);?></strong> hours </p>
 			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
 				<div class="slot_toggle">
         

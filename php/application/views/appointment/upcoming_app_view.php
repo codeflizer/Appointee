@@ -32,7 +32,7 @@
 				from <i><b><?php echo getName($appinfo->author) ?> 
 						</b></i><br /> 
 				<?php
-        date_default_timezone_set('UTC');
+        date_default_timezone_set('GMT');
 						
 						
 						         $ci =& get_instance();
@@ -73,7 +73,7 @@
 			      <?php if (isset($timeslot['location']))
 			      echo $timeslot['location']?>
 			      </p>    
-			<p class="ui-li-aside">in <strong>2</strong> days</p>
+			<p class="ui-li-aside">in <strong><?=get_days_remaining($starttime);?></strong> days <strong><?=get_hours_remaining($starttime);?></strong> hours </p>
 			<?php 
 			if(!empty($participants)){
 			echo '<p align=right>'.$timeslot['number_of_ack'].' Acknowledgements </p>'; 

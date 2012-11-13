@@ -15,6 +15,31 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
     <script type="text/javascript" src="<?=base_url()?>asset/autosuggest/jquery.tokeninput.js"></script>
 	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
+	
+		<style>
+	   
+	    .ui-icon-datebox { 
+	        background-image: none ! important;
+	        
+        }
+       
+        .ui-input-datebox  a{
+        display: none ! important; 
+            width: 0 ! important;
+             height: 0 ! important; 
+        }
+ </style>
+	
+	<style>
+	
+	.ui-block-a, .ui-block-d  { 
+		display:none;
+}
+.ui-grid-b > :nth-child(n), .ui-grid-c > :nth-child(n) {
+		width: 50%;
+}
+	
+	</style>
   
 </head>
 <body>
@@ -37,7 +62,7 @@
         </a>
     </div>
 	<div data-role="content" style="padding: 15px">
-	<form action="<?=base_url()?>app/slot" name="app" method="post" accept-charset="utf-8">	
+	<form action="<?=base_url()?>app/slot" name="app" method="post" accept-charset="utf-8" data-ajax="false">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 			Participants
@@ -288,7 +313,7 @@
         
     }
 </script>
-		<input type="submit" value="Next" onclick="formvalidation('app');return false;" />
+		<input type="submit" value="Next" onclick="formvalidation('app');return false;" data-ajax="false"/>
 		</form>	
 		
 	</div>

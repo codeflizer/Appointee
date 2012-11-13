@@ -14,6 +14,21 @@
 	<script type="text/javascript" src="<?=base_url()?>asset/datebox/jqm-datebox-1.1.0.mode.durationbox.js"></script>
 	<script src="<?=base_url()?>asset/autocomplete/jqm.autoComplete-1.4.3-min.js"></script>
 	
+	<style>
+	   
+	    .ui-icon-datebox { 
+	        background-image: none ! important;
+	        
+        }
+       
+        .ui-input-datebox  a{
+        display: none ! important; 
+            width: 0 ! important;
+             height: 0 ! important; 
+        }
+ </style>
+	
+	
 	<script type="text/javascript">
 		
 	function formvalidation(form) {
@@ -68,8 +83,12 @@
 				<input name="starttime" id="starttime" type="text" data-role="datebox" 
 				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="Start Time"/>
 			</li>
+			</ul>
+			<div class="appointee-collapse" style="margin:15px 0;" data-theme="d" data-role="collapsible" data-inset="false">
+            <h4 ><small>End (optional)</small></h4>
+            <ul data-role="listview">
 			<li data-theme="c">
-				<h3>End</h3>
+				
 				<label for="enddate"></label>
 				<input name="enddate" id="enddate" type="text" data-role="datebox" 
 				data-options='{"mode":"datebox", "useNewStyle":true, "useFocus": true}' placeholder="End Date"/>
@@ -78,7 +97,10 @@
 				<input name="endtime" id="endtime" type="text" data-role="datebox" 
 				data-options='{"mode": "timebox", "overrideTimeFormat": 24, "useFocus": true}' placeholder="End Time"/>
 			</li>
+			</ul>
+			</div>
 			
+			<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-theme="c">
 				<fieldset data-role="controlgroup">
 				<label for="participants">
