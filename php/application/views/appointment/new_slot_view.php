@@ -53,7 +53,7 @@
     </div>
    
 	<div data-role="content" style="padding: 15px">
-	<form action="<?=base_url()?>app/new_slot" name="app" method="post" accept-charset="utf-8">	
+	<form action="<?=base_url()?>app/new_slot" name="app" method="post" accept-charset="utf-8" data-ajax="false">	
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 				New Timeslot
@@ -90,6 +90,7 @@
                           'id'          => 'location',
                           'placeholder' => 'Location',
                            'maxlength'   => '30',
+                           'autocomplete' => 'off'
                     );
 					
 					echo form_input($data);

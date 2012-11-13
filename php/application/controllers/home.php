@@ -69,19 +69,44 @@ class Home extends CI_Controller {
     
   }
   
+    public function upcoming($id){
+    
+    //load detail information about appointment from database
+    $appinfo = $this->Home_model->get_appointment_data($id);
+    $timeslot = $this->Home_model->get_timeslot($id);
+    $data = array (
+          'appinfo' =>  $appinfo,
+          'timeslot' =>  $timeslot
+    );
+    
+    
+                                        
+    $this->load->view('appointment/upcoming_app_view', $data);
+    
+  }
+  
   //function that loads reply view for an appointment
   public function reply($id)
   {
       //load detail information about appointment from database
     $appinfo = $this->Home_model->get_appointment_data($id);
-    $timeslots = $this->Home_model->get_timeslots_for_appointment($id);
+     $timeslots = $this->Home_model->get_timeslots_for_appointment($id);
     $data = array (
           'appinfo' =>  $appinfo,
           'timeslots' =>  $timeslots
     );
+    $userid=$this->session->userdata('userid');
+   $participants=getParticipants($appinfo->aid, $userid);
+    if(empty($participants)){
+     $this->load->view('appointment/appointment_reply_single', $data);
+     }else {
+        $this->load->view('appointment/appointment_reply', $data);
+     }
+						        
+   
     
 
-    $this->load->view('appointment/appointment_reply', $data);
+    
   }
   
   public function send_reply()
@@ -91,6 +116,20 @@ class Home extends CI_Controller {
     
     $post=$this->input->post();
     $this->Home_model->set_scheduled($post['aid']);
+    
+    
+     $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
+      $this->load->view('/home_view',$data);
+  }
+  
+  public function send_reply_single()
+  {
+  
+  $tid=$this->input->post('timeslots');
+    $aid=$this->input->post('aid');
+    
+    $this->Home_model->set_timeslot($aid,$tid);
+    $this->Home_model->set_scheduled($aid);   
      $data=$this->Home_model->get_data_for_main_screen($this->session->userdata('userid'));
       $this->load->view('/home_view',$data);
   }
@@ -99,7 +138,6 @@ class Home extends CI_Controller {
   $this->load->model('App_model');
 
     $this->App_model->cancel($aid);
-    error_log('hh');
     $this->index();
       
   }

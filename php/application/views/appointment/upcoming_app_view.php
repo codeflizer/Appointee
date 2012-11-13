@@ -29,7 +29,8 @@
 				<p><?=$appinfo->description ?><br/>
 				
 				
-				
+				from <i><b><?php echo getName($appinfo->author) ?> 
+						</b></i><br /> 
 				<?php
         date_default_timezone_set('UTC');
 						
@@ -37,9 +38,11 @@
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($appinfo->aid, $userid);
-						if(!empty($participants)){
+						        
+						 if(!empty($participants)){
 						        echo 'with ';
 						        }
+						
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -52,9 +55,8 @@
 			</li>
       
       <?php
-      foreach($timeslots as $timeslot){
-      $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']);
-      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['end_time']); 
+      $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['startdate']);
+      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['enddate']); 
       
       
 			  $day= $starttime->format('l');
@@ -72,9 +74,12 @@
 			      echo $timeslot['location']?>
 			      </p>    
 			<p class="ui-li-aside">in <strong>2</strong> days</p>
-			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
+			<?php 
+			if(!empty($participants)){
+			echo '<p align=right>'.$timeslot['number_of_ack'].' Acknowledgements </p>'; 
+			}?>
       </li>
-      <?php } ?>
+
 		 <a data-role="button" data-transition="fade" href="<?=base_url().'home/cancel/'.$appinfo->aid?>" data-icon="delete"
         data-iconpos="left">
             Cancel Request

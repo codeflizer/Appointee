@@ -37,7 +37,12 @@
 			<li data-role="list-divider" role="heading">Inbox</li>
 
 
-	        <?php foreach ($appointmentRequests as $request) {?>
+	        <?php 
+	          if(empty($appointmentRequests)){
+            echo '<li><i><small>There are no Incoming Requests</small></i></li>';
+            }
+	        
+	        foreach ($appointmentRequests as $request) {?>
 	        <li data-theme="c">
 	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?></h5>
@@ -45,14 +50,16 @@
 						<?php echo $request['description']; ?> <br />
 						from <i><?php echo getName($request['author']) ?> 
 						</i>
-						with <i>
+						<i>
 						 <?php
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -67,19 +74,26 @@
 			<li data-role="list-divider" role="heading">Waiting for Response</li>
 
 
-	  <?php foreach ($openRequests as $request) {?>
+	  <?php 
+	   if(empty($openRequest)){
+            echo '<li><i><small>There are no Open Requests</small></i></li>';
+	  }
+	  
+	  foreach ($openRequests as $request) {?>
 	  <li data-theme="c"><a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?> </h5>
 					<p>
 						<?php echo $request['description']; ?> <br />
-						<i>with 
+						<i>
 						    <?php
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -94,20 +108,28 @@
 
 			<li data-role="list-divider" role="heading">Upcoming Events</li>   
 	  
-	          <?php foreach ($upcomingAppointments as $request) {?>
+	          <?php
+	           if(empty($upcomingRequest)){
+            echo '<li><i><small>There are no Upcoming Events</small></i></li>';
+            }
+	           foreach ($upcomingAppointments as $request) {?>
 	          <li data-theme="c">
 	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					   <h5><?php echo $request['title']; ?> </h5>
-					   <p>
-						 <?php echo $request['description']; ?> <br />
-						   <i>with 
+					  <p>
+						<?php echo $request['description']; ?> <br />
+						from <i><?php echo getName($request['author']) ?> 
+						</i>
+						 <i>
 						    <?php
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }

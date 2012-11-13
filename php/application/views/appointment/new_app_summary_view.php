@@ -6,6 +6,7 @@
 	<title>Appoint.ee</title>
 	
 	<?php includeCss() ?>
+		
 	<!--link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.calbox.min.js"></script>
@@ -36,7 +37,7 @@
 				Summary
 			</li>
 			<li data-theme="c" data-icon="appointee-edit">
-				<a href="<?=base_url('app/edit')?>">
+				<a href="<?=base_url('app/edit')?>" data-ajax="false">
 				<?php 
 				if(!isset($title)){
 				    $title='';
@@ -67,18 +68,56 @@
 			<?php
 			 $counter =-1;
 			
-			 foreach ($slots as $slot) { $counter++; ?>
+			 foreach ($slots as $slot) { $counter++; 
+			 date_default_timezone_set('UTC');
+			 
+			 
+			  $first_date = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);
+			  $day= $first_date->format('l');
+			   $day2= $first_date->format('M j, Y');
+			   
+			   
+			   if($slot['endtime']==""){
+			   
+			   $ci =& get_instance();
+			  $dur = $ci->session->userdata('duration');
+			  
+			  $dur=substr($dur, strlen($dur)-8, strlen($dur));
+			  
+			  $dur=(explode(':',$dur,3));
+
+			  
+			  $timest=$first_date->getTimestamp();
+			  
+			 $timest+=$dur[0]*60*60+$dur[1]*60;
+		
+			  $slot['endtime'] = date('g:i A', $timest);
+			 
+			 
+			   
+			   
+			   //$slot['endtime']=$startt+dur;
+			   }
+			   
+			   
+			// $day = date_create_from_format('d', $first_date);
+			 
+			 ?>
 			 
 	
+			
 			 
 			 
+			
 			 
-			 
-			<li data-theme="c" data-icon="appointee-edit">
-			    <a href="<?=base_url().'app/editslot/'.$counter?>"> 
-			      <h3><strong><?php echo $slot['startdate']?> </strong></h3>
-			       <p><?php if (isset($slot['location']))echo $slot['location']?> </p>
-			       <br />  <p> <?php echo $slot['starttime'].' - '.$slot['endtime']?></p>
+			<li data-theme="c" data-icon="appointee-edit" class="appointee-date">
+			    <a href="<?=base_url().'app/editslot/'.$counter?>" data-ajax="false"> 
+			      <h3><?=$day.', ';?> <small><?=$day2?> </small></h3>
+			      
+			      <p> <b><?php echo $slot['starttime'].' - '.$slot['endtime'];  ?>
+			      
+			      </b><br/>
+			      <?php if (isset($slot['location']))echo $slot['location']?> </p>
 			     </a>
 			</li>
 	        <?php } ?>
@@ -86,7 +125,7 @@
 				
 		</ul><br />
         <a data-role="button" data-transition="fade" data-theme="c" href="<?=base_url()?>app/slot2" data-icon="plus"
-        data-iconpos="left">
+        data-iconpos="left" data-ajax="false">
             Add new Timeslot
         </a>
         <a data-role="button" data-transition="fade" href="<?=base_url()?>app/submit" data-icon="check"

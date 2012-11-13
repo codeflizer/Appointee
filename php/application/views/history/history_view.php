@@ -29,14 +29,37 @@
 			<li data-role="list-divider" role="heading">September 2012</li>
 			
 			
-			<?php foreach ($appointments as $appointment) {?>
+			<?php 
+			$ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+			
+			foreach ($appointments as $appointment) {?>
 	        <li data-theme="c"><a href="<?=base_url() ?>history/appointment/<?=$appointment['aid']?>" data-transition="slide">
 	           
 
 					<h5><?php echo $appointment['title']; ?></h5>
 					<p>
 						<?php echo $appointment['description']; ?> <br />
-						<i>with <?php echo $appointment['author']; ?></i>
+						
+						
+						<?php if ($appointment['author']!=$userid) {?>from <i><?php echo getName($appointment['author']) ?> 
+						</i><?php }?>
+						 <i>
+						 <?php
+						    
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($appointment['aid'], $userid);
+						
+						 if(!empty($participants)){
+						        echo 'with ';
+						        }
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?> 
+						    </i> 
 					</p>
 			    </a>
 			 </li>

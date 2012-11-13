@@ -4,18 +4,22 @@
 class App_model extends CI_Model { 
 
 	public function create_appointment($data){
+	date_default_timezone_set('UTC');
     
         $title=$data['title'];
         $description=$data['description'];
         $userid = $data['userid'];
         $slots = $data['slots'];
+        $duration = $data['duration'];
+        $durst_string=substr($duration, strlen($duration)-8, strlen($duration));	
         
         //insert appointment
         $data = array(
                'title' => $title ,
                'description' => $description ,
                'author' => $userid,
-               'status'=> 1
+               'status'=> 1,
+               'duration'=> $durst_string
         );
 
         $this->db->insert('appointments', $data); 
@@ -57,24 +61,27 @@ class App_model extends CI_Model {
         foreach ($slots as $slot)
         {
         
-        error_log($slot['enddate']);
+        $starttime = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);
+        
           //if endtime hasn't been entered, set enddate to same value as startdate
-          if ($slot['enddate'] == ''){
-                error_log('dsgdfg');
-              $slot['enddate'] = $slot['startdate'];
-               $slot['endtime'] = $slot['starttime'];
-          } 
-
-          //build array with data          
+           if ($slot['enddate'] == ''){   	  
+			  $dur=substr($duration, strlen($duration)-8, strlen($duration));			  
+			  $dur=(explode(':',$dur,3));			  
+			  $timest=$starttime->getTimestamp();			  
+			 $timest+=$dur[0]*60*60+$dur[1]*60;			  
+			  $dateString = date('YmdHis', $timest);
+            $endtime= new DateTime($dateString);
+          } else {
           
-          $starttime = DateTime::createFromFormat('m/d/Y h:i A', $slot['startdate'].' '.$slot['starttime']);
-          $endtime = DateTime::createFromFormat('m/d/Y h:i A', $slot['enddate'].' '.$slot['endtime']);
+           $endtime = DateTime::createFromFormat('m/d/Y h:i A', $slot['enddate'].' '.$slot['endtime']);
+          }   
           
           $single_slot = array (
               'aid' => $aid,
 			        'start_time' => $starttime->format('Y-m-d H:i:s'),
 			        'end_time' => $endtime->format('Y-m-d H:i:s'),
-              'duration' => 2 //standard value - still needs to be changed
+              //'duration' => $duration, //standard value - still needs to be changed
+               'location' => $slot['location']
           );
           
           //insert array into database

@@ -28,7 +28,8 @@
     </div>
    
 	<div data-role="content" style="padding: 15px">
-    <?php echo form_open('app/save_edit') ?>
+	<form action="<?=base_url()?>app/save_edit" name="app" method="post" accept-charset="utf-8" data-ajax="false">	
+
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
 				New Timeslot
@@ -67,6 +68,7 @@
                           'id'          => 'location',
                           'placeholder' => 'Location',
                            'maxlength'   => '30',
+                           'autocomplete' => 'off'
                     );
 					
 					echo form_input($data);
@@ -97,16 +99,15 @@
 			</li>
 				
 		</ul><br />
-        <?php echo form_submit('save','Save'); ?>
+		<input type="submit" name="save" value ="Save"  data-ajax="false"/>
+        
         <?php 
         //last slot cannot be deleted
         $ci =& get_instance();
        $size= $ci->session->userdata('slots');
-        if(sizeof($size)>1){
-        
-        echo form_submit('delete','Delete Slot'); 
-        }
-        ?>
+        if(sizeof($size)>1){ ?>
+        <input type="submit" name="delete" value ="Delete"  data-ajax="false"/>
+        <?php  }  ?>
          
     
           <a data-role="button" data-transition="fade" href="<?=base_url()?>app/summary"  data-ajax="false" >

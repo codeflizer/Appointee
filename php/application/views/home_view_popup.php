@@ -37,7 +37,12 @@
 			<li data-role="list-divider" role="heading">Inbox</li>
 
 
-	        <?php foreach ($appointmentRequests as $request) {?>
+	        <?php 
+	          if(empty($appointmentRequests)){
+            echo '<li><i><small>There are no Incoming Requests</small></i></li>';
+            }
+	        
+	        foreach ($appointmentRequests as $request) {?>
 	        <li data-theme="c">
 	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?></h5>
@@ -45,7 +50,7 @@
 						<?php echo $request['description']; ?> <br />
 						from <i><?php echo getName($request['author']) ?> 
 						</i>
-						with <i>
+						<i>
 						 <?php
 						
 						
@@ -53,6 +58,9 @@
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
 						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -67,19 +75,26 @@
 			<li data-role="list-divider" role="heading">Waiting for Response</li>
 
 
-	  <?php foreach ($openRequests as $request) {?>
+	  <?php 
+	   if(empty($openRequest)){
+            echo '<li><i><small>There are no Open Requests</small></i></li>';
+	  }
+	  
+	  foreach ($openRequests as $request) {?>
 	  <li data-theme="c"><a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?> </h5>
 					<p>
 						<?php echo $request['description']; ?> <br />
-						<i>with 
+						<i> 
 						    <?php
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -94,20 +109,28 @@
 
 			<li data-role="list-divider" role="heading">Upcoming Events</li>   
 	  
-	          <?php foreach ($upcomingAppointments as $request) {?>
+	          <?php 
+	           if(empty($upcomingRequest)){
+            echo '<li><i><small>There are no Upcoming Events</small></i></li>';
+            }
+	          foreach ($upcomingAppointments as $request) {?>
 	          <li data-theme="c">
 	            <a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					   <h5><?php echo $request['title']; ?> </h5>
 					   <p>
-						 <?php echo $request['description']; ?> <br />
-						   <i>with 
+						<?php echo $request['description']; ?> <br />
+						from <i><?php echo getName($request['author']) ?> 
+						</i>
+						 <i>
 						    <?php
 						
 						
 						         $ci =& get_instance();
 						         $userid=$ci->session->userdata('userid');
 						        $participants=getParticipants($request['aid'], $userid);
-						
+						if(!empty($participants)){
+						        echo 'with ';
+						        }
 						        foreach ($participants as $participant){
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
 						        }
@@ -126,12 +149,12 @@
 		    <div data-role="popup" id="popupBasic" 
 			data-dismissable="false" class="appointee_popup"
 			data-overlay-theme="a">
-			<div data-theme="e" data-role="header" class="dialog_header">
+			<div data-theme="e" data-role="header" class="dialog_header request_sent_div">
 				Appointment Request Sent
 			</div>
 			<p style="text-align:center;">Your appointment request </p>
 			<p style="text-align:center;font-size: 18px;"><b><?=$title?></b></p> 
-			<p style="text-align:center;font-size: 18px;">was successfully sent to 
+			<p style="text-align:center;">was successfully sent to 
 			<p style="text-align:center;font-size: 18px;"><b>
 			<?php foreach($partic as $part){
 			    echo $part.','; 

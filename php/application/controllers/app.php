@@ -53,7 +53,10 @@ class App extends CI_Controller {
 		//error_log($data['participants'][0]);
 		//error_log($data['participants'][2]);
 
-		
+		$this->session->unset_userdata('title');
+		$this->session->unset_userdata('description');
+		$this->session->unset_userdata('duration');
+		$this->session->unset_userdata('participants');
 		$this->session->set_userdata($app);
 		 $data =  $this->session->all_userdata();
 		$this->load->view('appointment/new_app_summary_view',$data);  

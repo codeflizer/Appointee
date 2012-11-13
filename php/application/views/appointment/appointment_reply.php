@@ -19,7 +19,7 @@
             Back
         </a>
     </div>
-  <?php echo form_open('home/send_reply') ?>
+    <form action="<?=base_url()?>home/send_reply" name="app" method="post" accept-charset="utf-8" data-ajax="false">	
 	<div data-role="content" style="padding: 15px">
 		<ul data-role="listview" data-divider-theme="d" data-inset="false">
 			<li data-role="list-divider" role="heading">
@@ -27,7 +27,30 @@
 			</li>
 			<li data-theme="c" data-icon="gear">
 				<h3><?=$appinfo->title ?></h3>
-				<p><?=$appinfo->description ?></i></p>
+				<p><?=$appinfo->description ?><br/>
+				
+				
+				from <i><b><?php echo getName($appinfo->author) ?> 
+						</b></i>
+				
+				
+				<br /> 
+				<?php
+        date_default_timezone_set('UTC');
+						
+						
+						         $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						        $participants=getParticipants($appinfo->aid, $userid);
+						        if(!empty($participants)){
+						        echo 'with ';
+						        }
+						        foreach ($participants as $participant){
+						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
+						        }
+						    ?>  
+				
+				</i></p>
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots
@@ -35,13 +58,26 @@
 			<input type="hidden" name="aid" value="<?=$appinfo->aid?>">
       
       <?php 
+      	date_default_timezone_set('UTC');
       foreach($timeslots as $timeslot) { 
+       
       $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']);
-      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['start_time']); 
-           
+      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['end_time']); 
+      
+      
+			  $day= $starttime->format('l');
+			   $day2= $starttime->format('M j, Y');
+			   $day3= $starttime->format('H:i A');
+			   $day4= $endtime->format('H:i A');
       ?>
-			<li data-theme="c" data-icon="gear">
-				<label for="slider2" class="slot_label"><?php echo date_format($starttime, 'D dS \o\f F \, Y'); ?>, <br />  <?php echo date_format($starttime, 'g:i a'); ?> - <?php echo date_format($endtime, 'g:i a');  ?> 
+			<li data-theme="c" data-icon="appointee-edit" class="appointee-date"> 
+				<label for="slider2" class="slot_label">
+				<h3><?=$day.', ';?> <small><?=$day2?> </small></h3>
+			      <p> <b><?=$day3.' - '.$day4;  ?>  </b><br/>
+			      <?php if (isset($timeslot['location']))
+			      echo $timeslot['location']?>
+			      </p>    
+			<p class="ui-li-aside">in <strong>2</strong> days</p>
 			<p align=right> <?php echo $timeslot['number_of_ack'] ?> Acknowledgements </p>
 				<div class="slot_toggle">
         
@@ -58,10 +94,10 @@
 			</li>
       
 				
-		</ul><br />
+	
         <?php }
         echo form_submit('Submit','Submit'); ?>
-        
+        </ul>
 	</div>
   </form>
 </div>

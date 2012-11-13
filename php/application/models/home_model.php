@@ -37,18 +37,18 @@ class Home_model extends CI_Model {
       $data['openRequests'] = $openRequests;
       
       //retrieve Upcoming Appointments
-      $upcomingAppointments = $this->db->query('SELECT a.aid, title, description, author 
-                                                FROM appointments a 
-                                                WHERE a.author='.$userid.' 
+      $upcomingAppointments = $this->db->query('SELECT DISTINCT a.aid, a.title, a.description, a.author
+                                                FROM appointments a, timeslots t, participants p
+                                                WHERE (a.author='.$userid.'
                                                 AND a.status=0
-                                                UNION 
-                                                SELECT a.aid, title, description, author 
-                                                FROM appointments a 
-                                                INNER JOIN participants p 
-                                                ON p.aid=a.aid  
-                                                WHERE  p.uid = '.$userid.' 
-                                                AND p.status<>2
-                                                AND a.status =0');
+                                                AND a.tid=t.tid
+                                                AND (t.end_time > now()))
+                                                OR (a.aid=p.aid
+                                                AND p.uid='.$userid.'
+                                                AND a.status=0
+                                                AND a.tid=t.tid
+                                                AND (t.end_time > now()))                
+                                        ');
 
 
       $upcomingAppointments = $upcomingAppointments->result_array();
@@ -61,21 +61,30 @@ class Home_model extends CI_Model {
     
   
     
-    //retrieves all Data needed for History and returns them
+   
+    
     public function get_data_for_history($userid){
      
      
       //retrieve Appointments
-      $appointments = $this->db->query('SELECT a.aid, title, description, author 
-                                                FROM appointments a 
-                                                WHERE a.author='.$userid.' 
-                                                UNION 
-                                                SELECT a.aid, title, description, author 
-                                                FROM appointments a 
-                                                INNER JOIN participants p 
-                                                ON p.aid=a.aid  
-                                                WHERE  p.uid = '.$userid  
-                                        );
+      $appointments = $this->db->query('SELECT DISTINCT a.aid, a.title, a.description, a.author
+                                                FROM appointments a, timeslots t, participants p
+                                                WHERE (a.author='.$userid.'
+                                                AND a.status=0
+                                                AND a.tid=t.tid
+                                                AND (t.end_time < now()))
+                                                OR (a.aid=p.aid
+                                                AND p.uid='.$userid.'
+                                                AND a.status=0
+                                                AND a.tid=t.tid
+                                                AND (t.end_time < now())
+                                                OR (a.aid=p.aid
+                                                AND p.uid='.$userid.'
+                                                AND p.status=2)
+                                                OR (a.author='.$userid.'
+                                                AND a.status=2)) 
+                                                ORDER BY t.end_time DESC               
+                                        ');
       $appointments = $appointments->result_array();
       $data['appointments'] = $appointments;
     
@@ -84,7 +93,7 @@ class Home_model extends CI_Model {
     
     public function get_appointment_data($id){
     
-    $query = $this->db->query('SELECT a.aid, a.title, a.description, a.author 
+    $query = $this->db->query('SELECT * 
                                                 FROM appointments a 
                                                 WHERE a.aid='.$id
                                         );
@@ -119,7 +128,8 @@ class Home_model extends CI_Model {
   
     $data['start']= $row->start_time;
      $data['end']= $row->end_time;
-     $data['ack']= $row->number_of_ack;
+     $data['number_of_ack']= $row->number_of_ack;
+     $data['location']= $row->location;
     return $data;
     
     }
@@ -135,6 +145,40 @@ class Home_model extends CI_Model {
     
     
     }
+    
+     public function set_timeslot($aid,$tid){
+    
+    
+    
+     $data = array(
+               'tid' => $tid
+            );
+
+            $this->db->where('aid', $aid);
+            $this->db->update('appointments', $data); 
+    
+    
+    }
+    
+   public function get_timeslot($aid){
+   
+   $query = $this->db->query('SELECT ts.start_time, ts.end_time, ts.number_of_ack, ts.location
+                                FROM timeslots ts, appointments a
+                                WHERE a.aid='.$aid.'
+                                AND a.tid=ts.tid'
+                                
+                                        );
+                                        
+   $row= $query->row(0);
+  
+    $data['startdate']= $row->start_time;
+     $data['enddate']= $row->end_time;
+     $data['number_of_ack']= $row->number_of_ack;
+     $data['location']= $row->location;
+    return $data;
+   
+   
+   }
     
     
 
