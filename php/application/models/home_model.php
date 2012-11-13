@@ -21,6 +21,7 @@ class Home_model extends CI_Model {
                                                 WHERE a.aid=p.aid AND a.author<>'.$userid.' 
                                                 AND p.uid='.$userid.'
                                                 AND p.status<>2 
+                                                 AND p.status<>3 
                                                 AND a.status=1');
                                                 
       $appointmentRequests = $appointmentRequests->result_array();
@@ -30,9 +31,16 @@ class Home_model extends CI_Model {
        
        //retrieve Open Requests
       $openRequests = $this->db->query(         'SELECT a.aid, title, description, author 
-                                                FROM appointments a 
-                                                WHERE a.author='.$userid. '
-                                                AND a.status=1');
+                                                FROM appointments a, participants p
+                                                WHERE (a.author='.$userid. '
+                                                AND a.status=1)
+                                                OR (
+                                                a.status=1
+                                                AND a.aid=p.aid
+                                                AND p.uid='.$userid.'
+                                                AND p.status=3)
+                                                
+                                                ');
       $openRequests = $openRequests->result_array();
       $data['openRequests'] = $openRequests;
       
@@ -224,6 +232,15 @@ class Home_model extends CI_Model {
     $this->db->update('timeslots');
     
     
+    }
+    
+    public function set_replied($aid, $uid){
+    
+    
+       $query = $this->db->query('UPDATE participants p 
+                                SET status=3    
+                                WHERE p.aid='.$aid.'
+                                AND p.uid='.$uid );
     }
 
 

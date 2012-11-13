@@ -27,9 +27,16 @@
 			<li data-theme="c" data-icon="gear">
 				<h3><?=$appinfo->title ?></h3>
 				<p><?=$appinfo->description ?><br/>
+					
+				from <i><b>
+				<?php 
+				$ci =& get_instance();
+				$userid=$ci->session->userdata('userid');
 				
-				
-				from <i><b><?php echo getName($appinfo->author) ?> 
+				if($userid==$appinfo->author){
+				    echo 'me';
+				}else {
+				echo getName($appinfo->author);} ?> 
 						</b></i><br /> 
 				<?php
         date_default_timezone_set('GMT');
@@ -82,7 +89,7 @@
 
 		 <a data-role="button" data-transition="fade" href="<?=base_url().'home/cancel/'.$appinfo->aid?>" data-icon="delete"
         data-iconpos="left">
-            Cancel Request
+            Cancel
         </a>		
 		</ul>
        

@@ -75,9 +75,19 @@
 	   foreach ($openRequests as $request) {?>
 	  <li data-theme="c"><a href="<?=base_url() ?>home/appointment/<?php echo $request['aid']?>" data-transition="slide"  data-ajax="false">
 					<h5><?php echo $request['title']; ?> </h5>
-					<p>
-						<?php echo $request['description']; ?> <br />
-						<i>
+					<p><?=$request['description'] ?><br/>
+					
+				from <i><b>
+				<?php 
+				$ci =& get_instance();
+				$userid=$ci->session->userdata('userid');
+				
+				if($userid==$request['author']){
+				    echo 'me';
+				}else {
+				echo getName($request['author']);
+				} ?> 
+						</b>
 						    <?php
 						
 						
@@ -114,7 +124,11 @@
 						<?php echo $request['description']; ?> <br />
 						
 						
-						<?php if ($request['author']!=$userid) {?>from <i><?php echo getName($request['author']) ?> 
+						<?php 
+						  $ci =& get_instance();
+						         $userid=$ci->session->userdata('userid');
+						
+						if ($request['author']!=$userid) {?>from <i><?php echo getName($request['author']) ?> 
 						</i><?php }?>
 						 <i>
 						    <?php

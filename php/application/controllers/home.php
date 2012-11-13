@@ -118,33 +118,38 @@ class Home extends CI_Controller {
     $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
      //update replies
     $this->Home_model->set_replies($aid, $number_replies+1);
+    //update participance
+     $userid = $this->session->userdata('userid');
+     $this->Home_model->set_replied($aid, $userid);
     
 
     //update timeslot ack
     foreach($timeslots as $timeslot){
         $tid=$timeslot['tid'];
-        if($post[$tid]=="accept"){
+        if(isset($post[$tid])){
             $this->Home_model->increase_ack_for($tid);
         }
     }
     
    
     $timeslots=$this->Home_model->get_timeslots_for_appointment($aid);
-    
+    $found=false;
     if($number_replies+1==$number_participants){
         foreach ($timeslots as $timeslot){
             if($timeslot['number_of_ack']==$number_participants){
+                $found=true;
                  $this->Home_model->set_timeslot($aid,$timeslot['tid']);
                  $this->Home_model->set_scheduled($aid);
-                  $this->index();
-                return;
+                 
+               
             }
         }
-
-    $this->App_model->cancel($aid);
-     
-     $this->index();         
+        if(!$found){
+         $this->App_model->cancel($aid);  
+        } 
+            
     }
+     $this->index();
   }
   
   public function send_reply_single()

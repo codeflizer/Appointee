@@ -29,9 +29,19 @@
 				<p><?=$appinfo->description ?><br/>
 				
 				
-				from <i><b><?php echo getName($appinfo->author) ?> 
-						</b></i><br /> 
+				 
 				
+				
+				from <i><b>
+				<?php 
+				$ci =& get_instance();
+				$userid=$ci->session->userdata('userid');
+				
+				if($userid==$appinfo->author){
+				    echo 'me';
+				} else {
+				echo getName($appinfo->author)} ?> 
+						</b></i><br /> 
 				<?php
 						  date_default_timezone_set('GMT');
 						
