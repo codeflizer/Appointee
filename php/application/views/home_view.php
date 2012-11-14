@@ -228,6 +228,28 @@
 						      ?>   
 						      
 					    </i>
+					    <br/> 
+					    
+					    <?php
+					    $ci->load->model('Home_model');
+					     $timeslot = $ci->Home_model->get_timeslot($request['aid']);
+					     
+      $starttime = date_create_from_format('Y-m-d H:i:s', $timeslot['startdate']);
+      $endtime = date_create_from_format('Y-m-d H:i:s', $timeslot['enddate']); 
+      
+      
+			  $day= $starttime->format('l');
+			   $day2= $starttime->format('M j,');
+			   $day3= $starttime->format('H:i A');
+			   $day4= $endtime->format('H:i A');
+      
+      ?>
+      
+
+			
+			 <?=$day.', '.$day2.' '.$day3.' - '.$day4;  ?>  
+			        
+			<p class="ui-li-aside">in <strong><?=get_days_remaining($starttime);?></strong> days <strong><?=get_hours_remaining($starttime);?></strong> hours </p>
 					   </p>
 			      </a>
 			 </li>
