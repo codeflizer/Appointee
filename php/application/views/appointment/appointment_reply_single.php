@@ -35,22 +35,7 @@
 				
 				
 				<br /> 
-				<?php
-         date_default_timezone_set('GMT');
-						
-						
-						         $ci =& get_instance();
-						         $userid=$ci->session->userdata('userid');
-						        $participants=getParticipants($appinfo->aid, $userid);
-						        if(!empty($participants)){
-						        echo 'with ';
-						        }
-						        foreach ($participants as $participant){
-						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
-						        }
-						    ?>  
-				
-				</i></p>
+				</p>
 			</li>
 			<li data-role="list-divider" role="heading">
 				Timeslots

@@ -52,7 +52,7 @@ if ( ! function_exists('includeCss'))
     function getParticipants($aid, $userid){
     $ci =& get_instance();
                                                 
-    $query ='SELECT u.first_name, u.last_name, u.uid 
+    $query ='SELECT DISTINCT u.first_name, u.last_name, u.uid 
             FROM  users u, participants p
             WHERE p.aid='.$aid.'
             AND p.uid = u.uid
@@ -71,7 +71,7 @@ if ( ! function_exists('includeCss'))
        function getOtherParticipants($aid, $userid){
     $ci =& get_instance();
                                                 
-    $query ='SELECT u.first_name, u.last_name, u.uid 
+    $query ='SELECT DISTINCT u.first_name, u.last_name, u.uid 
             FROM  users u, participants p
             WHERE p.aid='.$aid.'
             AND p.uid = u.uid

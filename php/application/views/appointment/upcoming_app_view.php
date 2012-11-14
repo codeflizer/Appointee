@@ -51,12 +51,13 @@
 						        foreach ($participants as $participant){
 						         error_log(getName($participant['uid']));
 						            if(!rejected($appinfo->aid, $participant['uid'])){
+						             if($participant['uid']!=$userid){
 						                if($first){
 						                echo 'with ';
 						                $first=false;
 						                }
 						              echo  $participant['first_name'].' '.$participant['last_name'].', ';
-						              }
+						              }}
 						              else {
 						              $rejected=true;
 						              }
