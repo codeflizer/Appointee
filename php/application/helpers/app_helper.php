@@ -68,6 +68,25 @@ if ( ! function_exists('includeCss'))
       
       }
       
+       function getOtherParticipants($aid, $userid){
+    $ci =& get_instance();
+                                                
+    $query ='SELECT u.first_name, u.last_name, u.uid 
+            FROM  users u, participants p
+            WHERE p.aid='.$aid.'
+            AND p.uid = u.uid
+            AND p.uid<>'.$userid;
+    $participants = $ci->db->query($query  );
+                                                
+                                      
+                                                
+    $participants = $participants->result_array();
+    return $participants;
+     
+        
+      
+      }
+      
      
       
        function get_days_remaining($time){

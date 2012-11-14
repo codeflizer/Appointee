@@ -96,7 +96,7 @@ class Home extends CI_Controller {
           'timeslots' =>  $timeslots
     );
     $userid=$this->session->userdata('userid');
-   $participants=getParticipants($appinfo->aid, $userid);
+   $participants=getOtherParticipants($appinfo->aid, $userid);
     if(empty($participants)){
      $this->load->view('appointment/appointment_reply_single', $data);
      }else {
